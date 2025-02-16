@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>카드뉴스 목록</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link
+          rel="stylesheet"
+          as="style"
+          crossorigin
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-gov.min.css"
+  />
+  <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+  />
+  <link
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Roboto:wght@400;700;900&display=swap"
+          rel="stylesheet"
+  />
+  <link rel="stylesheet" href="/resource/cardNewsList.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $(".page").click(function () {
+      $(".page").removeClass("active");
+      $(this).addClass("active");
+    });
+
+    $(".prev").click(function () {
+      let current = $(".page.active");
+      let prevPage = current.prev(".page");
+      if (prevPage.length) {
+        current.removeClass("active");
+        prevPage.addClass("active");
+      }
+    });
+
+    $(".next").click(function () {
+      let current = $(".page.active");
+      let nextPage = current.next(".page");
+      if (nextPage.length) {
+        current.removeClass("active");
+        nextPage.addClass("active");
+      }
+    });
+  });
+</script>
+
+<!---로그인 했을 때 + 사이드바---->
+<body id="default" oncontextmenu="return false">
+<div class="header">
+  <div class="menumain flex header-in">
+    <a class="logo"><img src="/img/logo.png" /></a>
+    <div class="space"></div>
+    <nav class="menu">
+      <ul>
+        <li><a href="#">영양진단</a></li>
+        <li><a href="#">챌린지</a></li>
+        <li><a href="#">레시피</a></li>
+        <li><a href="#">카드뉴스</a></li>
+        <li><a href="#">센터소개</a></li>
+        <li class="last">
+          <a href="#">마이페이지<img src="/img/sample.png" /></a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<div class="side-bar">
+  <div class="status-icon">
+    <div>▶</div>
+    <div>▼</div>
+  </div>
+  <nav class="menu-box-1">
+    <ul>
+      <li>
+        <a><img src="/img/sideButton1.png" /></a>
+      </li>
+      <li>
+        <a><img src="/img/sideButton2.png" /></a>
+      </li>
+      <li>
+        <a><img src="/img/sideButton3.png" /></a>
+      </li>
+      <li>
+        <a><img src="/img/sideButton4.png" /></a>
+      </li>
+      <li>
+        <a><img src="/img/sideButton5.png" /></a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<!--여기부터 개발 시작--->
+<div class="main">
+  <div class="challenge-section">
+    <div class="challenge-title">카드뉴스 목록</div>
+    <div class="text-line"></div>
+    <div class="challenge-container">
+<!--      <div class="challenge-box">-->
+<!--        <img src="https://www.kdca.go.kr/html/a2/namoimage/images/000171/%ED%95%B4%EC%99%B8%EC%97%AC%ED%96%89_%EC%8B%9C_%EC%A7%80%EC%BC%9C%EC%95%BC_%ED%95%A0_%ED%98%B8%ED%9D%A1%EA%B8%B0_%EA%B0%90%EC%97%BC%EB%B3%91_%EC%98%88%EB%B0%A9%EC%88%98%EC%B9%99-%EA%B5%AD%EB%AC%B8.jpg" alt="물 2L 마시기">-->
+<!--        <div class="challenge-label">해외여행 호흡기 감염</div>-->
+<!--      </div>-->
+<!--      <div class="challenge-box">-->
+<!--        <img src="https://www.kdca.go.kr/html/a2/namoimage/images/000168/2024_%EC%96%B4%EB%A5%B4%EC%8B%A0_%ED%95%9C%EB%9E%AD%EC%A7%88%ED%99%98%EC%98%88%EB%B0%A9_%EA%B1%B4%EA%B0%95%EC%88%98%EC%B9%99_%EC%B9%B4%EB%93%9C%EB%89%B4%EC%8A%A4-%EC%B5%9C%EC%A2%852_2.jpg" alt="식단일기적기">-->
+<!--        <div class="challenge-label">겨울병 감염병 알기</div>-->
+<!--      </div>-->
+<!--      <div class="challenge-box">-->
+<!--        <img src="https://www.kdca.go.kr/html/a2/namoimage/images/000170/%ED%8F%AC%EC%8A%A4%ED%84%B0_%EA%B5%AD%EB%AF%BC%EC%86%8C%ED%86%B5%EB%8B%A8_9%EA%B8%B0_%EB%AA%A8%EC%A7%91_%EC%B5%9C%EC%A2%85.jpg" alt="저속노화 챌린지">-->
+<!--        <div class="challenge-label">질병관리청 국민소통단 모집</div>-->
+<!--      </div>-->
+<!--      <div class="challenge-box">-->
+<!--        <img src="https://www.ccnnews.co.kr/news/photo/202312/319017_398121_295.jpg" alt="채식밥상 차리기">-->
+<!--        <div class="challenge-label">겨울철 노로바이러스 조심</div>-->
+<!--      </div>-->
+      <div th:each="cardNews : ${cardNewsList}" class="challenge-box">
+        <a th:href="@{/adm/cardnews/cardNewsContents/{cIdx}(cIdx=${cardNews.cIdx})}">
+          <img th:src="${cardNews.cnImage}" alt="카드뉴스 이미지"/>
+        </a>
+        <div class="challenge-label" th:text="${cardNews.cnTitle}">카드뉴스 제목</div>
+      </div>
+    </div>
+    <div class="text-line"></div>
+    <!-- 페이지네이션 -->
+    <div class="pagination">
+      <button class="prev">&lt;</button>
+      <button class="page active">1</button>
+      <button class="page">2</button>
+      <button class="page">3</button>
+      <button class="page">4</button>
+      <button class="page">5</button>
+      <button class="page">6</button>
+      <button class="page">7</button>
+      <button class="next">&gt;</button>
+    </div>
+  </div>
+</div>
+<div class="footer"></div>
+</body>
+<script>
+  window.addEventListener("scroll", () => {
+    const bwLeft = window.scrollX;
+    document.querySelector(
+            ".header-in"
+    ).style.transform = `translateX(-${bwLeft}px)`;
+  });
+</script>
+</html>

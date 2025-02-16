@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>챌린지 수정</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+            rel="stylesheet"
+            as="style"
+            crossorigin
+            href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-gov.min.css"
+    />
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Roboto:wght@400;700;900&display=swap"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/challenge/challengeModify.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<!---로그인 했을 때 + 사이드바---->
+<body id="default" oncontextmenu="return false">
+
+<div th:replace="common/header :: header"></div>
+<div th:replace="common/sideBar :: sideBar"></div>
+
+<!--여기부터 개발 시작--->
+<div class="main">
+    <div class="challenge-container">
+        <div class="challenge-header">챌린지 수정</div>
+        <div class="challenge-form">
+            <div class="text-line"></div>
+            <div class="form-row">
+                <label for="title">제목</label>
+                <input type="text" id="title" />
+            </div>
+            <div class="text-line"></div>
+            <div class="form-row">
+                <label>기간</label>
+                <div class="period-options">
+                    <button>7일</button>
+                    <button>14일</button>
+                    <button class="active">1달</button>
+                </div>
+            </div>
+            <div class="text-line"></div>
+            <div class="form-row">
+                <label>첨부파일</label>
+                <div>챌린지222.png</div>
+            </div>
+            <div class="text-line"></div>
+            <div class="form-row">
+                <label2 for="content">내용</label2>
+            </div>
+            <div class="form-row">
+                <textarea id="content"></textarea>
+            </div>
+
+            <a href="/usr/challenge/challengeList">
+            <div class="form-row">
+                <button class="submit-btn">수정</button>
+            </div>
+            </a>
+
+        </div>
+    </div>
+</div>
+
+<div class="footer"></div>
+</body>
+<script>
+
+    // $(document).ready(function () {
+    //     const urlParams = new URLSearchParams(window.location.search);
+    //     const challengeId = urlParams.get("challengeId");
+    //
+    //     if (!challengeId) {
+    //         alert("챌린지 ID가 없습니다.");
+    //         location.href = "/usr/challenge/challengeList";
+    //     }
+    //
+    //     // 챌린지 기존 정보 불러오기
+    //     $.ajax({
+    //         url: `/api/challenges/${challengeId}`,
+    //         type: "GET",
+    //         success: function (data) {
+    //             $("#title").val(data.title);
+    //             $("#content").val(data.description);
+    //             $(".period-options button").removeClass("active");
+    //             $(".period-options button").each(function () {
+    //                 if ($(this).text().replace("일", "") == data.duration) {
+    //                     $(this).addClass("active");
+    //                 }
+    //             });
+    //         },
+    //         error: function () {
+    //             alert("챌린지 정보를 불러오는 데 실패했습니다.");
+    //         }
+    //     });
+    //
+    //     // 수정 버튼 클릭 시 챌린지 수정 요청
+    //     $(".submit-btn").click(function () {
+    //         const updatedChallenge = {
+    //             title: $("#title").val(),
+    //             duration: $(".period-options .active").text().replace("일", ""),
+    //             content: $("#content").val()
+    //         };
+    //
+    //         $.ajax({
+    //             url: `/api/challenges/${challengeId}`,
+    //             type: "PUT",
+    //             contentType: "application/json",
+    //             data: JSON.stringify(updatedChallenge),
+    //             success: function () {
+    //                 alert("챌린지가 수정되었습니다.");
+    //                 location.href = "/usr/challenge/challengeList";
+    //             },
+    //             error: function () {
+    //                 alert("챌린지 수정에 실패했습니다.");
+    //             }
+    //         });
+    //     });
+    //
+    //     // 기간 선택 버튼 클릭 시 활성화 상태 변경
+    //     $(".period-options button").click(function () {
+    //         $(".period-options button").removeClass("active");
+    //         $(this).addClass("active");
+    //     });
+    // });
+
+    window.addEventListener("scroll", () => {
+        const bwLeft = window.scrollX;
+        document.querySelector(
+            ".header-in"
+        ).style.transform = `translateX(-${bwLeft}px)`;
+    });
+</script>
+</html>

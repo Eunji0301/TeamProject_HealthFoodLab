@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>고객문의</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+            rel="stylesheet"
+            as="style"
+            crossorigin
+            href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-gov.min.css"
+    />
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Roboto:wght@400;700;900&display=swap"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/inquiry/inquiryWrite.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<!---로그인 했을 때 + 사이드바---->
+<body id="default" oncontextmenu="return false">
+
+<div th:replace="common/header :: header"></div>
+<div th:replace="common/sideBar :: sideBar"></div>
+
+<!--여기부터 개발 시작--->
+<div class="main">
+    <div class="inquiry-form">
+        <div class="inquiry-header">1:1 문의 등록</div>
+
+        <div class="inquiry-row">
+            <label class="inquiry-label">문의카테고리</label>
+            <select class="inquiry-input">
+                <option>선택하세요</option>
+                <option>계정 관련</option>
+                <option>결제 관련</option>
+                <option>기타</option>
+            </select>
+        </div>
+
+        <div class="inquiry-row">
+            <label class="inquiry-label">제목</label>
+            <input type="text" class="inquiry-input" placeholder="제목을 입력하세요">
+        </div>
+
+        <div class="inquiry-row">
+            <label class="inquiry-label">사진</label>
+            <button class="inquiry-file">파일첨부</button>
+        </div>
+
+        <div class="inquiry-content">내용</div>
+        <textarea class="inquiry-textarea" placeholder="문의 내용을 입력하세요"></textarea>
+
+
+    </div>
+
+    <a class="inquiry-submit" href="/usr/inquiry/inquiryList">
+        <button>등록</button>
+    </a>
+
+</div>
+
+<div class="footer"></div>
+</body>
+<script>
+    window.addEventListener("scroll", () => {
+        const bwLeft = window.scrollX;
+        document.querySelector(
+            ".header-in"
+        ).style.transform = `translateX(-${bwLeft}px)`;
+    });
+</script>
+</html>

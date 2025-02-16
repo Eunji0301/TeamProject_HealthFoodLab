@@ -1,0 +1,43 @@
+
+<header th:fragment="header">
+    <link rel="stylesheet" th:href="@{/css/default.css}" />
+    <link rel="stylesheet" th:href="@{/css/default2.css}" />
+    <link rel="stylesheet" th:href="@{/css/healthfood3.css}" />
+
+
+    <div th:if="${session.LoginMemberEmail != null}">
+        <!-- 로그인 상태일 때 헤더 (모양 A) -->
+        <div class="menumain flex header-in">
+            <a class="logo"><img src="/img/logo.png" /></a>
+            <div class="space"></div>
+            <nav class="menu">
+                <ul>
+                    <li><a th:href="@{/usr/diagnosis/Diagnosis}">영양진단</a></li>
+                    <li><a th:href="@{/usr/challenge/challengeList}">챌린지</a></li>
+                    <li><a href="#">카드뉴스</a></li>
+                    <li><a th:href="@{/common/introduce}">센터소개</a></li>
+                    <li class="last">
+                        <a th:href="@{/usr/myPage/mypage}">마이페이지<img src="/img/sample.png" /></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div th:if="${session.LoginMemberEmail == null}">
+        <!-- 비로그인 상태일 때 헤더 (모양 B) -->
+        <div class="menumain flex header-in">
+            <a class="logo"><img src="/img/logo.png" /></a>
+            <div class="space"></div>
+            <nav class="menu">
+                <ul>
+                    <li><a th:href="@{/usr/diagnosis/Diagnosis}">영양진단</a></li>
+                    <li><a th:href="@{/usr/challenge/challengeList}">챌린지</a></li>
+                    <li><a href="#">카드뉴스</a></li>
+                    <li><a th:href="@{/common/introduce}">센터소개</a></li>
+                    <li><a th:href="@{/usr/myPage/mypage}">마이페이지</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>

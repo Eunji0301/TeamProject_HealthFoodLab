@@ -1,0 +1,138 @@
+/*라이브러리*/
+/*메인 색-테두리*/
+.bcolor-FA9058,
+.bcolor-FA9058:active,
+.bcolor-FA9058:focus,
+.bcolor-FA9058:hover { border-color: #fa9058; } 
+.border3-color-FA9058 { border: 3px solid #fa9058; } 
+.border5-color-FA9058 { border: 5px solid #fa9058; } 
+/*메인 색-배경*/
+.bgcolor-FA9058,
+.bgcolor-FA9058:active,
+.bgcolor-FA9058:focus,
+.bgcolor-FA9058:hover { background-color: #fa9058; } 
+/*메인 색-글자*/
+.color-FA9058 { color: #fa9058; } 
+/*메인 색-즐*/
+.hrcolor-FA9058 { background-color: #fa9058; height: 2px; border: 0; } 
+.hrcolor5-FA9058 { background-color: #fa9058; height: 5px; border: 0; } 
+/*메인 색-버튼*/
+.revbutton-FA9058 { border: 2px solid #fa9058; background-color: #fff; color: #fa9058; } 
+.revbutton-FA9058:hover { border: 2px solid #fa9058; background-color: #fff; color: #fa9058; } 
+.revbutton5-FA9058 { border: 5px solid #fa9058; background-color: #fff; color: #fa9058; } 
+.revbutton5-FA9058:hover { border: 5px solid #fa9058; background-color: #fff; color: #fa9058; } 
+.button-nonew-FA9058 { padding: 0; background-color: #fa9058; color: #ffffff; border: 1px solid #fa9058; cursor: pointer; transition: background-color 0.3s ease, color 0.3s ease; } 
+.button-FA9058 { width: 25%; height: 70px; padding: 0; background-color: #fa9058; color: #ffffff; border: 1px solid #fa9058; cursor: pointer; transition: background-color 0.3s ease, color 0.3s ease; } 
+/* .button-FA9058 :hover { background-color: #ffffff; color: #3681AB; } */
+.button-160px-FA9058 { width: 200px; height: 65px; padding: 0; background-color: #fa9058; color: #ffffff; border: 1px solid #fa9058; cursor: pointer; transition: background-color 0.3s ease, color 0.3s ease; font-size: 50px; vertical-align: top; border-radius: 5rem; } 
+
+/*서브 색-배경*/
+.bgcolor-radius-FFDCC2 { background-color: #ffdcc2; border-radius: 20px; } /*search 사용*/
+.bgcolor-radius5rem-FFDCC2 { background-color: #ffdcc2; border-radius: 5rem; } 
+/*서브 색-글자*/
+.color-FFDCC2 { color: #ffdcc2; } 
+/*서브 색-버튼*/
+.button-nonew-ffcc99 { background: white; border: 3px solid #FFDCC2; } 
+.button-nonew-ffcc99:hover { background: #ffcc99; } 
+
+/*버튼-사이즈*/
+.button-full { width: 100%; height: 50px; font-size: 20px; font-weight: 700; margin: 0 auto ;} 
+/********************************************************************/
+/*커스텀*/
+body { display: flex; flex-direction: column; overflow-x: auto; } 
+
+/* 해더 */
+#default > .header { background-color: #fff; white-space: nowrap; position: fixed; top: 0; left: 0; width: 100%; min-width: 1200px; border-bottom: 2px solid #fa9058; z-index: 999; } 
+
+#default > .header > .header-in { width: 100%; max-width: 1420px; margin: 0 auto; transform: translateX(0); } 
+
+#default > .header > .menumain { display: flex; margin: 0 auto; max-width: 1600px; align-items: center; } 
+#default > .header > .menumain > .logo > img { width: 150px; max-width: none; height: 54px; } 
+#default > .header > .menumain > .space { flex-grow: 1; } 
+#default > .header > .menumain > .menu { flex-grow: 2; text-align: center; } 
+#default > .header > .menumain > .menu > ul > li { display: inline-block; } 
+#default > .header > .menumain > .menu > ul > li > a { display: inline-block; padding: 20px 30px; font-weight: bold; width: 150px; } 
+#default > .header > .menumain > .menu > ul > .last > a { background-color: #ffdcc2; font-weight: bold; width: 150px; padding: 0 0 0 30px; border-radius: 5rem; } 
+#default > .header > .menumain > .menu > ul > .last > a > img { display: inline; width: 45px; height: 45px; margin: 0 0 0 10px; border-radius: 50%; border: 3px solid #fbb56f; } 
+#default > .header > .menumain > .menu > ul > li:hover:not(.last) > a { background-color: #ffdcc2; padding: 10px 30px; margin: 10px 0; border-radius: 10px; } 
+
+/*사이드바 시작*/
+#default > .side-bar { background-color: #fbb56f; margin-top: 66px; width: 120px; height: 100%; position: fixed; top: 0; left: -95px; transition: left 0.3s; z-index: 999; } 
+
+#default > .side-bar:hover { left: 0; } 
+
+/* 사이드바 - 아이콘 */
+#default > .side-bar > .status-icon > div { text-align: right; padding: 8px; } 
+#default > .side-bar > .status-icon > div:last-child { display: none; } 
+#default > .side-bar:hover > .status-icon > div:last-child { display: block; } 
+#default > .side-bar:hover > .status-icon > div:first-child { display: none; } 
+
+/* 사이드바 - 메뉴 */
+#default > .side-bar > .menu-box-1 ul > li > a { display: block; font-weight: bold; padding: 10px; } 
+#default > .side-bar > .menu-box-1 ul > li > a > img { width: 60px; height: 60px; } 
+#default > .side-bar > .menu-box-1 ul > li:hover > a { background-color: #fa9058; border-radius: 1rem; } 
+#default > .side-bar > .menu-box-1 ul > li { display: block; font-weight: bold; padding: 40px 20px; } 
+#default > .side-bar > .menu-box-1 ul { margin: auto 0; } 
+
+/*main*/
+#default > .main { 
+  background-color: #ffffff;
+  min-height: 100vh;
+  height: 100%;
+  white-space: nowrap;
+  width: 1200px;
+  flex-grow: 1;
+  z-index: 1; /* 헤더보다 아래 */
+  position: relative;
+  margin: 66px auto ;
+} 
+
+#default > .footer { height: 64px; border-top: 1px solid #afafaf; background-color: #fff; position: fixed; bottom: 0; left: 0; width: 100%; z-index: 998; } 
+/********************************************/
+.diagnosis > .imgDiv > img { width: 1000px; object-fit: contain; margin: 50px auto  0;} 
+.diagnosis > .middle { width: 889px; margin: 30px auto; padding: 13px;} 
+.diagnosis > .button { width: 889px; height: 50px; font-size: 20px; font-weight: 700; margin: 0 auto ;} 
+
+/*input*/
+.diagnosis > .middle input[type="checkbox"] { appearance: none; -webkit-appearance: none; width: 24px; height: 24px; border: 3px solid #fa9058; border-radius: 50%; position: relative; cursor: pointer; outline: none; } 
+.diagnosis > .middle input[type="checkbox"]:checked { border-color: #fa9058; } 
+.diagnosis > .middle input[type="checkbox"]:checked::after { content: ""; display: block; width: 14px; height: 14px; background-color: #fa9058; border-radius: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); } 
+
+
+/********************************************/
+.diagnosisSelect1 > .section { background: white; padding: 0.75rem; border-radius: 8px; border: 3px solid #fa9058;  } 
+.diagnosisSelect1 > .section > h2 { margin-bottom:0.75rem; font-size: 20px; font-weight: bold; background: #FFDCC2; color: black; padding: 0.5rem; border-radius: 5rem; text-align: center; } 
+
+.diagnosisSelect1 > .section > .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; text-align: center; } 
+.diagnosisSelect1 > .section > .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; text-align: center; } 
+.diagnosisSelect1 > .section > .grid-6 { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; text-align: center; } 
+
+.diagnosisSelect1 > .section > .grid-4 > .input-box { padding:10px; height: 140px; display: flex; flex-direction: column; align-items: center; border: 3px solid #fa9058; border-radius: 8px; } 
+.diagnosisSelect1 > .section > .grid-4 > .input-box > .title { font-size: 16px; font-weight: 700; } 
+.diagnosisSelect1 > .section > .grid-4 > .input-box input[type="radio"].form-check-left { display: inline-block; display: none; } 
+.diagnosisSelect1 > .section > .grid-4 > .input-box input[type="radio"].form-check-left + .form-check-text { display: inline-block; width: 209px; height: 35px; line-height: 25px; background: #fff; color: #000; padding: 0px 10px; font-weight: 700; font-size: 16px; border: 3px solid #FA9058; border-radius: 5rem; } 
+.diagnosisSelect1 > .section > .grid-4 > .input-box input[type="radio"].form-check-left:checked + .form-check-text { background: #FFDCC2; } 
+.diagnosisSelect1 > .section > .grid-4 > .input-box input[type="text"] { width: 180px; height: 65px; padding: 5px; border: 1px solid #ccc; border-radius: 5px; text-align: center; margin: 20px auto; font-size: 16px; } 
+
+.diagnosisSelect1 > .section > .title { font-size: 20px; font-weight: 700;  } 
+.diagnosisSelect1 > .section > .info { text-align: center; font-size: 16px; color: #BABABA; font-weight: 600; } 
+.diagnosisSelect1 > .section.box2 > .grid-5.input-box input[type="radio"].form-check-left,
+.diagnosisSelect1 > .section.box2 > .grid-6.input-box input[type="radio"].form-check-left { display: inline-block; display: none; } 
+.diagnosisSelect1 > .section.box2 > .grid-5.input-box input[type="radio"].form-check-left + .form-check-text,
+.diagnosisSelect1 > .section.box2 > .grid-6.input-box input[type="radio"].form-check-left + .form-check-text { height: 60px; background: white; line-height: 30px; border: 3px solid #FFDCC2; padding: 10px; border-radius: 10px; cursor: pointer; font-size: 16px; width: 100%; font-weight: 700; } 
+.diagnosisSelect1 > .section.box2 > .grid-5.input-box input[type="radio"].form-check-left:checked + .form-check-text,
+.diagnosisSelect1 > .section.box2 > .grid-5.input-box input[type="radio"].form-check-left:focus + .form-check-text,
+.diagnosisSelect1 > .section.box2 > .grid-6.input-box input[type="radio"].form-check-left:checked + .form-check-text,
+.diagnosisSelect1 > .section.box2 > .grid-6.input-box input[type="radio"].form-check-left:focus + .form-check-text { background: #ffcc99; border: 3px solid #ffcc99; } 
+
+/************************************************/
+.diagnosisSelect2 > .section.top { font-size: 15px; background: white; padding: 10px; margin-top: 20px;  border: 3px solid #ff6600; } 
+.diagnosisSelect2 > .section.top  h2 { font-size: 20px; font-weight: bold; margin-bottom: 15px; background: #FFDCC2; color: black; padding: 5px; border-radius: 5rem; text-align: center; } 
+.diagnosisSelect2 > .section.food-grid { margin-bottom: 15px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 20px; text-align: center; } 
+.diagnosisSelect2 > .section.food-grid > .food-item { height: 150px; display: flex; justify-content: center; align-items: center; } 
+.diagnosisSelect2 > .section.food-grid > .food-item > img { width: 100px; height: 100px; border-radius: 50%; border: 2px solid #ff6600; margin-right: 20px;} 
+.diagnosisSelect2 > .section.food-grid > .food-item > div > p { font-weight: 700; font-size: 24px; text-align: start;} 
+
+.diagnosisSelect2 > .section.food-grid > .food-item > div > select { width: 250px; padding: 8px; border: 3px solid #fa9058; border-radius: 4px; background-color: #ffffff; color: #fa9058; text-align: center; } 
+.diagnosisSelect2 > .section.food-grid > .food-item > div > option:checked { background-color: #fa9058; color: #fff; } 
+.diagnosisSelect2 > .section.food-grid > .food-item > div > option:hover { background-color: #f0f0f0; } 

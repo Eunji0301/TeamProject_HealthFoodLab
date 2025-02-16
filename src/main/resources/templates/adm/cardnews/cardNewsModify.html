@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>카드뉴스 수정</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link
+            rel="stylesheet"
+            as="style"
+            crossorigin
+            href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-gov.min.css"
+    />
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Roboto:wght@400;700;900&display=swap"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/resource/cardNewsModify.css"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<!---로그인 했을 때 + 사이드바---->
+<body id="default" oncontextmenu="return false">
+<div class="header">
+    <div class="menumain flex header-in">
+        <a class="logo"><img src="/img/logo.png"/></a>
+        <div class="space"></div>
+        <nav class="menu">
+            <ul>
+                <li><a href="#">영양진단</a></li>
+                <li><a href="/adm/challenge/challengeList">챌린지</a></li>
+                <li><a href="#">레시피</a></li>
+                <li><a href="/adm/cardnews/cardNewsList">카드뉴스</a></li>
+                <li><a href="#">센터소개</a></li>
+                <li class="last">
+                    <a href="#">마이페이지<img src="/img/sample.png"/></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<div class="side-bar">
+    <div class="status-icon">
+        <div>▶</div>
+        <div>▼</div>
+    </div>
+    <nav class="menu-box-1">
+        <ul>
+            <li>
+                <a><img src="/img/sideButton1.png"/></a>
+            </li>
+            <li>
+                <a><img src="/img/sideButton2.png"/></a>
+            </li>
+            <li>
+                <a><img src="/img/sideButton3.png"/></a>
+            </li>
+            <li>
+                <a><img src="/img/sideButton4.png"/></a>
+            </li>
+            <li>
+                <a><img src="/img/sideButton5.png"/></a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<!--여기부터 개발 시작--->
+<div class="main">
+    <div class="challenge-container">
+        <div class="challenge-header">카드뉴스 수정</div>
+        <div class="challenge-form">
+            <div class="text-line"></div>
+            <form action="/adm/cardnews/cardNewsModifyAction" method="POST" enctype="multipart/form-data">
+                <input th:type="hidden" name="cIdx" th:value="${cardNews.cIdx}">
+                <div class="form-row">
+                    <label>제목</label>
+                    <textarea id="title" name="cnTitle"
+                              th:placeholder="${cardNews.cnTitle != null ? cardNews.cnTitle : '제목을 입력하세요.'}">
+                    </textarea>
+
+                </div>
+                <div class="text-line"></div>
+                <div class="form-row">
+                    <label>작성자</label>
+                    <p th:text="${cardNews.cnWriter}"></p>
+                </div>
+                <div class="text-line"></div>
+                <div class="form-row">
+                    <label>연락처</label>
+                    <p th:text="${cardNews.cnContact}"></p>
+                </div>
+                <div class="text-line"></div>
+                <div class="form-row">
+                    <img th:src="${cardNews.cnImage}" alt="카드뉴스 이미지"/>
+                </div>
+                <div class="form-row">
+                    <img id="previewImage" src="" alt="미리보기 이미지" style="max-width: 300px; display: none;"/>
+                </div>
+                <div class="text-line"></div>
+                <div class="form-row">
+                    <label>첨부파일</label>
+                    <input type="file" id="uploadFile" name="uploadFile" onchange="previewFile()">
+                    <input type="hidden" id="cnFilename" name="cnFilename"/>
+                </div>
+                <div class="text-line"></div>
+                <div class="form-row">
+                    <button class="submit-btn">수정</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="footer"></div>
+</body>
+<script>
+    window.addEventListener("scroll", () => {
+        const bwLeft = window.scrollX;
+        document.querySelector(
+            ".header-in"
+        ).style.transform = `translateX(-${bwLeft}px)`;
+    });
+
+    document.getElementById("uploadFile").addEventListener("change", function (event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const preview = document.getElementById("previewImage");
+                preview.src = e.target.result;
+                preview.style.display = "block";
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    function previewFile() {
+        var file = document.getElementById('uploadFile').files[0]; // 선택된 파일 가져오기
+        var preview = document.getElementById('previewImage'); // 미리보기 이미지 엘리먼트
+
+        // 파일이 존재하면 미리보기 이미지와 파일명을 설정
+        if (file) {
+            // 미리보기 이미지 설정
+            var reader = new FileReader();
+            reader.onloadend = function () {
+                preview.src = reader.result; // 미리보기 이미지 설정
+                preview.style.display = 'block'; // 미리보기 이미지 보이게 설정
+            };
+            reader.readAsDataURL(file);
+
+            // 파일 이름을 hidden 필드에 설정
+            document.getElementById('cnFilename').value = file.name; // 파일 이름 설정
+        } else {
+            preview.src = ""; // 파일이 없다면 미리보기 이미지 초기화
+            preview.style.display = 'none'; // 미리보기 이미지 숨기기
+            document.getElementById('cnFilename').value = ""; // 파일명 초기화
+        }
+    }
+</script>
+</html>

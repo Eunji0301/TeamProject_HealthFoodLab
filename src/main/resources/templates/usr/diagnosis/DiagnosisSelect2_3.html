@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>로그인 전</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-gov.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Roboto:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/default2.css"/>
+    <link rel="stylesheet" href="/css/Diagnosis.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  </head>
+  <!---로그인 전 영양검사 등 ---->
+  <body id="default">
+  <div th:replace="common/header :: header"></div>
+
+
+  <!--여기부터 개발 시작--->
+    <div class="main diagnosisSelect2">
+      <div class="top section">
+        <h2>식사 문진표</h2>
+        <p class="pl-3">
+          아래 표시된 음식들을 일주일에 얼마나 섭취하는지 체크해 주세요.
+        </p>
+        <p class="pl-3">※ 섭취 기준은 일주일(7일) 기준입니다.</p>
+      </div>
+
+      <div class="section food-grid">
+        <div class="food-item">
+          <img src="/img/dessert.png" alt="디저트" />
+          <div>
+            <p>디저트</p>
+            <select>
+              <option value="0">0회</option>
+              <option value="1">1회</option>
+              <option value="2">2회</option>
+              <option value="3">3회</option>
+              <option value="4">4회 이상</option>
+            </select>
+          </div>
+        </div>
+        <div class="food-item">
+          <img src="/img/nuts.png" alt="견과류" />
+          <div>
+            <p>견과류</p>
+            <select>
+              <option value="0">0회</option>
+              <option value="1">1회</option>
+              <option value="2">2회</option>
+              <option value="3">3회</option>
+              <option value="4">4회 이상</option>
+            </select>
+          </div>
+        </div>
+        <div class="food-item">
+          <img src="/img/fruit.png" alt="과일" />
+          <div>
+            <p>과일</p>
+            <select>
+              <option value="0">0회</option>
+              <option value="1">1회</option>
+              <option value="2">2회</option>
+              <option value="3">3회</option>
+              <option value="4">4회 이상</option>
+            </select>
+          </div>
+        </div>
+        <div class="food-item">
+          <img src="/img/friedFoods.png" alt="전/튀김" />
+          <div>
+            <p>전/튀김</p>
+            <select>
+              <option value="0">0회</option>
+              <option value="1">1회</option>
+              <option value="2">2회</option>
+              <option value="3">3회</option>
+              <option value="4">4회 이상</option>
+            </select>
+          </div>
+        </div>
+        <div class="food-item">
+          <img src="/img/dishOverRice.png" alt="볶음/덮밥" />
+          <div>
+            <p>볶음/덮밥</p>
+            <select>
+              <option value="0">0회</option>
+              <option value="1">1회</option>
+              <option value="2">2회</option>
+              <option value="3">3회</option>
+              <option value="4">4회 이상</option>
+            </select>
+          </div>
+        </div>
+        <div class="food-item">
+          <img src="/img/seaweed.png" alt="해조류" />
+          <div>
+            <p>해조류</p>
+            <select>
+              <option value="0">0회</option>
+              <option value="1">1회</option>
+              <option value="2">2회</option>
+              <option value="3">3회</option>
+              <option value="4">4회 이상</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <button id="submitBtn" class="button-full text-base button-nonew-FA9058 rounded-lg">
+        결과 확인하기
+      </button>
+    </div>
+
+    <div class="footer"></div>
+  </body>
+
+  <script>
+    window.addEventListener("scroll", () => {
+      const bwLeft = window.scrollX;
+      document.querySelector(
+        ".header-in"
+      ).style.transform = `translateX(-${bwLeft}px)`;
+    });
+  </script>
+
+  <script type="module">
+    import foodNutrition from "/js/foodNutrition.js";
+
+    $(document).ready(function() {
+      $("#submitBtn").click(function() {
+        let storedMealData = sessionStorage.getItem("mealData");
+        let totalMealData = storedMealData ? JSON.parse(storedMealData) : {
+          mCalorie: 0, mCarb: 0, mProtein: 0, mFat: 0, mSugar: 0,
+          mFiber: 0, mCholesterol: 0, mSodium: 0
+        };
+
+        $(".food-item").each(function() {
+          let foodName = $(this).find("p").text().trim();
+          let servings = parseInt($(this).find("select").val());
+
+          if (servings > 0 && foodNutrition[foodName]) {
+            let nutrition = foodNutrition[foodName];
+
+            totalMealData.mCalorie += parseFloat(nutrition.calorie * servings);
+            totalMealData.mCarb += parseFloat(nutrition.carb * servings);
+            totalMealData.mProtein += parseFloat(nutrition.protein * servings);
+            totalMealData.mFat += parseFloat(nutrition.fat * servings);
+            totalMealData.mSugar += parseFloat(nutrition.sugar * servings);
+            totalMealData.mFiber += parseFloat(nutrition.fiber * servings);
+            totalMealData.mCholesterol += parseFloat(nutrition.cholesterol * servings);
+            totalMealData.mSodium += parseFloat(nutrition.sodium * servings);
+          }
+        });
+
+        console.log("✅ 최종 mealData:", totalMealData);
+        window.location.href = "/usr/diagnosis/DiagnosisResult";
+
+        /*$.ajax({
+          type: "POST",
+          url: "/api/meal/submit",
+          contentType: "application/json",
+          data: JSON.stringify(totalMealData),
+          success: function(response) {
+            console.log("✅ 식사 기록 저장 성공:", response);
+            alert("✅ 식사 기록이 정상적으로 저장되었습니다.");
+
+            sessionStorage.removeItem("mealData");
+
+            window.location.href = "/usr/diagnosis/DiagnosisResult";
+          },
+          error: function(error) {
+            console.error("❌ 식사 기록 저장 실패:", error);
+            alert("❌ 식사 기록 저장에 실패하였습니다.");
+          }
+        });*/
+      });
+    });
+  </script>
+
+
+
+
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>고객문의</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+            rel="stylesheet"
+            as="style"
+            crossorigin
+            href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-gov.min.css"
+    />
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Roboto:wght@400;700;900&display=swap"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/inquiry/inquiryList.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<!---로그인 했을 때 + 사이드바---->
+<body id="default" oncontextmenu="return false">
+
+<div th:replace="common/header :: header"></div>
+<div th:replace="common/sideBar :: sideBar"></div>
+
+<!--여기부터 개발 시작--->
+<div class="main">
+    <div class="inquiry-container">
+        <!-- 안내 문구 -->
+        <div class="inquiry-header">
+            <div class="icon">Q</div>
+            <div class="text">궁금한 게 있으시면 문의해주세요.<br>빠른 시일 내에 답변해드리겠습니다.</div>
+        </div>
+
+        <!-- 문의 테이블 -->
+        <table class="inquiry-table">
+            <thead>
+            <tr>
+                <th>제목</th>
+                <th>카테고리</th>
+                <th>상태</th>
+                <th>작성일</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr onclick="location.href='/usr/inquiry/inquiryDetail'" style="cursor:pointer;">
+                <td>신제품 칼로리 추가 해주세요</td>
+                <td>MY 식사일지</td>
+                <td>답변 대기중</td>
+                <td>2025.01.20</td>
+            </tr>
+
+            <tr onclick="location.href='/usr/inquiry/inquiryDetail'" style="cursor:pointer;">
+                <td>댓글 수정 삭제가 안돼요</td>
+                <td>MY 챌린지</td>
+                <td>답변 중</td>
+                <td>2025.01.20</td>
+            </tr>
+            <tr onclick="location.href='/usr/inquiry/inquiryDetail'" style="cursor:pointer;">
+                <td>왜 안될까요?</td>
+                <td>챌린지</td>
+                <td>답변 완료</td>
+                <td>2025.01.18</td>
+            </tr>
+            <tr onclick="location.href='/usr/inquiry/inquiryDetail'" style="cursor:pointer;">
+                <td>간헐적 단식 시간 체크 기능</td>
+                <td>MY 식사일지</td>
+                <td>답변 완료</td>
+                <td>2025.01.18</td>
+            </tr>
+            <tr onclick="location.href='/usr/inquiry/inquiryDetail'" style="cursor:pointer;">
+                <td>레시피가 안들어가져요</td>
+                <td>레시피</td>
+                <td>답변 완료</td>
+                <td>2025.01.18</td>
+            </tr>
+            <tr onclick="location.href='/usr/inquiry/inquiryDetail'" style="cursor:pointer;">
+                <td>알림이 계속 들어와요</td>
+                <td>MY 식사일지</td>
+                <td>답변 완료</td>
+                <td>2025.01.18</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- 글쓰기 버튼 -->
+        <a class="write-btn" href="/usr/inquiry/inquiryWrite">
+            <button>글쓰기</button>
+        </a>
+
+        <!-- 페이지네이션 -->
+        <div class="pagination">
+            <button>◀</button>
+            <button class="active">1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>4</button>
+            <button>5</button>
+            <button>▶</button>
+        </div>
+    </div>
+</div>
+
+<div class="footer"></div>
+</body>
+<script>
+    window.addEventListener("scroll", () => {
+        const bwLeft = window.scrollX;
+        document.querySelector(
+            ".header-in"
+        ).style.transform = `translateX(-${bwLeft}px)`;
+    });
+</script>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>마이챌린지 내용보기</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link
+          rel="stylesheet"
+          as="style"
+          crossorigin
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-gov.min.css"
+  />
+  <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+  />
+  <link
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Roboto:wght@400;700;900&display=swap"
+          rel="stylesheet"
+  />
+  <link rel="stylesheet" href="/css/myChallenge/myChallengeContents.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<!---로그인 했을 때 + 사이드바---->
+<body id="default" oncontextmenu="return false">
+
+<div th:replace="common/header :: header"></div>
+<div th:replace="common/sideBar :: sideBar"></div>
+
+<!--여기부터 개발 시작--->
+<div class="main">
+
+  <!-- 챌린지 섹션 제목 -->
+  <div class="challenge-title">완료/미완료/진행중 챌린지</div>
+
+  <div class="text-line"></div>
+
+  <!-- 상단 탭 -->
+  <div class="tab-container">
+    <button>진행중 챌린지</button>
+    <button>완료 챌린지</button>
+    <button>미완료 챌린지</button>
+  </div>
+
+  <div class="challenge-wrapper">
+    <!-- 챌린지 카드 컨테이너 -->
+    <div class="challenge-container">
+      <!-- 진행중 챌린지 -->
+      <div class="challenge-card">
+        <a href="/usr/myChallenge/myChallengeDetail">
+        <img src="https://cdn.newswin.co.kr/news/photo/202207/311064_313267_4613.jpg" alt="진행중 챌린지">
+        </a>
+      </div>
+
+      <!-- 완료 챌린지 -->
+      <div class="challenge-card">
+        <img src="https://vitaminjiny.com/wp-content/uploads/2023/02/KakaoTalk_Photo_2023-05-10-20-54-04-002-optimized.jpeg" alt="완료 챌린지">
+      </div>
+
+      <!-- 미완료 챌린지 -->
+      <div class="challenge-card">
+        <img src="https://vitaminjiny.com/wp-content/uploads/2023/02/KakaoTalk_Photo_2023-05-10-20-54-04-002-optimized.jpeg" alt="미완료 챌린지">
+      </div>
+    </div>
+
+    <!-- 챌린지 진행 정보 -->
+    <div class="challenge-details">
+      <br>
+      <p>1일차 챌린지 진행 중</p>
+      <br>
+      <p>20명이 챌린지를 진행중입니다.</p>
+      <br>
+      <p>인증횟수</p>
+      <br>
+      <p>❤️❤️❤️❤️</p>
+    </div>
+  </div>
+
+  <div class="text-line"></div>
+
+</div>
+
+<div class="footer"></div>
+</body>
+<script>
+  window.addEventListener("scroll", () => {
+    const bwLeft = window.scrollX;
+    document.querySelector(
+            ".header-in"
+    ).style.transform = `translateX(-${bwLeft}px)`;
+  });
+</script>
+</html>

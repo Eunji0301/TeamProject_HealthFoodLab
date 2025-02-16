@@ -1,0 +1,474 @@
+body {
+  display: flex;
+  flex-direction: column;
+  overflow-x: auto;
+}
+
+#default > .header {
+  background-color: #fff;
+  white-space: nowrap;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-width: 1200px;
+  border-bottom: 2px solid #fa9058;
+  z-index: 999;
+}
+
+#default > .header > .header-in {
+  width: 100%;
+  max-width: 1420px;
+  margin: 0 auto;
+  transform: translateX(0);
+}
+
+#default > .header > .menumain {
+  display: flex;
+  margin: 0 auto;
+  max-width: 1600px;
+  align-items: center;
+}
+#default > .header > .menumain > .logo > img {
+  width: 150px;
+  max-width: none;
+  height: 54px;
+}
+#default > .header > .menumain > .space {
+  flex-grow: 1;
+}
+#default > .header > .menumain > .menu {
+  flex-grow: 2;
+  text-align: center;
+}
+#default > .header > .menumain > .menu > ul > li {
+  display: inline-block;
+}
+#default > .header > .menumain > .menu > ul > li > a {
+  display: inline-block;
+  padding: 20px 30px;
+  font-weight: bold;
+  width: 150px;
+}
+#default > .header > .menumain > .menu > ul > .last > a {
+  background-color: #ffdcc2;
+  font-weight: bold;
+  width: 150px;
+  padding: 0 0 0 30px;
+  border-radius: 5rem;
+}
+#default > .header > .menumain > .menu > ul > .last > a > img {
+  display: inline;
+  width: 45px;
+  height: 45px;
+  margin: 0 0 0 10px;
+  border-radius: 50%;
+  border: 3px solid #fbb56f;
+}
+#default > .header > .menumain > .menu > ul > li:hover:not(.last) > a {
+  background-color: #ffdcc2;
+  padding: 10px 30px;
+  margin: 10px 0;
+  border-radius: 10px;
+}
+
+/*사이드바 시작*/
+#default > .side-bar {
+  background-color: #fbb56f;
+  margin-top: 66px;
+  width: 120px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: -95px;
+  transition: left 0.3s;
+}
+#default > .side-bar:hover {
+  left: 0;
+}
+
+/* 사이드바 - 아이콘 */
+#default > .side-bar > .status-icon > div {
+  text-align: right;
+  padding: 8px;
+}
+
+#default > .side-bar > .status-icon > div:last-child {
+  display: none;
+}
+
+#default > .side-bar:hover > .status-icon > div:last-child {
+  display: block;
+}
+
+#default > .side-bar:hover > .status-icon > div:first-child {
+  display: none;
+}
+
+/* 사이드바 - 메뉴 */
+#default > .side-bar > .menu-box-1 ul > li > a {
+  display: block;
+  font-weight: bold;
+  padding: 10px;
+}
+
+#default > .side-bar > .menu-box-1 ul > li > a > img {
+  width: 60px;
+  height: 60px;
+}
+
+#default > .side-bar > .menu-box-1 ul > li:hover > a {
+  background-color: #fa9058;
+  border-radius: 1rem;
+}
+#default > .side-bar > .menu-box-1 ul > li {
+  display: block;
+  font-weight: bold;
+  padding: 40px 20px;
+}
+#default > .side-bar > .menu-box-1 ul {
+  margin: auto 0;
+}
+
+/*main*/
+#default > .main {
+  background-color: #fff;
+  height: auto; /* 고정된 height 제거 */
+  min-height: calc(100vh - 120px); /* 화면 크기에 맞게 자동 조정 */
+  margin: 66px auto 80px; /* Footer와 겹치지 않게 여백 추가 */
+  white-space: nowrap;
+  width: 1200px;
+  flex-grow: 1;
+  z-index: 1; /* 헤더보다 아래 */
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#default > .footer {
+  height: 64px;
+  border-top: 1px solid #afafaf;
+  background-color: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 998;
+}
+
+
+/* diagnosis 6 적용되는 부분 */
+.container {
+  width: 90%;
+  margin: auto;
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.section-title {
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.eat-score {
+  border: 2px solid #f4a07a;
+  padding: 25px;
+  border-radius: 8px;
+  margin-top: 20px;
+  background-color: #ffdcc2; /* 부드러운 배경색 */
+  max-height: 196px;
+}
+
+/* 새로운 테두리 추가 */
+.score-header {
+  border: 2px solid #f4a07a;
+  background-color: rgba(255, 255, 255, 0.8); /* 흰색 + 투명도 80% */
+  padding: 2px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.score-header h2 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.score-header p {
+  font-size: 15px;
+  margin: 5px 0;
+  color: gray;
+}
+
+.score-header p strong {
+  color: red;
+}
+
+.score-warning {
+  color: red !important;
+  font-weight: bold;
+}
+.page-title {
+  font-size: 20px; /* 텍스트 크기 조정 */
+  font-weight: bold;
+  background-color: #ffebcd; /* 사진과 유사한 연한 오렌지색 */
+  border-radius: 35px; /* 좌우 테두리 둥글게 */
+  height: 50px; /* 높이 조정 */
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%; /* 가로를 꽉 차게 */
+}
+
+
+
+.section h2 {
+  font-size: 22px;
+  font-weight: bold;
+  background: #ff6600;
+  color: black;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+.user-info {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4열 구조 */
+  gap: 15px;
+  text-align: center;
+}
+.user-info div {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-radius: 25px;
+  overflow: hidden;
+}
+/* 왼쪽 라벨 (이름, 성별, 나이 등) */
+.user-info div span:first-child {
+  background: #f4a07a; /* 진한 주황 계열 */
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 25px 0 0 25px;
+  color: black;
+  min-width: 80px;
+  text-align: center;
+}
+
+/* 오른쪽 값 (아무개, 남성, 30세 등) */
+.user-info div span:last-child {
+  background: #ffe5c3; /* 연한 주황 계열 */
+  padding: 10px 20px;
+  font-weight: bold;
+  flex: 1;
+  text-align: center;
+  border-radius: 0 25px 25px 0;
+}
+
+/* EAT SCORE 바 */
+.score-bar {
+  margin-top: 20px; /* 기존보다 넉넉한 간격 추가 */
+  width: 100%;
+  height: 20px;
+  position: relative;
+  border-radius: 10px;
+  overflow: visible;
+  background: linear-gradient(to right, red 0%, yellow 50%, green 100%);
+}
+
+.score-pointer {
+  position: absolute;
+  left: 67%;
+  bottom: 35px; /* 막대 위로 올리기 */
+  transform: translateX(-50%);
+  background: #ff9966;
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 15px;
+  text-align: center;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+}
+
+/* 말풍선 아래 삼각형 */
+.score-pointer::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #ff9966; /* 말풍선 배경색과 동일 */
+}
+
+/* 점수 텍스트 */
+.score-text {
+  display: block;
+}
+
+.daily-nutrition{
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+  border: 2px solid #f4a07a;
+  margin-bottom: 20px;
+  background-color:  #ffdcc2;
+
+}
+
+.nutrition-header{
+  border: 2px solid #f4a07a;
+  background-color: rgba(255, 255, 255, 0.8); /* 흰색 + 투명도 80% */
+  padding: 2px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.nutrition-header h2{
+  margin: 0;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.nutrition-header p strong {
+  color: red;
+}
+
+.nutrition-graph {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2개의 열 유지 */
+  gap: 20px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.5); /* 흰색 + 투명도 50% */
+  border-radius: 10px;
+  padding: 20px;
+}
+
+
+/* 각 nutrition-item 정렬 */
+.nutrition-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+}
+
+/* ✅ 범례 컨테이너: 그래프 전체 아래에 위치 */
+.nutrient-legend-container {
+  grid-column: span 2; /* ✅ 두 개의 컬럼을 합쳐서 하나의 행으로 만들기 */
+  display: flex;
+  justify-content: center;
+}
+
+/* 영양소 라벨(탄수화물 등) */
+.nutrient-label {
+  min-width: 100px;
+  background-color: #ffeedf; /* 연한 주황색 배경 */
+  border: 2px solid #f4a07a; /* 테두리 추가 */
+  border-radius: 8px;
+  padding: 8px 10px;
+  text-align: center;
+  font-weight: bold;
+  color: black;
+}
+
+/* 영양소 값 (303.2g) 강조 */
+.nutrient-value[data-status="excess"] {
+  color: red;
+  font-weight: bold;
+}
+
+.nutrient-value[data-status="normal"] {
+  color: green;
+  font-weight: bold;
+}
+
+/* 기존 그래프 스타일 유지 */
+.nutrient-bar {
+  width: 100%;
+  height: 20px;
+  position: relative;
+  border-radius: 10%;
+  display: flex;
+  overflow: visible;
+}
+
+/* 범례 (Legend) 스타일 */
+.nutrient-legend {
+  display: flex;
+  gap: 15px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* 작은 색상 박스 */
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.legend-box {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+
+.nutrient-bar .low {
+  background: yellow;
+  width: 30%;
+}
+.nutrient-bar .moderate {
+  background: green;
+  width: 40%;
+}
+.nutrient-bar .high {
+  background: red;
+  width: 30%;
+}
+.pointer {
+  position: absolute;
+  bottom: -10px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 10px solid black;
+  transform: rotate(180deg);
+}
+.warning-box {
+  background: #fff5e6;
+  padding: 15px;
+  border-radius: 8px;
+  border: 2px solid red;
+  font-weight: bold;
+  text-align: center;
+}
+/* 버튼 중앙 정렬 */
+.action-button {
+  background: #ff6600;
+  color: white;
+  font-size: 18px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center; /* 중앙 정렬 */
+  align-items: center;
+  width: 200px; /* 버튼 크기 조정 */
+  margin: 20px auto; /* 위 아래 여백 추가 및 가로 중앙 정렬 */
+}

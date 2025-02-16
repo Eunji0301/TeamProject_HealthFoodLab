@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>카드뉴스 목록</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link
+            rel="stylesheet"
+            as="style"
+            crossorigin
+            href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-gov.min.css"
+    />
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Roboto:wght@400;700;900&display=swap"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/resource/cardNewsList.css"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".challenge-box").click(function () {
+            let cIdx = $(this).data("cIdx");  // data-cidx 속성에서 cIdx 가져오기
+            window.location.href = "/admin/cardnews/cardNewsContents/" + cIdx; // 상세 페이지로 이동
+        });
+
+        $(".page").click(function () {
+            $(".page").removeClass("active");
+            $(this).addClass("active");
+        });
+
+        $(".prev").click(function () {
+            let current = $(".page.active");
+            let prevPage = current.prev(".page");
+            if (prevPage.length) {
+                current.removeClass("active");
+                prevPage.addClass("active");
+            }
+        });
+
+        $(".next").click(function () {
+            let current = $(".page.active");
+            let nextPage = current.next(".page");
+            if (nextPage.length) {
+                current.removeClass("active");
+                nextPage.addClass("active");
+            }
+        });
+
+
+    });
+</script>
+
+<!---로그인 했을 때 + 사이드바---->
+<body id="default" oncontextmenu="return false">
+<div class="header">
+    <div class="menumain flex header-in">
+        <a class="logo"><img src="/img/logo.png"/></a>
+        <div class="space"></div>
+        <nav class="menu">
+            <ul>
+                <li><a href="#">영양진단</a></li>
+                <li><a href="/adm/challenge/challengeList">챌린지</a></li>
+                <li><a href="#">레시피</a></li>
+                <li><a href="/adm/cardnews/cardNewsList">카드뉴스</a></li>
+                <li><a href="#">센터소개</a></li>
+                <li class="last">
+                    <a href="#">마이페이지<img src="/img/sample.png"/></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<div class="side-bar">
+    <div class="status-icon">
+        <div>▶</div>
+        <div>▼</div>
+    </div>
+    <nav class="menu-box-1">
+        <ul>
+            <li>
+                <a><img src="/img/sideButton1.png"/></a>
+            </li>
+            <li>
+                <a><img src="/img/sideButton2.png"/></a>
+            </li>
+            <li>
+                <a><img src="/img/sideButton3.png"/></a>
+            </li>
+            <li>
+                <a><img src="/img/sideButton4.png"/></a>
+            </li>
+            <li>
+                <a><img src="/img/sideButton5.png"/></a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<!--여기부터 개발 시작--->
+<div class="main">
+    <div class="challenge-section">
+        <div class="challenge-title">카드뉴스 목록</div>
+        <div class="text-line"></div>
+        <div class="challenge-container">
+            <div th:each="cardNews : ${cardNewsList}" class="challenge-box">
+                <a th:href="@{/adm/cardnews/cardNewsContents/{cIdx}(cIdx=${cardNews.cIdx})}">
+                    <img th:src="${cardNews.cnImage}" alt="카드뉴스 이미지"/>
+                </a>
+                <div class="challenge-label" th:text="${cardNews.cnTitle}">카드뉴스 제목</div>
+            </div>
+        </div>
+        <div class="text-line"></div>
+        <!-- 페이지네이션 -->
+        <div class="pagination">
+            <button class="prev">&lt;</button>
+            <button class="page active">1</button>
+            <button class="page">2</button>
+            <button class="page">3</button>
+            <button class="page">4</button>
+            <button class="page">5</button>
+            <button class="page">6</button>
+            <button class="page">7</button>
+            <button class="next">&gt;</button>
+        </div>
+        <div class="form-row">
+            <button class="submit-btn" th:onclick="|window.location.href='@{/adm/cardnews/cardNewsWrite}'|">
+                등록
+            </button>
+        </div>
+    </div>
+</div>
+<div class="footer"></div>
+</body>
+<script>
+    window.addEventListener("scroll", () => {
+        const bwLeft = window.scrollX;
+        document.querySelector(
+            ".header-in"
+        ).style.transform = `translateX(-${bwLeft}px)`;
+    });
+</script>
+</html>

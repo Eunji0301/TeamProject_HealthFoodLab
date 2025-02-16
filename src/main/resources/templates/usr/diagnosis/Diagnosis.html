@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>로그인 전</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-gov.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Roboto:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/default2.css"/>
+    <link rel="stylesheet" href="/css/Diagnosis.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  </head>
+  <body id="default" >
+  <!---로그인 전 영양검사 등 ---->
+  <div th:replace="common/header :: header"></div>
+
+
+  <!--여기부터 개발 시작--->
+    <div
+      class="main diagnosis p-3 px-5 text-center"
+    >
+      <!-- 배경 이미지 및 설명 -->
+      <div class="imgDiv">
+        <img src="/img/DiagnosisMain.png" alt="건강한 식습관" />
+      </div>
+
+      <!-- 개인정보 동의 영역 -->
+      <div
+        class="middle text-base flex items-center justify-around gap-6 border-2 border-orange-400 rounded-lg "
+      >
+        <label class="flex items-center space-x-2 cursor-pointer">
+          <input type="checkbox" class="w-5 h-5" />
+          <span>개인정보 수집·이용 동의</span>
+        </label>
+        <label class="flex items-center space-x-2 cursor-pointer">
+          <input type="checkbox" class="w-5 h-5" />
+          <span>민감정보 수집·이용 동의</span>
+        </label>
+      </div>
+
+      <!-- 진단 시작하기 버튼 -->
+      <a href="/usr/diagnosis/DiagnosisSelect1">
+        <button class="button text-base button-nonew-FA9058 rounded-lg">
+          진단 시작하기
+        </button>
+      </a>
+    </div>
+
+    <div class="footer"></div>
+  </body>
+  <script>
+    window.addEventListener("scroll", () => {
+      const bwLeft = window.scrollX;
+      document.querySelector(
+        ".header-in"
+      ).style.transform = `translateX(-${bwLeft}px)`;
+    });
+  </script>
+</html>

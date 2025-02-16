@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>로그인 후</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+            rel="stylesheet"
+            as="style"
+            crossorigin
+            href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-gov.min.css"
+    />
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Roboto:wght@400;700;900&display=swap"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/myPage/mypage.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
+
+</head>
+<!---로그인 했을 때 + 사이드바---->
+<body id="default">
+
+
+<div th:replace="common/header :: header"></div>
+<div th:replace="common/sideBar :: sideBar"></div>
+
+<!--여기부터 개발 시작--->
+<div class="main">
+    <div class="main-container">
+        <div class="headers">마이 페이지</div>
+        <div class="content">
+            <!-- 사이드 프로필 영역 -->
+            <div class="profile-sidebar">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgd0adPJbmyCoJvulTrLJFTFmq8toHooEb1yTHPDPB7SUXWEfR8XpHX3EerfYhkNk4dMEaeCwVm1t6S_uaDimhc6Ai5FpTQHdPzXjUX-1pRZucPoL9yFqbLoQElE0GsmtwhnGUd6JHQ9IJ6/s1600/eto_nezumi_kataguruma.png" alt="프로필 이미지" class="profile-pic">
+                <div class="level-box">LEVEL 20</div>
+
+                <div class="profile-info">
+                    <p><span class="label">이름</span> <span>김철수</span></p>
+                    <p><span class="label">나이</span> <span>27세</span></p>
+                    <p><span class="label">한줄소개</span></p>
+                    <p>나는 멋쟁이 !</p>
+                </div>
+
+                <div class="profile-info">
+                    <p><span class="label">마일리지</span> <span>1200</span><span class="label">P</span></p>
+                </div>
+
+
+<!--                <button class="store-btn" ><a href="/usr/store/store">상점</a></button>-->
+
+
+
+                <div class="badge-section">
+                    <p>내 뱃지</p>
+                    <div class="badge-icons">
+                        <img src="/img/mark1.png" alt="배지 1">
+                        <img src="/img/mark2.png" alt="배지 2">
+                        <img src="/img/mark3.png" alt="배지 3">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 메인 콘텐츠 영역 -->
+            <div class="main-content">
+                <div class="top-box">
+                    <button class="box"><a href="/usr/inquiry/inquiryList">고객센터</a></button>
+                    <button class="box"><a href="/usr/myChallenge/myChallengeList">인증횟수</a></button>
+                    <button class="box"><a href="#">방문횟수</a></button>
+                </div>
+                <div class="nutrition-section">
+                    <!-- NUTRITION MAP -->
+                    <div class="nutrition-map">
+                        <h3>NUTRITION MAP</h3>
+                        <div class="nutrition-chart"></div>
+                        <div class="nutrition-legend">
+                            <div><span class="carbs"></span> 15% 탄수화물</div>
+                            <div><span class="protein"></span> 20% 단백질</div>
+                            <div><span class="fat"></span> 5% 지방</div>
+                            <div><span class="sugar"></span> 50% 당류</div>
+                            <div><span class="sodium"></span> 10% 나트륨</div>
+                        </div>
+                    </div>
+
+                    <!-- 캘린더 + 배너 -->
+                    <div class="calendar-container">
+                        <div class="calendar-contents">
+                            <div id="calendar" class="calendar border5-color-FA9058 mr-2"></div>
+                        </div>
+                        <!-- 배너 이미지 -->
+                        <div class="challenge-banner">
+                            <a href="/usr/myChallenge/myChallengeList" style="cursor: pointer">
+                                <img src="https://cdn.newswin.co.kr/news/photo/202207/311064_313267_4613.jpg" alt="챌린지 배너">
+                            </a>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer"></div>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var calendarEl = document.getElementById("calendar");
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: "dayGridMonth",
+        });
+        calendar.render();
+    });
+</script>
+<script>
+    window.addEventListener("scroll", () => {
+        const bwLeft = window.scrollX;
+        document.querySelector(
+            ".header-in"
+        ).style.transform = `translateX(-${bwLeft}px)`;
+    });
+</script>
+</html>
