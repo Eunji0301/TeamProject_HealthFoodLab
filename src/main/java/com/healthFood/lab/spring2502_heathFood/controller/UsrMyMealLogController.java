@@ -5,13 +5,19 @@ import com.healthFood.lab.spring2502_heathFood.service.FoodDBInfoService;
 import com.healthFood.lab.spring2502_heathFood.service.MyMealLogService;
 import com.healthFood.lab.spring2502_heathFood.vo.FoodDBInfo;
 import com.healthFood.lab.spring2502_heathFood.vo.FoodTracker;
+
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+
+import java.util.HashMap;
+
 import java.util.Map;
 
 @Controller
@@ -134,63 +140,70 @@ public class UsrMyMealLogController {
         return "usr/myMealLog/myMealLogFoodDetail";
     }
 
-    @PostMapping("/foodDetailCalculate")
-    public Map<String, Integer> foodDetailCalculate(@RequestBody Map<String, Object> requestData) {
-        double selectedValue = Double.parseDouble(requestData.get("value").toString());
-        Map<String, Integer> foodDBResultJsonOneItem = (Map<String, Integer>) requestData.get("foodDBResultJsonOneItem");
 
-        System.out.println("selectedValue: "+selectedValue);
-        System.out.println("foodDBResultJsonOneItem: "+foodDBResultJsonOneItem);
-
-        String perServing = String.valueOf(foodDBResultJsonOneItem.getOrDefault("SERVING_SIZE", 0));//영양성분함량기준량
-        String perServingUnit = "";
-        int perSevingInt = 0;
-        if(perServing.indexOf("g") > -1){
-            perServingUnit = perServing.substring(3);
-            perSevingInt = 100;
-        }
-        if(perServing.indexOf("ml") > -1 ){
-            perServingUnit = perServing.substring(3);
-            perSevingInt = 100;
-        }
-
-        System.out.println("perSevingInt: "+perSevingInt);
-        System.out.println("perServingUnit: "+perServingUnit);
-
-        int Calories = (int) Double.parseDouble(String.valueOf(foodDBResultJsonOneItem.getOrDefault("AMT_NUM1", 0)));
-        int Carb  = (int) Double.parseDouble(String.valueOf(foodDBResultJsonOneItem.getOrDefault("AMT_NUM7", 0))); //탄수화물
-        int Protein  = (int) Double.parseDouble(String.valueOf(foodDBResultJsonOneItem.getOrDefault("AMT_NUM3", 0))); //단백질
-        int Fat  = (int) Double.parseDouble(String.valueOf(foodDBResultJsonOneItem.getOrDefault("AMT_NUM4", 0))); //지방
-        int Sugars  = (int) Double.parseDouble(String.valueOf(foodDBResultJsonOneItem.getOrDefault("AMT_NUM8", 0))); //당류
-        int Sodium  = (int) Double.parseDouble(String.valueOf(foodDBResultJsonOneItem.getOrDefault("AMT_NUM14", 0))); //나트륨
-
-
-
-        System.out.println("Calories: "+Calories);
-        System.out.println("Carb: "+Carb);
-        System.out.println("Protein: "+Protein);
-        System.out.println("Fat: "+Fat);
-        System.out.println("Sugars: "+Sugars);
-        System.out.println("Sodium: "+Sodium);
-
-        return Map.of(
-//                "double", number * 2,
-//                "square", number * number,
-//                "half", number / 2,
-//                "increment", number + 10
-        );
-    }
-
-    //String SearchFoodName, FoodTracker main_record_ft
-    @RequestMapping("/test")
+    @PostMapping ("/foodDetailCalculate")
     @ResponseBody
-    public String test() throws IOException {
-        FoodTracker ft = new FoodTracker();
-        ft.setFtMealTime("아침식사");
-        ft.setFtWriteDate("2024.02.03");
-
-        String foodTrackerJson = myMealLogService.makeFoodTrackerByJson(ft);
-        return foodTrackerJson;
+    public Map<String, Object> foodDetailCalculate(@RequestBody Map<String, Object> requestData) {
+        Map<String, Object>  foodDetailCalc =  myMealLogService.foodDetailCalculate(requestData);
+        return foodDetailCalc;
     }
 
+    @PostMapping ("/saveMealLog")
+    public ResponseEntity<String> saveMealLog(HttpSession session,
+                                              @RequestParam String ftMealTime,  // 식사 날짜
+                                              @RequestParam String ftWriteDate,  // 식사 시점
+                                              @RequestParam String ftFoodName,  // 음식명
+                                              @RequestParam String ftFoodQuantity,
+                                              @RequestParam String ftFoodPortion,
+                                              @RequestParam String ftCalorie,
+                                              @RequestParam String ftCarb,
+                                              @RequestParam String ftProtein,
+                                              @RequestParam String ftFat,
+                                              @RequestParam String ftSugar,
+                                              @RequestParam String ftSodium) {
+
+        String uEmail = (String) session.getAttribute("LoginMemberEmail");
+
+        System.out.println(uEmail);
+        System.out.println(ftMealTime);
+        System.out.println(ftWriteDate);
+        System.out.println(ftFoodName);
+        System.out.println(ftFoodQuantity);
+        System.out.println(ftFoodPortion);
+        System.out.println(ftCalorie);
+        System.out.println(ftCarb);
+        System.out.println(ftProtein);
+        System.out.println(ftFat);
+        System.out.println(ftSugar);
+        System.out.println(ftSodium);
+
+        return ResponseEntity.ok("저장 완료!");
+    }
+
+//
+//    //String SearchFoodName, FoodTracker main_record_ft
+//    @RequestMapping("/test")
+//    @ResponseBody
+//    public ResponseEntity<String> saveMealLog(
+//            @RequestParam String ftMealTime,  // 식사 날짜
+//            @RequestParam String ftWriteDate,  // 식사 시점
+//            @RequestParam String ftFoodName,  // 음식명
+//            @RequestParam String ftFoodQuantity,
+//            @RequestParam String ftFoodPortion,
+//            @RequestParam String ftCalorie,
+//            @RequestParam String ftCarb,
+//            @RequestParam String ftProtein,
+//            @RequestParam String ftFat,
+//            @RequestParam String ftSugar,
+//            @RequestParam String ftSodium,
+//            @RequestParam String sodium) {
+//
+//
+//
+//        MealLog mealLog = new MealLog(mealDate, mealTime, foodName, selectedValue, perSevingInt, perServingUnit, calories, carb, protein, fat, sugars, sodium);
+//        mealLogRepository.save(mealLog);
+//
+//        return ResponseEntity.ok("저장 완료!");
+//    }
+//
 }

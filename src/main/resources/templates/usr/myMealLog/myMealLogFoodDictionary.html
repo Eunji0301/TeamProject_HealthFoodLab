@@ -134,10 +134,12 @@
                         <td>${item.SERVING_SIZE}</td>
                         <td>${parseInt(item.AMT_NUM1)} kcal</td>
                         <td class="onPadding">
-                          <form  id="foodDetailForm" action="/usr/myMealLog/goFoodDetail" method="POST">
+
+                          <form  id="foodDetailForm-${item.FOOD_CD}" action="/usr/myMealLog/goFoodDetail" method="POST">
                             <input type="hidden" name="foodDBResultJsonOneItem" value='${JSON.stringify(item)}'>
                             <input type="hidden" name="foodTrackerJson"  value='${foodTrackerJson}'>
-                            <button  type="button" onclick="submitForm('foodDetailForm')">선택</button>
+                           <button type="button" onclick="submitForm('foodDetailForm-${item.FOOD_CD}')">선택</button>
+
                           </form>
                         </td>
                     `;
@@ -191,10 +193,10 @@
                 <td>${item.SERVING_SIZE}</td>
                 <td>${parseInt(item.AMT_NUM1)} kcal</td>
                 <td class="onPadding">
-                  <form  id="foodDetailForm" action="/usr/myMealLog/goFoodDetail" method="POST">
+                  <form  id="foodDetailForm-${item.FOOD_CD}" action="/usr/myMealLog/goFoodDetail" method="POST">
                     <input type="hidden" name="foodDBResultJsonOneItem" value='${JSON.stringify(item)}'>
-                    <input type="hidden" name="foodTrackerJson"  th:text="${JSON.stringify(foodTrackerJson)}">
-                    <button  type="button" onclick="submitForm('foodDetailForm')">선택</button>
+                    <input type="hidden" name="foodTrackerJson"  value='${foodTrackerJson}'>
+                   <button type="button" onclick="submitForm('foodDetailForm-${item.FOOD_CD}')">선택</button>
                   </form>
                 </td>
               `;

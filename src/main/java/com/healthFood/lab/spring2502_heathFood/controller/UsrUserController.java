@@ -62,7 +62,9 @@ public class UsrUserController {
                              String uPhone, String uBirth, String uNickName,
                              String uGender, String uTOSAgree, String uPIPAgree){
         boolean isLogined =false;
-        if(session.getAttribute("LoginMemberId")!=null){
+
+        if(session.getAttribute("LoginMemberEmail")!=null){
+
             isLogined = true;
         }
         if(isLogined){
@@ -136,7 +138,9 @@ public class UsrUserController {
     public String doLogin(HttpSession session, String uEmail, String uPwd){
         // 로그인 정보 세션이 저장
         boolean isLogined =false;
-        if(session.getAttribute("LoginMemberId")!=null){
+
+        if(session.getAttribute("LoginMemberEmail")!=null){
+
             isLogined = true;
         }
         if(isLogined){
