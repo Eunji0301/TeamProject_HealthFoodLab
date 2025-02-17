@@ -32,14 +32,15 @@
         flex-grow: 1;
       }
     </style>
-  </head>
-  <script th:inline="javascript">
-    var foodTrackerJson = /*[[${foodTrackerJson}]]*/ '{}';
-    var foodDBResultJsonOneItem = /*[[${foodDBResultJsonOneItem}]]*/ '{}';
+    <script th:inline="javascript">
+      var foodTrackerJson = /*[[${foodTrackerJson}]]*/ '{}';
+      var foodDBResultJsonOneItem = /*[[${foodDBResultJsonOneItem}]]*/ '{}';
 
-    console.log("foodTrackerJson:", foodTrackerJson);
-    console.log("foodDBResultJsonOneItem:", foodDBResultJsonOneItem);
-  </script>
+      console.log("foodTrackerJson:", foodTrackerJson);
+      console.log("foodDBResultJsonOneItem:", foodDBResultJsonOneItem);
+    </script>
+  </head>
+
 
   <!---로그인 했을 때 + 사이드바 style="display: none;" ---->
   <body id="default" >
@@ -66,16 +67,14 @@
           <div class="text-center">
             <div class="mb-2">수량(회분)</div>
             <select
-              id="quantitySelect"
-              name="quantity"
-              onchange="checkCustomOption(this)"
+              id="optionSelect"
             >
-              <option value="1/2">1/2</option>
-              <option value="1/3">1/3</option>
-              <option value="2/3">2/3</option>
-              <option value="1/4">1/4</option>
-              <option value="2/4">2/4</option>
-              <option value="3/4">3/4</option>
+              <option value="0.5">1/2</option>
+              <option value="0.3">1/3</option>
+              <option value="0.6">2/3</option>
+              <option value="0.25">1/4</option>
+              <option value="0.5">2/4</option>
+              <option value="0.75">3/4</option>
               <option value="1" selected>1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -89,89 +88,143 @@
             </select>
           </div>
           <div class="text-center">
-            <div class="mb-2">분량(G)</div>
-            <div class="num">145</div>
+            <div class="mb-2">분량(<span id="perServingUnit">G</span>)</div>
+            <div class="num" ><span id="perSevingInt" >145</span></div>
           </div>
           <div class="text-center">
             <div class="mb-2">칼로리(kcal)</div>
-            <div class="num">420</div>
+            <div class="num"><span id="calories">420</span></div>
           </div>
         </div>
         <div class="foodNutritionPercent p-10 my-4 py-8">
           <div class="flex align-center mb-8">
             <div class="carbCircle"></div>
             <div class="name">탄수화물 (g)</div>
-            <div class="percent">: 61.0(19%)</div>
+            <div class="percent">: <span id="carb">45</span>(<span id="carbPercent">19</span>%)</div>
             <div class="graph-container">
-              <div class="carbGraphBar" style="--percent: 19%"></div>
+              <div class="graphBar carbGraphBar"  data-type="carb"></div>
             </div>
           </div>
           <div class="flex align-center mb-8">
             <div class="proteinCircle"></div>
             <div class="name">단백질 (g)</div>
-            <div class="percent">: 8.0(15%)</div>
+            <div class="percent">: <span id="protein">8.0</span>(<span id="proteinPercent">15</span>%)</div>
             <div class="graph-container">
-              <div class="proteinGraphBar" style="--percent: 15%"></div>
+              <div class="graphBar proteinGraphBar" data-type="protein"></div>
             </div>
           </div>
           <div class="flex align-center mb-8">
             <div class="fatCircle"></div>
             <div class="name">지방 (g)</div>
-            <div class="percent">: 16.0(30%)</div>
+            <div class="percent">: <span id="fat">16.0</span>(<span id="fatPercent">30</span>%)</div>
             <div class="graph-container">
-              <div class="fatGraphBar" style="--percent: 30%"></div>
+              <div class="graphBar fatGraphBar" data-type="fat"></div>
             </div>
           </div>
           <div class="flex align-center mb-8">
             <div class="sugarCircle"></div>
             <div class="name">당류 (g)</div>
-            <div class="percent">: 100.0(100%)</div>
+            <div class="percent">: <span id="sugars">100.0</span>(<span id="sugarsPercent">100</span>%)</div>
             <div class="graph-container">
-              <div class="sugarGraphBar" style="--percent: 100%"></div>
+              <div class="graphBar sugarGraphBar" data-type="sugars"></div>
             </div>
           </div>
           <div class="flex align-center">
             <div class="sodiumCircle"></div>
             <div class="name">나트륨 (mg)</div>
-            <div class="percent">: 200(10%)</div>
+            <div class="percent">: <span id="sodium">200</span>(<span id="sodiumPercent">10</span>%)</div>
             <div class="graph-container">
-              <div class="sodiumGraphBar" style="--percent: 10%"></div>
+              <div class="graphBar sodiumGraphBar" data-type="sodium"></div>
             </div>
           </div>
         </div>
-        <div class="text-center">
-          <button class="revbutton5-FA9058 w-full py-3 text-base font-bold ">
+        <form class="text-center" id="saveForm" action="/usr/myMealLog/saveMealLog" method="POST">
+          <input type="hidden" name="ftMealTime" id="formMealDate" th:value="${foodTrackerJson.ftMealTime}">
+          <input type="hidden" name="ftWriteDate" id="formMealTime" th:value="${foodTrackerJson.ftWriteDate}">
+          <input type="hidden" name="ftFoodName" id="formFoodName" th:value="${foodDBResultJsonOneItem.FOOD_NM_KR}">
+
+          <input type="hidden" name="ftFoodQuantity" id="formSelectedValue">
+          <input type="hidden" name="ftFoodPortion" id="formPerSevingInt">
+          <input type="hidden" name="ftCalorie" id="formCalories">
+          <input type="hidden" name="ftCarb" id="formCarb">
+          <input type="hidden" name="ftProtein" id="formProtein">
+          <input type="hidden" name="ftFat" id="formFat">
+          <input type="hidden" name="ftSugar" id="formSugars">
+          <input type="hidden" name="ftSodium" id="formSodium">
+          <button type="button" id="saveButton" class="revbutton5-FA9058 w-full py-3 text-base font-bold">
             저장하기
           </button>
-        </div>
+        </form>
       </div>
     </div>
 
     <div class="footer"></div>
   </body>
   <script>
-    $(document).ready(function(){
-      $(#optionSelect).on("change", function(){
-        let selectedValue = $(this).val();
+    $(document).ready(function () {
+      function fetchFoodDetails() {
+        let selectedValue = $("#optionSelect").val(); // 현재 선택된 값 가져오기
+
         $.ajax({
-          url: "/myMealLog/foodDetailCalculate",
+          url: "/usr/myMealLog/foodDetailCalculate",
           type: "POST",
           contentType: "application/json",
           data: JSON.stringify({
             value: selectedValue,
             foodDBResultJsonOneItem: foodDBResultJsonOneItem
           }),
-          success: function(data){
-            console.log("결과 응답 데이터: ", data);
+          success: function (result) {
+            console.log("AJAX 응답 데이터:", result);
+            document.getElementById("perSevingInt").textContent = result.perSevingInt;
+            document.getElementById("perServingUnit").textContent = result.perServingUnit;
+            document.getElementById("calories").textContent = result.calories;
+            document.getElementById("carb").textContent = result.carb;
+            document.getElementById("protein").textContent = result.protein;
+            document.getElementById("fat").textContent = result.fat;
+            document.getElementById("sugars").textContent = result.sugars;
+            document.getElementById("sodium").textContent = result.sodium;
+            document.getElementById("carbPercent").textContent = result.carbPercent;
+            document.getElementById("proteinPercent").textContent = result.proteinPercent;
+            document.getElementById("fatPercent").textContent = result.fatPercent;
+            document.getElementById("sugarsPercent").textContent = result.sugarsPercent;
+            document.getElementById("sodiumPercent").textContent = result.sodiumPercent;
+
+            document.getElementById("formSelectedValue").value = selectedValue;
+            document.getElementById("formPerSevingInt").value = result.perSevingInt;
+            document.getElementById("formCalories").value = result.calories;
+            document.getElementById("formCarb").value = result.carb;
+            document.getElementById("formProtein").value = result.protein;
+            document.getElementById("formFat").value = result.fat;
+            document.getElementById("formSugars").value = result.sugars;
+            document.getElementById("formSodium").value = result.sodium;
+
+            document.querySelectorAll("[data-type]").forEach(graphBar => {
+              let type = graphBar.getAttribute("data-type"); // 그래프 유형 가져오기
+              let percentValue = result[`${type}Percent`]; // AJAX 응답에서 해당하는 값 가져오기
+
+              if (percentValue !== undefined) {
+                graphBar.style.setProperty("--percent", percentValue + "%");
+              }
+            });
           },
-          error: function (){
+          error: function () {
             alert("B 서버 요청 중 오류 발생");
           }
-        })
-      });
+        });
+      }
+
+      // 🔹 페이지 로드 시 AJAX 요청 실행
+      fetchFoodDetails();
+
+      // 🔹 사용자가 select 변경 시 AJAX 요청 실행
+      $("#optionSelect").on("change", fetchFoodDetails);
     });
 
+    document.getElementById("saveButton").addEventListener("click", function() {
+      document.getElementById("saveForm").submit();
+    });
   </script>
+
   <script>
     window.addEventListener("scroll", () => {
       const bwLeft = window.scrollX;

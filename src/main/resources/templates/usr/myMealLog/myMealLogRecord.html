@@ -48,7 +48,7 @@
           </div>
           <hr class="mt-3 hrcolor5-FA9058" />
         </div>
-        <form class="mealSearch flex align-center my-2" th:action="@{/myMealLog/goFoodDictionary}" method="POST">
+        <form class="mealSearch flex align-center my-2" th:action="@{/usr/myMealLog/goFoodDictionary}" method="POST">
           <input type="hidden" th:value="${foodTrackerJson}" name="foodTrackerJson"/>
           <input type="text" placeholder="먹은 음식을 입력하세요" name="searchFoodName"/>
           <button class="button-FA9058 text-base font-medium">검색</button>

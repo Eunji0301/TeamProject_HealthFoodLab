@@ -1,0 +1,261 @@
+body {
+    display: flex;
+    flex-direction: column;
+    overflow-x: auto;
+}
+
+/* 해더 */
+#default > .header {
+    background-color: #fff;
+    white-space: nowrap;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-width: 1200px;
+    border-bottom: 2px solid #fa9058;
+    z-index: 999;
+}
+
+#default > .header > .header-in {
+    width: 100%;
+    max-width: 1420px;
+    margin: 0 auto;
+    transform: translateX(0);
+}
+
+#default > .header > .menumain {
+    display: flex;
+    margin: 0 auto;
+    max-width: 1600px;
+    align-items: center;
+}
+#default > .header > .menumain > .logo > img {
+    width: 150px;
+    max-width: none;
+    height: 54px;
+}
+#default > .header > .menumain > .space {
+    flex-grow: 1;
+}
+#default > .header > .menumain > .menu {
+    flex-grow: 2;
+    text-align: center;
+}
+#default > .header > .menumain > .menu > ul > li {
+    display: inline-block;
+}
+#default > .header > .menumain > .menu > ul > li > a {
+    display: inline-block;
+    padding: 20px 30px;
+    font-weight: bold;
+    width: 150px;
+}
+#default > .header > .menumain > .menu > ul > .last > a {
+    background-color: #ffdcc2;
+    font-weight: bold;
+    width: 150px;
+    padding: 0 0 0 30px;
+    border-radius: 5rem;
+}
+#default > .header > .menumain > .menu > ul > .last > a > img {
+    display: inline;
+    width: 45px;
+    height: 45px;
+    margin: 0 0 0 10px;
+    border-radius: 50%;
+    border: 3px solid #fbb56f;
+}
+#default > .header > .menumain > .menu > ul > li:hover:not(.last) > a {
+    background-color: #ffdcc2;
+    padding: 10px 30px;
+    margin: 10px 0;
+    border-radius: 10px;
+}
+
+/*사이드바 시작*/
+#default > .side-bar {
+    background-color: #fbb56f;
+    margin-top: 66px;
+    width: 120px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: -95px;
+    transition: left 0.3s;
+    z-index: 999;
+}
+
+#default > .side-bar:hover {
+    left: 0;
+}
+
+/* 사이드바 - 아이콘 */
+#default > .side-bar > .status-icon > div {
+    text-align: right;
+    padding: 8px;
+}
+
+#default > .side-bar > .status-icon > div:last-child {
+    display: none;
+}
+
+#default > .side-bar:hover > .status-icon > div:last-child {
+    display: block;
+}
+
+#default > .side-bar:hover > .status-icon > div:first-child {
+    display: none;
+}
+
+/* 사이드바 - 메뉴 */
+#default > .side-bar > .menu-box-1 ul > li > a {
+    display: block;
+    font-weight: bold;
+    padding: 10px;
+}
+
+#default > .side-bar > .menu-box-1 ul > li > a > img {
+    width: 60px;
+    height: 60px;
+}
+
+#default > .side-bar > .menu-box-1 ul > li:hover > a {
+    background-color: #fa9058;
+    border-radius: 1rem;
+}
+#default > .side-bar > .menu-box-1 ul > li {
+    display: block;
+    font-weight: bold;
+    padding: 40px 20px;
+}
+#default > .side-bar > .menu-box-1 ul {
+    margin: auto 0;
+}
+
+/*main*/
+#default > .main {
+    background-color: #ffffff;
+    min-height: 100vh;
+    padding-top: 80px; /* 헤더 높이 확보 */
+    padding-bottom: 80px; /* 푸터 높이 확보 */
+    white-space: nowrap;
+    width: 1200px;
+    flex-grow: 1;
+    z-index: 1; /* 헤더보다 아래 */
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#default > .footer {
+    height: 64px;
+    border-top: 1px solid #afafaf;
+    background-color: #fff;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 998;
+}
+
+.challenge-container {
+    position: relative;
+    z-index: 1; /* 헤더(1000)보다 낮게 설정 */
+    margin-top: 20px; /* 헤더와 간격 확보 */
+}
+
+.challenge-section {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.challenge-title {
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #ffdcc2;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.challenge-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-content: center;
+    padding-bottom: 50px; /* 푸터와 겹치지 않도록 여백 추가 */
+}
+
+.challenge-box {
+    position: relative;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+/* 📌 이미지 설정 */
+.challenge-box img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+}
+
+/* 📌 챌린지 제목 (라벨) */
+.challenge-label {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(250, 144, 88, 0.9);
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+    text-align: center;
+}
+
+/* 📌 페이지네이션 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.pagination button {
+    padding: 8px 12px;
+    border: none;
+    background-color: #fa9058;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.pagination .active {
+    background-color: #d9534f;
+}
+
+.text-line {
+    border-bottom: solid 3px #fa9058;
+    margin-bottom: 10px;
+}
+
+/* 📌 반응형 */
+@media screen and (max-width: 600px) {
+    .challenge-container {
+        grid-template-columns: 1fr;
+    }
+
+    .challenge-label {
+        font-size: 14px;
+    }
+
+    .pagination button {
+        padding: 6px 10px;
+        font-size: 14px;
+    }
+}
+

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>로그인 후</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" as="style" crossorigin
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-gov.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Roboto:wght@400;700;900&display=swap"
+            rel="stylesheet"/>
+    <link rel="stylesheet" href="/resource/informationModify.css"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<!---로그인 했을 때 + 사이드바---->
+
+<body id="default">
+<div class="header">
+    <div class="menumain flex header-in">
+        <a class="logo"><img src="/img/logo.png"/></a>
+        <div class="space"></div>
+        <nav class="menu">
+            <ul>
+                <li><a href="#">영양진단</a></li>
+                <li><a href="#">챌린지</a></li>
+                <li><a href="#">레시피</a></li>
+                <li><a href="#">카드뉴스</a></li>
+                <li><a href="#">센터소개</a></li>
+                <li class="last">
+                    <a href="#">마이페이지<img src="/img/sample.png"/></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<div class="side-bar">
+    <div class="status-icon">
+        <div>▶</div>
+        <div>▼</div>
+    </div>
+    <nav class="menu-box-1">
+        <ul>
+            <li>
+                <a><img src="/img/sideButton1.png"/></a>
+            </li>
+            <li>
+                <a><img src="/img/sideButton2.png"/></a>
+            </li>
+            <li>
+                <a><img src="/img/sideButton3.png"/></a>
+            </li>
+            <li>
+                <a><img src="/img/sideButton4.png"/></a>
+            </li>
+            <li>
+                <a><img src="/img/sideButton5.png"/></a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<!--여기부터 개발 시작--->
+<div class="main">
+    <div class="container">
+        <div class="profile-header">
+            <div>
+                <div class="title">프로필</div>
+                <img src="https://cdn-icons-png.flaticon.com/128/4439/4439830.png" alt="프로필 사진" class="profile-img">
+            </div>
+            <div class="info-box">
+                <div>
+                    <div class="title">나의 레벨</div>
+                    <div class="box">10LV</div>
+                </div>
+                <div>
+                    <div class="title">마일리지</div>
+                    <div class="box">1000M</div>
+                </div>
+                <div>
+                    <div class="title">티어</div>
+                    <div class="box">CHALLENGER</div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="left">
+                <div class="title">이메일</div>
+                <div class="box2">test1@gmail.com</div>
+
+                <div class="title">이름</div>
+                <div class="box2">아무개</div>
+
+                <div class="title">닉네임</div>
+                <div class="box2">아무개</div>
+
+                <div class="title">성별</div>
+                <div class="box2">남자</div>
+            </div>
+
+            <div class="right">
+                <div class="title">비밀번호</div>
+                <input type="password">
+
+                <div class="title">비밀번호 확인</div>
+                <input type="password">
+
+                <div class="title">휴대폰 번호</div>
+                <input type="text">
+
+                <div class="title">생년월일</div>
+                <input type="date">
+
+                <div class="buttons">
+                    <button class="btn btn-edit">수정</button>
+                    <button class="btn btn-cancel">탈퇴</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="footer"></div>
+</body>
+
+</html>

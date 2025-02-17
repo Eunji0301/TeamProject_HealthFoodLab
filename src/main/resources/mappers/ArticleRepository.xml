@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ksy.exam.spring2502_heathyfood_test.test.repository.ArticleRepository">
+<mapper namespace="com.healthFood.lab.spring2502_heathFood.repository.ArticleRepository">
     <update id="modifyArticle">
         UPDATE article
         <set>

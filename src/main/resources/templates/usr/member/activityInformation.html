@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>로그인 후</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" as="style" crossorigin
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-gov.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Roboto:wght@400;700;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/resource/activityInformation.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<!---로그인 했을 때 + 사이드바---->
+
+<body id="default">
+  <div class="header">
+    <div class="menumain flex header-in">
+      <a class="logo"><img src="/img/logo.png" /></a>
+      <div class="space"></div>
+      <nav class="menu">
+        <ul>
+          <li><a href="#">영양진단</a></li>
+          <li><a href="#">챌린지</a></li>
+          <li><a href="#">레시피</a></li>
+          <li><a href="#">카드뉴스</a></li>
+          <li><a href="#">센터소개</a></li>
+          <li class="last">
+            <a href="#">마이페이지<img src="/img/sample.png" /></a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <div class="side-bar">
+    <div class="status-icon">
+      <div>▶</div>
+      <div>▼</div>
+    </div>
+    <nav class="menu-box-1">
+      <ul>
+        <li>
+          <a><img src="/img/sideButton1.png" /></a>
+        </li>
+        <li>
+          <a><img src="/img/sideButton2.png" /></a>
+        </li>
+        <li>
+          <a><img src="/img/sideButton3.png" /></a>
+        </li>
+        <li>
+          <a><img src="/img/sideButton4.png" /></a>
+        </li>
+        <li>
+          <a><img src="/img/sideButton5.png" /></a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <!--여기부터 개발 시작--->
+  <div class="main">
+    <!-- 탭 메뉴 -->
+    <div class="tabs">
+      <div class="tab active" data-target="posts">작성한 글</div>
+      <div class="tab" data-target="comments">작성한 댓글</div>
+      <div class="tab" data-target="results">검사결과</div>
+    </div>
+
+    <!-- 작성한 글 -->
+    <div id="posts" class="tab-content active">
+      <table>
+        <thead>
+          <tr>
+            <th>챌린지</th>
+            <th>제목</th>
+            <th>조회수</th>
+            <th>좋아요</th>
+            <th>댓글</th>
+            <th>작성일</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>삼색 채소 식단 챌린지</td>
+            <td>오늘자 식단 인증 완</td>
+            <td>6</td>
+            <td>6</td>
+            <td>6</td>
+            <td>2025.01.20</td>
+          </tr>
+          <tr>
+            <td>삼색 채소 식단 챌린지</td>
+            <td>오늘자 식단 인증 완</td>
+            <td>8</td>
+            <td>8</td>
+            <td>8</td>
+            <td>2025.01.20</td>
+          </tr>
+          <tr>
+            <td>삼색 채소 식단 챌린지</td>
+            <td>오늘자 식단 인증 완</td>
+            <td>8</td>
+            <td>8</td>
+            <td>8</td>
+            <td>2025.01.20</td>
+          </tr>
+          <tr>
+            <td>삼색 채소 식단 챌린지</td>
+            <td>오늘자 식단 인증 완</td>
+            <td>8</td>
+            <td>8</td>
+            <td>8</td>
+            <td>2025.01.20</td>
+          </tr>
+          <tr>
+            <td>삼색 채소 식단 챌린지</td>
+            <td>오늘자 식단 인증 완</td>
+            <td>8</td>
+            <td>8</td>
+            <td>8</td>
+            <td>2025.01.20</td>
+          </tr>
+          <tr>
+            <td>삼색 채소 식단 챌린지</td>
+            <td>오늘자 식단 인증 완</td>
+            <td>8</td>
+            <td>8</td>
+            <td>8</td>
+            <td>2025.01.20</td>
+          </tr>
+          <tr>
+            <td>삼색 채소 식단 챌린지</td>
+            <td>오늘자 식단 인증 완</td>
+            <td>8</td>
+            <td>8</td>
+            <td>8</td>
+            <td>2025.01.20</td>
+          </tr>
+          <tr>
+            <td>삼색 채소 식단 챌린지</td>
+            <td>오늘자 식단 인증 완</td>
+            <td>8</td>
+            <td>8</td>
+            <td>8</td>
+            <td>2025.01.20</td>
+          </tr>
+          <tr>
+            <td>삼색 채소 식단 챌린지</td>
+            <td>오늘자 식단 인증 완</td>
+            <td>8</td>
+            <td>8</td>
+            <td>8</td>
+            <td>2025.01.20</td>
+          </tr>
+          <tr>
+            <td>삼색 채소 식단 챌린지</td>
+            <td>오늘자 식단 인증 완</td>
+            <td>8</td>
+            <td>8</td>
+            <td>8</td>
+            <td>2025.01.20</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 작성한 댓글 -->
+    <div id="comments" class="tab-content">
+      <table>
+        <thead>
+          <tr>
+            <th>게시글</th>
+            <th>댓글 내용</th>
+            <th>좋아요</th>
+            <th>작성일</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>오늘자 식단 인증 완</td>
+            <td>맛있어 보이네요!</td>
+            <td>3</td>
+            <td>2025.01.21</td>
+          </tr>
+          <tr>
+            <td>채식 챌린지 후기</td>
+            <td>도전해보고 싶어요!</td>
+            <td>5</td>
+            <td>2025.01.22</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!--검사결과-->
+    <div id="results" class="tab-content">
+      <div class="year-container">
+        <select id="year-select">
+          <option value="">년도 선택</option>
+        </select>
+      </div>
+      <div class="result-card">
+        <img src="https://cdn-icons-png.flaticon.com/128/11504/11504421.png" alt="icon">
+        <div>
+          <p>2024.01.02 영양진단 결과</p>
+          <div class="tags">
+            <span class="tag">관리필요</span>
+            <span class="tag2">간질환</span>
+          </div>
+        </div>
+        <button>상세보기</button>
+      </div>
+      <div class="result-card">
+        <img src="https://cdn-icons-png.flaticon.com/128/11504/11504421.png" alt="icon">
+        <div>
+          <p>2024.01.02 영양진단 결과</p>
+          <div class="tags">
+            <span class="tag">관리필요</span>
+            <span class="tag2">간질환</span>
+          </div>
+        </div>
+        <button>상세보기</button>
+      </div>
+      <div class="result-card">
+        <img src="https://cdn-icons-png.flaticon.com/128/11504/11504421.png" alt="icon">
+        <div>
+          <p>2024.01.02 영양진단 결과</p>
+          <div class="tags">
+            <span class="tag">관리필요</span>
+            <span class="tag2">간질환</span>
+          </div>
+        </div>
+        <button>상세보기</button>
+      </div>
+
+    </div>
+
+    <div class="pagination">
+      <button class="prev">&laquo;</button>
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>4</button>
+      <button>5</button>
+      <button>6</button>
+      <button>7</button>
+      <button class="next">&raquo;</button>
+    </div>
+  </div>
+
+  <div class="footer"></div>
+</body>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+  const tabs = document.querySelectorAll(".tab");
+  const contents = document.querySelectorAll(".tab-content");
+
+  tabs.forEach(tab => {
+    tab.addEventListener("click", function () {
+      // 모든 탭에서 active 제거
+      tabs.forEach(t => t.classList.remove("active"));
+      // 클릭된 탭에 active 추가
+      this.classList.add("active");
+
+      // 모든 콘텐츠 숨김
+      contents.forEach(content => content.classList.remove("active"));
+
+      // 선택된 탭과 연결된 콘텐츠 표시
+      const target = document.getElementById(this.dataset.target);
+      target.classList.add("active");
+    });
+  });
+});
+
+
+  const yearSelect = document.getElementById("year-select");
+  const currentYear = new Date().getFullYear();
+  const startYear = 2000; // 시작 년도
+
+  for (let year = currentYear; year >= startYear; year--) {
+    let option = document.createElement("option");
+    option.value = year;
+    option.textContent = year;
+    yearSelect.appendChild(option);
+  }
+</script>
+
+</html>

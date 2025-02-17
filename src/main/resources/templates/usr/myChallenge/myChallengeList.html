@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>마이챌린지 인증 리스트</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+            rel="stylesheet"
+            as="style"
+            crossorigin
+            href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-gov.min.css"
+    />
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Roboto:wght@400;700;900&display=swap"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/myChallenge/myChallengeList.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<!---로그인 했을 때 + 사이드바---->
+<body id="default" oncontextmenu="return false">
+
+<div th:replace="common/header :: header"></div>
+<div th:replace="common/sideBar :: sideBar"></div>
+
+<!--여기부터 개발 시작--->
+<div class="main">
+    <div class="challenge-container">
+        <div class="challenge-header">마이챌린지 인증글 목록</div>
+        <div class="challenge-form">
+            <div class="text-line"></div>
+            <div class="form-row">
+                <label for="title">챌린지명</label>
+                <a type="text" id="title" >배달음식 없는 하루 챌린지</a>
+            </div>
+            <div class="text-line"></div>
+
+            <div class="mychallenge-section">
+            <div class="mychallenge-box">
+                <a href="/usr/myChallenge/myChallengeContents">
+                <img src="https://cdn.newswin.co.kr/news/photo/202207/311064_313267_4613.jpg" alt="챌린지">
+                </a>
+            </div>
+            </div>
+            <div class="text-line"></div>
+            <div class="form-row">
+                <label2 for="content">내용</label2>
+            </div>
+            <div class="mychallenge-section">
+                <div class="mychallenge-container">
+                    <div class="mychallenge-box">
+                        <img src="https://burnfit.io/wp-content/uploads/2024/01/lose-weight-diet-plan-1024x683.jpeg" alt="식단일기적기">
+                        <div class="mychallenge-label">1일차 식단 챙기기~</div>
+                    </div>
+                    <div class="mychallenge-box">
+                        <img src="https://health.chosun.com/site/data/img_dir/2021/03/04/2021030402822_0.jpg" alt="물 2L 마시기">
+                        <div class="mychallenge-label">2일차 물 2L 마시기~</div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-line"></div>
+        </div>
+    </div>
+</div>
+
+<div class="footer"></div>
+</body>
+<script>
+    window.addEventListener("scroll", () => {
+        const bwLeft = window.scrollX;
+        document.querySelector(
+            ".header-in"
+        ).style.transform = `translateX(-${bwLeft}px)`;
+    });
+</script>
+</html>

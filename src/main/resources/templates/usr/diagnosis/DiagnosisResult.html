@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>로그인 전</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" as="style" crossorigin
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-gov.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Roboto:wght@400;700;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/css/default2.css"/>
+  <link rel="stylesheet" href="/css/Diagnosis6.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<!---로그인 전 영양검사 등 ---->
+
+<body id="default">
+<div th:replace="common/header :: header"></div>
+
+
+<div class="main py-3">
+    <!-- 영양진단 결과 -->
+    <div class="page-title">영양진단 결과</div>
+    <div class="section-title">
+      <div class="user-info">
+        <div><span>이름</span><span>아무개</span></div>
+        <div><span>성별</span><span>남성</span></div>
+        <div><span>나이</span><span>30세</span></div>
+        <div><span>검사일자</span><span>2024.12.18</span></div>
+        <div><span>질병</span><span>고혈압</span></div>
+        <div><span>키</span><span>172CM</span></div>
+        <div><span>몸무게</span><span>76KG</span></div>
+      </div>
+    </div>
+
+    <!-- EAT SCORE -->
+    <div class="eat-score">
+      <div class="score-header p-3">
+        <h2>EAT SCORE</h2>
+        <p>적정 섭취량과 비교한 나의 실제 섭취량 점수</p>
+        <p><strong>탄수화물, 콜레스테롤, 나트륨, 지방, 포화지방, 당류가</strong> 과다하여 잇스코어가 감점 되었어요.</p>
+      </div>
+
+      <div class="score-bar mt-6">
+        <div class="score-pointer" style="left: 67%;">67점</div>
+      </div>
+    </div>
+
+
+    <!-- 나의 하루 필요 칼로리 -->
+    <div class="daily-nutrition">
+      <div class="nutrition-header p-3">
+        <h2>나의 하루 칼로리</h2>
+        <p>인적사항, BMI, 활동량을 기준으로 산출한 권장 및 섭취 열량</p>
+        <p>김건주님은 하루 섭취 열량(kcal)이 체중 감량을 위한 권장 대비 <strong>과다해요</strong></p>
+      </div>
+      <div class="nutrition-graph">
+        <div class="nutrition-row">
+          <div>
+            <div class="nutrition-item">
+              <div class="nutrient-label">
+                <p>탄수화물 <br> <span class="nutrient-value" data-status="excess">303.2g</span></p>
+              </div>
+              <div class="nutrient-bar">
+                <div class="low"></div>
+                <div class="moderate"></div>
+                <div class="high"></div>
+                <div class="pointer" style="left: 85%; bottom: -10px;"></div>
+              </div>
+           </div>
+            <div class="nutrient-legend-container">
+              <div class="nutrient-legend">
+                <div class="legend-item">
+                  <span class="legend-box" style="background-color: yellow;"></span> 부족
+                </div>
+                <div class="legend-item">
+                  <span class="legend-box" style="background-color: green;"></span> 적정
+                </div>
+                <div class="legend-item">
+                  <span class="legend-box" style="background-color: red;"></span> 과다
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="nutrition-item">
+              <div class="nutrient-label">
+                <p>단백질 <br> <span class="nutrient-value" data-status="excess">124.8g</span></p>
+              </div>
+              <div class="nutrient-bar">
+                <div class="low"></div>
+                <div class="moderate"></div>
+                <div class="high"></div>
+                <div class="pointer" style="left: 50%; bottom: -10px;"></div>
+              </div>
+           </div>
+            <div class="nutrient-legend-container">
+              <div class="nutrient-legend">
+                <div class="legend-item">
+                  <span class="legend-box" style="background-color: yellow;"></span> 부족
+                </div>
+                <div class="legend-item">
+                  <span class="legend-box" style="background-color: green;"></span> 적정
+                </div>
+                <div class="legend-item">
+                  <span class="legend-box" style="background-color: red;"></span> 과다
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="nutrition-item">
+              <div class="nutrient-label">
+                <p>지방 <br> <span class="nutrient-value" data-status="excess">93.8g</span></p>
+              </div>
+              <div class="nutrient-bar">
+                <div class="low"></div>
+                <div class="moderate"></div>
+                <div class="high"></div>
+                <div class="pointer" style="left: 55%; bottom: -10px;"></div>
+              </div>
+           </div>
+            <div class="nutrient-legend-container">
+              <div class="nutrient-legend">
+                <div class="legend-item">
+                  <span class="legend-box" style="background-color: yellow;"></span> 부족
+                </div>
+                <div class="legend-item">
+                  <span class="legend-box" style="background-color: green;"></span> 적정
+                </div>
+                <div class="legend-item">
+                  <span class="legend-box" style="background-color: red;"></span> 과다
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="nutrition-item">
+              <div class="nutrient-label">
+                <p>콜레스테롤 <br> <span class="nutrient-value" data-status="excess">536.8mg</span></p>
+              </div>
+              <div class="nutrient-bar">
+                <div class="low"></div>
+                <div class="moderate"></div>
+                <div class="high"></div>
+                <div class="pointer" style="left: 90%; bottom: -10px;"></div>
+              </div>
+           </div>
+            <div class="nutrient-legend-container">
+              <div class="nutrient-legend">
+                <div class="legend-item">
+                  <span class="legend-box" style="background-color: yellow;"></span> 부족
+                </div>
+                <div class="legend-item">
+                  <span class="legend-box" style="background-color: green;"></span> 적정
+                </div>
+                <div class="legend-item">
+                  <span class="legend-box" style="background-color: red;"></span> 과다
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="nutrition-item">
+            
+          </div>
+        </div>
+        
+
+
+        <div class="nutrition-row">
+          <div>
+            <div class="nutrition-item">
+              <div class="nutrient-label">
+                <p>단백질 <br> <span class="nutrient-value" data-status="excess">124.8g</span></p>
+              </div>
+              <div class="nutrient-bar">
+                <div class="low"></div>
+                <div class="moderate"></div>
+                <div class="high"></div>
+                <div class="pointer" style="left: 50%; bottom: -10px;"></div>
+              </div>
+           </div>
+            <div class="nutrient-legend-container">
+              <div class="nutrient-legend">
+                <div class="legend-item">
+                  <span class="legend-box" style="background-color: yellow;"></span> 부족
+                </div>
+                <div class="legend-item">
+                  <span class="legend-box" style="background-color: green;"></span> 적정
+                </div>
+                <div class="legend-item">
+                  <span class="legend-box" style="background-color: red;"></span> 과다
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="nutrition-item">
+              <div class="nutrient-label">
+                <p>식이섬유 <br> <span class="nutrient-value" data-status="normal">30.8g</span></p>
+              </div>
+              <div class="nutrient-bar">
+                <div class="low"></div>
+                <div class="moderate"></div>
+                <div class="high"></div>
+                <div class="pointer" style="left: 15%; bottom: -10px;"></div>
+              </div>
+           </div>
+            <div class="nutrient-legend-container">
+              <div class="nutrient-legend">
+                <div class="legend-item">
+                  <span class="legend-box" style="background-color: yellow;"></span> 부족
+                </div>
+                <div class="legend-item">
+                  <span class="legend-box" style="background-color: green;"></span> 적정
+                </div>
+                <div class="legend-item">
+                  <span class="legend-box" style="background-color: red;"></span> 과다
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="nutrition-item">
+              <div class="nutrient-label">
+                <p>포화지방 <br> <span class="nutrient-value" data-status="excess">17.9g</span></p>
+              </div>
+              <div class="nutrient-bar">
+                <div class="low"></div>
+                <div class="moderate"></div>
+                <div class="high"></div>
+                <div class="pointer" style="left: 90%; bottom: -10px;"></div>
+              </div>
+           </div>
+            <div class="nutrient-legend-container">
+              <div class="nutrient-legend">
+                <div class="legend-item">
+                  <span class="legend-box" style="background-color: yellow;"></span> 부족
+                </div>
+                <div class="legend-item">
+                  <span class="legend-box" style="background-color: green;"></span> 적정
+                </div>
+                <div class="legend-item">
+                  <span class="legend-box" style="background-color: red;"></span> 과다
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 건강 위험 경고 메시지 -->
+    <div class="section warning-box">
+      회원님은 현재 <strong>간질환</strong>의 위험이 있습니다.<br>
+      식단에 <strong>주의가 필요합니다!</strong><br>
+      식사일지와 챌린지로 건강한 생활을 도전해보세요.
+    </div>
+
+    <!-- 버튼 -->
+    <button class="action-button">나의 처방전으로 가기</button>
+  </div>
+  <div class="footer"></div>
+</body>
+<script>
+  window.addEventListener("scroll", () => {
+    const bwLeft = window.scrollX;
+    document.querySelector(
+      ".header-in"
+    ).style.transform = `translateX(-${bwLeft}px)`;
+  });
+</script>
+
+</html>

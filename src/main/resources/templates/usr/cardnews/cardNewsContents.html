@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>챌린지 리스트</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+            rel="stylesheet"
+            as="style"
+            crossorigin
+            href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-gov.min.css"
+    />
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Roboto:wght@400;700;900&display=swap"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/resource/cardNewsWrite.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".page").click(function () {
+            $(".page").removeClass("active");
+            $(this).addClass("active");
+        });
+
+        $(".prev").click(function () {
+            let current = $(".page.active");
+            let prevPage = current.prev(".page");
+            if (prevPage.length) {
+                current.removeClass("active");
+                prevPage.addClass("active");
+            }
+        });
+
+        $(".next").click(function () {
+            let current = $(".page.active");
+            let nextPage = current.next(".page");
+            if (nextPage.length) {
+                current.removeClass("active");
+                nextPage.addClass("active");
+            }
+        });
+    });
+</script>
+
+<!---로그인 했을 때 + 사이드바---->
+<body id="default" oncontextmenu="return false">
+<div class="header">
+    <div class="menumain flex header-in">
+        <a class="logo"><img src="/img/logo.png" /></a>
+        <div class="space"></div>
+        <nav class="menu">
+            <ul>
+                <li><a href="#">영양진단</a></li>
+                <li><a href="#">챌린지</a></li>
+                <li><a href="#">레시피</a></li>
+                <li><a href="/adm/cardnews/cardNewsList">카드뉴스</a></li>
+                <li><a href="#">센터소개</a></li>
+                <li class="last">
+                    <a href="#">마이페이지<img src="/img/sample.png" /></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<div class="side-bar">
+    <div class="status-icon">
+        <div>▶</div>
+        <div>▼</div>
+    </div>
+    <nav class="menu-box-1">
+        <ul>
+            <li>
+                <a><img src="/img/sideButton1.png" /></a>
+            </li>
+            <li>
+                <a><img src="/img/sideButton2.png" /></a>
+            </li>
+            <li>
+                <a><img src="/img/sideButton3.png" /></a>
+            </li>
+            <li>
+                <a><img src="/img/sideButton4.png" /></a>
+            </li>
+            <li>
+                <a><img src="/img/sideButton5.png" /></a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<!--여기부터 개발 시작--->
+<div class="main">
+<!--    <div class="container">-->
+<!--        <div class="header2">카드뉴스 상세보기</div>-->
+<!--        <div class="row">-->
+<!--            <section class="title2">해외여행 시, 지켜야 할 호흡기 감염병 예방수칙</section>-->
+<!--            <div class="row details">-->
+<!--                <section><span class="label2">작성일</span> 2025-01-16</section>-->
+<!--                <section><span class="label2">작성자</span> 검역정책과</section>-->
+<!--                <section><span class="label2">연락처</span> 043-719-9208</section>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="row">-->
+<!--            <img src = "data:image/png;base64,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">-->
+<!--        </div>-->
+<!--        <div class="row">-->
+<!--            <label class="label">첨부파일</label>-->
+<!--            <div class="file-display">-->
+<!--                250116_KDCA_해외여행 시 지켜야 할 호흡기 감염병 예방수칙_포스터(국문).zip-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="button">-->
+<!--            <button class="submit-btn">목록</button>-->
+<!--        </div>-->
+<!--    </div>-->
+    <div class="challenge-container">
+        <div class="challenge-header">카드뉴스 상세보기</div>
+        <div class="challenge-form">
+            <div class="text-line"></div>
+            <div class="form-row">
+                <label>제목</label>
+                <p>해외여행 시, 지켜야 할 호흡기 감염병 예방수칙</p>
+            </div>
+            <div class="text-line"></div>
+            <div class="form-row">
+                <label>작성일</label>
+                <p>2025-01-16</p>
+                <p></p>
+            </div>
+            <div class="text-line"></div>
+            <div class="form-row">
+                <label>작성자</label>
+                <p>검역정책과</p>
+            </div>
+            <div class="text-line"></div>
+            <div class="form-row">
+                <label>연락처</label>
+                <p>043-719-9208</p>
+            </div>
+<!--            <div class="text-line"></div>-->
+<!--            <div class="form-row">-->
+<!--                <label2 for="content">내용</label2>-->
+<!--            </div>-->
+<!--            <div class="form-row">-->
+<!--                <textarea id="content"></textarea>-->
+<!--            </div>-->
+            <div class="text-line"></div>
+            <div class="form-row">
+                <img src="https://www.kdca.go.kr/html/a2/namoimage/images/000171/%ED%95%B4%EC%99%B8%EC%97%AC%ED%96%89_%EC%8B%9C_%EC%A7%80%EC%BC%9C%EC%95%BC_%ED%95%A0_%ED%98%B8%ED%9D%A1%EA%B8%B0_%EA%B0%90%EC%97%BC%EB%B3%91_%EC%98%88%EB%B0%A9%EC%88%98%EC%B9%99-%EA%B5%AD%EB%AC%B8.jpg" alt="물 2L 마시기">
+            </div>
+            <div class="text-line"></div>
+            <div class="form-row">
+                <label>첨부파일</label>
+                <div>250116_KDCA_해외여행_시_지켜야_할_호흡기_감염병_예방수칙_포스터(국문).zip</div>
+            </div>
+            <div class="text-line"></div>
+            <div class="form-row">
+                <button class="submit-btn">목록</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer"></div>
+</body>
+<script>
+    window.addEventListener("scroll", () => {
+        const bwLeft = window.scrollX;
+        document.querySelector(
+            ".header-in"
+        ).style.transform = `translateX(-${bwLeft}px)`;
+    });
+</script>
+</html>

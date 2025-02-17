@@ -1,0 +1,449 @@
+body {
+    display: flex;
+    flex-direction: column;
+    overflow-x: auto;
+}
+
+/* 해더 */
+#default > .header {
+    background-color: #fff;
+    white-space: nowrap;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-width: 1200px;
+    border-bottom: 2px solid #fa9058;
+    z-index: 999;
+}
+
+#default > .header > .header-in {
+    width: 100%;
+    max-width: 1420px;
+    margin: 0 auto;
+    transform: translateX(0);
+}
+
+#default > .header > .menumain {
+    display: flex;
+    margin: 0 auto;
+    max-width: 1600px;
+    align-items: center;
+}
+#default > .header > .menumain > .logo > img {
+    width: 150px;
+    max-width: none;
+    height: 54px;
+}
+#default > .header > .menumain > .space {
+    flex-grow: 1;
+}
+#default > .header > .menumain > .menu {
+    flex-grow: 2;
+    text-align: center;
+}
+#default > .header > .menumain > .menu > ul > li {
+    display: inline-block;
+}
+#default > .header > .menumain > .menu > ul > li > a {
+    display: inline-block;
+    padding: 20px 30px;
+    font-weight: bold;
+    width: 150px;
+}
+#default > .header > .menumain > .menu > ul > .last > a {
+    background-color: #ffdcc2;
+    font-weight: bold;
+    width: 150px;
+    padding: 0 0 0 30px;
+    border-radius: 5rem;
+}
+#default > .header > .menumain > .menu > ul > .last > a > img {
+    display: inline;
+    width: 45px;
+    height: 45px;
+    margin: 0 0 0 10px;
+    border-radius: 50%;
+    border: 3px solid #fbb56f;
+}
+#default > .header > .menumain > .menu > ul > li:hover:not(.last) > a {
+    background-color: #ffdcc2;
+    padding: 10px 30px;
+    margin: 10px 0;
+    border-radius: 10px;
+}
+
+/*사이드바 시작*/
+#default > .side-bar {
+    background-color: #fbb56f;
+    margin-top: 66px;
+    width: 120px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: -95px;
+    transition: left 0.3s;
+    z-index: 999;
+}
+
+#default > .side-bar:hover {
+    left: 0;
+}
+
+/* 사이드바 - 아이콘 */
+#default > .side-bar > .status-icon > div {
+    text-align: right;
+    padding: 8px;
+}
+
+#default > .side-bar > .status-icon > div:last-child {
+    display: none;
+}
+
+#default > .side-bar:hover > .status-icon > div:last-child {
+    display: block;
+}
+
+#default > .side-bar:hover > .status-icon > div:first-child {
+    display: none;
+}
+
+/* 사이드바 - 메뉴 */
+#default > .side-bar > .menu-box-1 ul > li > a {
+    display: block;
+    font-weight: bold;
+    padding: 10px;
+}
+
+#default > .side-bar > .menu-box-1 ul > li > a > img {
+    width: 60px;
+    height: 60px;
+}
+
+#default > .side-bar > .menu-box-1 ul > li:hover > a {
+    background-color: #fa9058;
+    border-radius: 1rem;
+}
+#default > .side-bar > .menu-box-1 ul > li {
+    display: block;
+    font-weight: bold;
+    padding: 40px 20px;
+}
+#default > .side-bar > .menu-box-1 ul {
+    margin: auto 0;
+}
+
+/*main*/
+#default > .main {
+    background-color: #ffffff;
+    min-height: 100vh;
+    padding-top: 80px; /* 헤더 높이 확보 */
+    padding-bottom: 80px; /* 푸터 높이 확보 */
+    white-space: nowrap;
+    width: 1200px;
+    flex-grow: 1;
+    z-index: 1; /* 헤더보다 아래 */
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#default > .footer {
+    height: 64px;
+    border-top: 1px solid #afafaf;
+    background-color: #fff;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 998;
+}
+
+.text-line {
+    border-bottom: solid 3px #fa9058;
+    margin-bottom: 10px;
+}
+
+.inquiry-detail-container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left;
+}
+
+/* 제목 및 상태바 */
+.inquiry-header {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* 텍스트와 제목 간격 조절 */
+    background-color: #FFFFFF;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.inquiry-header strong {
+    background-color: #FFDCC2;
+    color: #FFA07A;
+    border-radius: 5px;
+    padding: 10px 25px 10px 25px;
+    width: 15%;
+    text-align: center;
+}
+
+.inquiry-header h3 {
+    font-size: 24px;
+}
+
+.status {
+    background: #ddd;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    margin-left: auto;
+}
+
+/* 작성자 정보 */
+.author-section {
+    display: inline-block;
+    align-items: center;
+    background-color: #FFDAB9;
+    border: 3px solid #FFA07A;
+    border-radius: 50px;
+    width: 10%;
+    margin-bottom: 5px;
+}
+
+.author-log {
+    display: inline-block;
+    float: right;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.author-log img{
+    display: inline-block;
+}
+
+.author-section img {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 3px solid #FFA07A;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* 본문 */
+.inquiry-body {
+    padding: 15px;
+}
+
+.inquiry-body img {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+/* 댓글 입력 */
+.comment-box {
+    width: 100%;
+    border: 5px solid #FFA07A;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.comment-actions {
+    display: flex;
+    align-items: center; /* 수직 정렬 (필요시) */
+}
+
+.comment-actions2 {
+    display: flex;
+    align-items: center; /* 수직 정렬 (필요시) */
+}
+
+.button-Modify {
+    margin-left: auto;
+    gap: 10px;
+}
+
+.comment-actions2 button {
+    margin-left: auto;
+}
+
+.comment-actions button {
+
+}
+
+.goodbtn {
+    background: #FFDCC2;
+    color: #FFA07A;
+    border: 3px solid #FFA07A;
+    padding: 8px 12px;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 10%;
+}
+
+.button-Modify {
+    background: #FFA07A;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+    width: 10%;
+    text-align: center;
+}
+
+.button-Del {
+    background: #FFA07A;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 10%;
+    text-align: center;
+}
+
+.comment-actions2 button {
+    background: #FFA07A;
+    color: white;
+    padding: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    border: 3px solid #FFA07A;
+}
+
+/* 기존 댓글 */
+.comment-section {
+    margin-top: 20px;
+    border-top: 3px solid #FFA07A;
+    padding-top: 10px;
+}
+
+.comment {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.comment-text {
+    background: #FFFFFF;
+    padding: 10px;
+    width: 80%;
+}
+
+/* 전체 댓글 박스 스타일 */
+.comment-sections {
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    font-family: 'Pretendard', sans-serif;
+    margin: 10px 0;
+    position: relative;
+}
+
+.comment-sections p {
+    margin-left: 50px;
+}
+
+/* 프로필 + 사용자 정보 */
+.comment-top {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.comment-avatar {
+    width: 5%;
+    height: 5%;
+    border-radius: 50%;
+    border: 3px solid #fa9058;
+    margin-right: 10px;
+}
+
+.comment-user-info {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+}
+
+.comment-role {
+    font-weight: bold;
+    text-align: center;
+    background: #FFDCC2;
+    color: #fa9058;
+    border: 2px solid #fa9058;
+    padding: 2px 4px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+.comment-date {
+    color: gray;
+    font-size: 12px;
+    margin-top: 2px;
+}
+
+/* 댓글 본문 */
+.comment-body {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.5;
+}
+
+/* 좋아요 & 수정 버튼 */
+.comment-buttons {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.comment-like, .comment-edit {
+    background: #ffdcc2;
+    color: #fa9058;
+    font-weight: bold;
+    border: 3px solid #fa9058;
+    padding: 5px 30px 5px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.comment-edit {
+    background: #fa9058;
+    color: white;
+}
+
+/* 답글 버튼 */
+.comment-reply {
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #fa9058;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 50px;
+}
+
+.comment-arrow {
+    font-size: 14px;
+}
+
+.reply-tag {
+    text-align: left;
+    font-size: 50px;
+    color: #FFA07A;
+}

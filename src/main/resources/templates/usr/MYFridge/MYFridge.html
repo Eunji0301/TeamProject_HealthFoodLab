@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>로그인 후</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" as="style" crossorigin
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-gov.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Roboto:wght@400;700;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/css/MYFridge.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<!---로그인 했을 때 + 사이드바---->
+
+<body id="default">
+<div th:replace="common/header :: header"></div>
+<div th:replace="common/sideBar :: sideBar"></div>
+
+  <!--여기부터 개발 시작--->
+  <div class="main py-3">
+
+    <div class="myfridge-header">MY냉장고</div>
+    <div class="tab-menu">
+      <div class="active" id="fridge-tab">냉장고</div>
+      <div id="freezer-tab">냉동고</div>
+    </div>
+    <div id="fridge">
+      <div id="fridge-content" class="food-grid">
+        <div class="food-item">
+          <img src="/img/apple.jpg" alt="사과" />
+          <span>사과</span>
+        </div>
+        <div class="food-item">
+          <img src="/img/beef.jpg" alt="소고기" />
+          <span>소고기</span>
+        </div>
+        <div class="food-item">
+          <img src="/img/butter.jpg" alt="버터" />
+          <span>버터</span>
+        </div>
+        <div class="food-item">
+          <img src="/img/kiwi.jpg" alt="키위" />
+          <span>키위</span>
+        </div>
+        <div class="food-item">
+          <img src="/img/kiwi.jpg" alt="키위" />
+          <span>키위</span>
+        </div>
+        <div class="food-item">
+          <img src="/img/kiwi.jpg" alt="키위" />
+          <span>키위</span>
+        </div>
+        <div class="food-item">
+          <img src="/img/kiwi.jpg" alt="키위" />
+          <span>키위</span>
+        </div>
+        <div class="food-item">
+          <img src="/img/kiwi.jpg" alt="키위" />
+          <span>키위</span>
+        </div>
+      </div>
+
+      <div id="freezer-content" class="food-grid" style="display: none;">
+        <div class="food-item">
+          <img src="/img/fish.jpg" alt="고등어" />
+          <span>고등어</span>
+        </div>
+        <div class="food-item">
+          <img src="/img/mushroom.jpg" alt="버섯" />
+          <span>버섯</span>
+        </div>
+      </div>
+    </div>
+    <div class="button-group">
+      <!-- <button id="add-ingredient">재료추가</button> -->
+      <link rel="stylesheet" href="/css/modalstyle.css" />
+      <button id="add-ingredient">재료추가</button>
+
+      <div id="modalWrap"> <!-- 모달 창을 감싸는 div -->
+        <div id="modalBody">
+          <span id="closeBtn">&times;</span> <!-- 모달을 닫는 X 버튼 -->
+          <div class="container2">
+            <div class="header2">
+                <span>고기</span>
+                <button class="search-btn">
+                    <img src="/img/search-icon.png" alt="검색">검색
+                </button>
+            </div>
+    
+            <div class="fridge">
+                <div class="item">
+                    <input type="checkbox" checked>
+                    <img src="/img/duck.jpg" alt="오리고기">
+                    <span class="title2">자연에서 자란 오리고기</span>
+                </div>
+    
+                <div class="item">
+                    <input type="checkbox" checked>
+                    <img src="/img/pork.jpg" alt="돼지고기">
+                    <span class="title2">녹차 먹고 키운 돼지고기</span>
+                </div>
+    
+                <div class="item">
+                    <input type="checkbox" checked>
+                    <img src="/img/lamb.jpg" alt="양고기">
+                    <span class="title2">호주산 양고기</span>
+                </div>
+    
+                <div class="item">
+                    <input type="checkbox" checked>
+                    <img src="/img/chicken.jpg" alt="닭고기">
+                    <span class="title2">운동을 위한 닭고기</span>
+                </div>
+            </div>
+    
+            <div class="total">
+                <button class="save-btn">재료 저장</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script src="/js/modalscript.js"></script> <!-- 외부 JavaScript 파일을 연결 -->
+<!--      <button id="recommend-recipe">레시피 추천</button>-->
+    </div>
+
+    <div class="footer"></div>
+  </div>
+</body>
+<script>
+  window.addEventListener("scroll", () => {
+    const bwLeft = window.scrollX;
+    document.querySelector(
+      ".header-in"
+    ).style.transform = `translateX(-${bwLeft}px)`;
+  });
+
+  document.getElementById("fridge-tab").addEventListener("click", function () {
+    document.getElementById("fridge-tab").classList.add("active");
+    document.getElementById("freezer-tab").classList.remove("active");
+    document.getElementById("fridge-content").style.display = "grid";
+    document.getElementById("freezer-content").style.display = "none";
+  });
+
+  document.getElementById("freezer-tab").addEventListener("click", function () {
+    document.getElementById("freezer-tab").classList.add("active");
+    document.getElementById("fridge-tab").classList.remove("active");
+    document.getElementById("fridge-content").style.display = "none";
+    document.getElementById("freezer-content").style.display = "grid";
+  });
+</script>
+
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>마이 챌린지 인증 상세보기</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+            rel="stylesheet"
+            as="style"
+            crossorigin
+            href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-gov.min.css"
+    />
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Roboto:wght@400;700;900&display=swap"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/myChallenge/myChallengeDetail.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<!---로그인 했을 때 + 사이드바---->
+<body id="default" oncontextmenu="return false">
+<div th:replace="common/header :: header"></div>
+<div th:replace="common/sideBar :: sideBar"></div>
+
+<!--여기부터 개발 시작--->
+<div class="main">
+    <div class="container">
+        <div class="headers">마이챌린지 인증 상세보기</div>
+
+        <div class="text-line"></div>
+
+        <div class="input-group">
+            <label>챌린지명</label>
+            <input type="text" value="배달음식 없는 하루 챌린지" readonly>
+        </div>
+
+        <div class="text-line"></div>
+
+        <div class="input-group">
+            <label>제목</label>
+            <input type="text">
+        </div>
+
+        <div class="text-line"></div>
+
+        <div class="content-container">
+            <div class="image-section">
+                <div class="section-title">인증사진</div>
+                <img src="https://imagescdn.gettyimagesbank.com/500/201708/a10959011.jpg" alt="인증사진">
+            </div>
+
+            <div class="text-section">
+                <div class="section-title">내용</div>
+                <textarea></textarea>
+            </div>
+        </div>
+
+        <div class="text-line"></div>
+
+        <div class="mdf-btn">
+            <a class="submit-btn" href="/usr/myChallenge/myChallengeModify">
+                <button>수정</button>
+            </a>
+        </div>
+
+        <div class="section-title">댓글(2)</div>
+
+        <div class="comments-section">
+            <div class="comment">
+                <img src="https://blog.kakaocdn.net/dn/bCXLP7/btrQuNirLbt/N30EKpk07InXpbReKWzde1/img.png" alt="프로필">
+                <div class="comment-text">
+                    <strong>유저명</strong> 2024.12.24 13:00
+                    <p>기도 열심히 하겠습니다.</p>
+                </div>
+            </div>
+            <div class="comment">
+                <img src="https://blog.kakaocdn.net/dn/bCXLP7/btrQuNirLbt/N30EKpk07InXpbReKWzde1/img.png" alt="프로필">
+                <div class="comment-text">
+                    <strong>유저명</strong> 2024.12.24 13:00
+                    <p>기도 열심히 하겠습니다.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-line"></div>
+
+        <div class="comment-input">
+            <input type="text" placeholder="댓글을 입력하세요">
+            <button>등록</button>
+        </div>
+    </div>
+</div>
+
+<div class="footer"></div>
+</body>
+<script>
+    window.addEventListener("scroll", () => {
+        const bwLeft = window.scrollX;
+        document.querySelector(
+            ".header-in"
+        ).style.transform = `translateX(-${bwLeft}px)`;
+    });
+</script>
+</html>
