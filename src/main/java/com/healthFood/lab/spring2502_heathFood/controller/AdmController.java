@@ -77,4 +77,8 @@ public class AdmController {
         return ResultData.from("S-1",Ut.f("로그아웃 성공"));
     }
 
+    @RequestMapping("/main/adminIndex")
+    public String showAdminIndex() {
+        return "adm/main/adminIndex";
+    }
 }

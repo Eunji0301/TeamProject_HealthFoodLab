@@ -70,7 +70,6 @@
     </nav>
 </div>
 
-<!--여기부터 개발 시작--->
 <div class="main">
     <div class="challenge-container">
         <div class="challenge-header">카드뉴스 작성</div>
@@ -79,21 +78,33 @@
             <form action="/adm/cardnews/cardNewsWriteAction" method="POST" enctype="multipart/form-data">
                 <div class="form-row">
                     <label>제목</label>
-                    <textarea id="title" name="cnTitle" placeholder="제목을 입력하세요."></textarea>
+                    <!--                    <textarea id="title" name="cnTitle" placeholder="제목을 입력하세요."></textarea>-->
+                    <input type="text" id="title" name="cnTitle" placeholder="제목을 입력하세요."/>
                 </div>
                 <div class="text-line"></div>
                 <div class="form-row">
                     <label>작성자</label>
-                    <textarea id="writer" name="cnWriter" placeholder="작성자를 입력하세요."></textarea>
+                    <!--                    <textarea id="writer" name="cnWriter" placeholder="작성자를 입력하세요."></textarea>-->
+                    <input type="text" id="writer" name="cnWriter" placeholder="작성자를 입력하세요."/>
                 </div>
                 <div class="text-line"></div>
                 <div class="form-row">
                     <label>연락처</label>
-                    <textarea id="contact" name="cnContact" placeholder="연락처를 입력하세요."></textarea>
+                    <!--                    <textarea id="contact" name="cnContact" placeholder="연락처를 입력하세요."></textarea>-->
+                    <input type="text" id="contact" name="cnContact" placeholder="연락처를 입력하세요."/>
                 </div>
                 <div class="text-line"></div>
+
+                <!--            <div class="form-row">-->
+                <!--                <label2 for="content">내용</label2>-->
+                <!--            </div>-->
+                <!--            <div class="form-row">-->
+                <!--                <textarea id="content"></textarea>-->
+                <!--            </div>-->
+                <!--            <div class="text-line"></div>-->
                 <div class="form-row">
                     <label>첨부파일</label>
+                    <!--                <div>250116_KDCA_해외여행_시_지켜야_할_호흡기_감염병_예방수칙_포스터(국문).zip</div>-->
                     <input type="file" id="uploadFile" name="uploadFile"/>
                     <input type="hidden" id="cnFilename" name="cnFilename"/>
                 </div>
