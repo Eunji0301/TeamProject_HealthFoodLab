@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.healthFood.lab.spring2502_heathFood.repository.MyMealLogRepository">
+    <insert id="savefoodTracker">
+        INSERT INTO FOOD_TRACKER
+        SET
+        ftWriteDate = #{ftWriteDate},
+        ftMealTime = #{ftMealTime},
+        ftFoodName = #{ftFoodName},
+        ftFoodQuantity = #{ftFoodQuantity},
+        ftFoodPortion = #{ftFoodPortion},
+        ftCalorie = #{ftCalorie},
+        ftCarb = #{ftCarb},
+        ftProtein = #{ftProtein},
+        ftFat = #{ftFat},
+        ftSugar = #{ftSugar},
+        ftSodium = #{ftSodium},
+        uIdx = #{uIdx},
+        ftCreateAt = NOW()
+    </insert>
+
+
+</mapper>
