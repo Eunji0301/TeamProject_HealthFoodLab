@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>로그인 전</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link
+            rel="stylesheet"
+            as="style"
+            crossorigin
+            href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-gov.min.css"
+    />
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Roboto:wght@400;700;900&display=swap"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/Diagnosis.css"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<!---로그인 전 영양검사 등 ---->
+<body id="default">
+<div class="header">
+    <div class="menumain flex header-in">
+        <a class="logo"><img src="/img/logo.png"/></a>
+        <div class="space"></div>
+        <nav class="menu">
+            <ul>
+                <li><a href="#">영양진단</a></li>
+                <li><a href="#">챌린지</a></li>
+                <li><a href="#">레시피</a></li>
+                <li><a href="#">카드뉴스</a></li>
+                <li><a href="#">센터소개</a></li>
+                <li><a href="#">마이페이지</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<!-- <div class="side-bar">
+  <div class="status-icon">
+    <div>▶</div>
+    <div>▼</div>
+  </div>
+  <nav class="menu-box-1">
+    <ul>
+      <li>
+        <a><img src="/img/sideButton1.png" /></a>
+      </li>
+      <li>
+        <a><img src="/img/sideButton2.png" /></a>
+      </li>
+      <li>
+        <a><img src="/img/sideButton3.png" /></a>
+      </li>
+      <li>
+        <a><img src="/img/sideButton4.png" /></a>
+      </li>
+      <li>
+        <a><img src="/img/sideButton5.png" /></a>
+      </li>
+    </ul>
+  </nav>
+</div> -->
+
+<!--여기부터 개발 시작--->
+<div class="main diagnosisSelect2">
+    <div class="top section">
+        <h2>식사 문진표</h2>
+        <p class="pl-3">아래 표시된 음식들을 일주일에 얼마나 섭취하는지 체크해 주세요.</p>
+        <p class="pl-3">※ 섭취 기준은 일주일(7일) 기준입니다.</p>
+    </div>
+
+    <div class="section food-grid">
+        <div class="food-item">
+            <img src="/img/seafood.png" alt="해산물">
+            <div>
+                <p>해산물</p>
+                <select>
+                    <option value="0">0회</option>
+                    <option value="1">1회</option>
+                    <option value="2">2회</option>
+                    <option value="3">3회</option>
+                    <option value="4">4회 이상</option>
+                </select>
+            </div>
+        </div>
+        <div class="food-item">
+            <img src="/img/tofu.png" alt="두부">
+            <div>
+                <p>두부</p>
+                <select>
+                    <option value="0">0회</option>
+                    <option value="1">1회</option>
+                    <option value="2">2회</option>
+                    <option value="3">3회</option>
+                    <option value="4">4회 이상</option>
+                </select>
+            </div>
+        </div>
+        <div class="food-item">
+            <img src="/img/meat.png" alt="고기">
+            <div>
+                <p>고기</p>
+                <select>
+                    <option value="0">0회</option>
+                    <option value="1">1회</option>
+                    <option value="2">2회</option>
+                    <option value="3">3회</option>
+                    <option value="4">4회 이상</option>
+                </select>
+            </div>
+        </div>
+        <div class="food-item">
+            <img src="/img/dairyProducts.png" alt="유제품">
+            <div>
+                <p>유제품</p>
+                <select>
+                    <option value="0">0회</option>
+                    <option value="1">1회</option>
+                    <option value="2">2회</option>
+                    <option value="3">3회</option>
+                    <option value="4">4회 이상</option>
+                </select>
+            </div>
+        </div>
+        <div class="food-item">
+            <img src="/img/egg.png" alt="달걀">
+            <div>
+                <p>달걀</p>
+                <select>
+                    <option value="0">0회</option>
+                    <option value="1">1회</option>
+                    <option value="2">2회</option>
+                    <option value="3">3회</option>
+                    <option value="4">4회 이상</option>
+                </select>
+            </div>
+        </div>
+        <div class="food-item">
+            <img src="/img/vegetables.png" alt="채소">
+            <div>
+                <p>채소</p>
+                <select>
+                    <option value="0">0회</option>
+                    <option value="1">1회</option>
+                    <option value="2">2회</option>
+                    <option value="3">3회</option>
+                    <option value="4">4회 이상</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <button id="nextBtn" class="button-full text-base button-nonew-FA9058 rounded-lg ">
+        다음
+    </button>
+</div>
+
+
+<div class="footer"></div>
+</body>
+
+<script>
+    window.addEventListener("scroll", () => {
+        const bwLeft = window.scrollX;
+        document.querySelector(
+            ".header-in"
+        ).style.transform = `translateX(-${bwLeft}px)`;
+    });
+</script>
+
+
+<script type="module">
+    import foodNutrition from "/js/foodNutrition.js";
+
+    $(document).ready(function () {
+        $("#nextBtn").click(function () {
+            alert("📌 2_2 페이지에서 음식 섭취 횟수 저장 시작!");
+
+            // 🟢 기존 sessionStorage에서 저장된 데이터 불러오기
+            let storedMealData = sessionStorage.getItem("mealData");
+            let mealData = storedMealData ? JSON.parse(storedMealData) : {};  // servings만 저장
+
+            $(".food-item").each(function () {
+                let foodName = $(this).find("p").text().trim();
+                let servings = parseInt($(this).find("select").val()) || 0;
+
+                // servings가 0 이상일 때만 저장
+                if (servings > 0) {
+                    mealData[foodName] = (mealData[foodName] || 0) + servings; // 기존 값과 누적
+                }
+            });
+
+            alert("✅ 2_2에서 저장된 servings 데이터: \n" + JSON.stringify(mealData));
+
+            // sessionStorage에 저장
+            sessionStorage.setItem("mealData", JSON.stringify(mealData));
+
+            alert("🚀 2_2에서 sessionStorage 저장 완료!");
+            window.location.href = "/usr/diagnosis/DiagnosisSelect2_3";
+        });
+    });
+</script>
+
+
+
+</html>

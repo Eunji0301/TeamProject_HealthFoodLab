@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>로그인 전</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-gov.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Roboto:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/Diagnosis.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  </head>
+  <!---로그인 전 영양검사 등 ---->
+  <body id="default">
+    <div class="header">
+      <div class="menumain flex header-in">
+        <a class="logo"><img src="/img/logo.png" /></a>
+        <div class="space"></div>
+        <nav class="menu">
+          <ul>
+            <li><a href="#">영양진단</a></li>
+            <li><a href="#">챌린지</a></li>
+            <li><a href="#">레시피</a></li>
+            <li><a href="#">카드뉴스</a></li>
+            <li><a href="#">센터소개</a></li>
+            <li><a href="#">마이페이지</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <!-- <div class="side-bar">
+      <div class="status-icon">
+        <div>▶</div>
+        <div>▼</div>
+      </div>
+      <nav class="menu-box-1">
+        <ul>
+          <li>
+            <a><img src="./img/sideButton1.png" /></a>
+          </li>
+          <li>
+            <a><img src="./img/sideButton2.png" /></a>
+          </li>
+          <li>
+            <a><img src="./img/sideButton3.png" /></a>
+          </li>
+          <li>
+            <a><img src="./img/sideButton4.png" /></a>
+          </li>
+          <li>
+            <a><img src="./img/sideButton5.png" /></a>
+          </li>
+        </ul>
+      </nav>
+    </div> -->
+
+    <!--여기부터 개발 시작--->
+
+    <form id="diagnosisForm" th:action="@{/usr/diagnosis/submit}" method="post" th:object="${diagnosisVO}" class="main diagnosisSelect1 p-3">
+      <!-- 신체 정보 입력 -->
+      <div class="section box1 mb-3">
+        <h2>신체 정보를 입력해주세요</h2>
+        <div class="grid-4">
+          <div class="input-box">
+            <div class="title mb-2">성별</div>
+            <input
+              type="radio"
+              th:id="drGender_M"
+              name="drGender"
+              class="form-check-left"
+              value="M"
+              th:field="*{drGender}"
+              required
+            />
+            <label th:for="drGender_M" class="form-check-text mb-2">남성</label>
+            <input
+              type="radio"
+              th:id="drGender_F"
+              name="drGender"
+              class="form-check-left"
+              value="F"
+              th:field="*{drGender}"
+              required
+            />
+            <label th:for="drGender_F" class="form-check-text ">여성</label>
+          </div>
+          <div class="input-box">
+            <div class="title mb-2">키 (CM)</div>
+            <input type="number" name="drHeight" th:field="*{drHeight}" placeholder="입력" />
+          </div>
+          <div class="input-box">
+            <div class="title mb-2">몸무게 (KG)</div>
+            <input type="number" name="drWeight" th:field="*{drWeight}" placeholder="입력" />
+          </div>
+          <div class="input-box">
+            <div class="title mb-2">나이 (세)</div>
+            <input type="number" name="drAge" th:field="*{drAge}" placeholder="입력" />
+          </div>
+        </div>
+      </div>
+
+      <!-- 질병 이력 선택 -->
+      <div class="section box2  mb-3">
+        <h2 class="title">
+          진단받은 질환 또는 관리가 필요한 질환 1개만 선택해주세요
+        </h2>
+        <div class="grid-5 input-box">
+          <input
+            type="radio"
+            id="check1-1"
+            name="drDisease"
+            th:field="*{drDisease}"
+            class="form-check-left"
+            value="none"
+          />
+          <label for="check1-1" class="form-check-text"> 해당없음 </label>
+          <input
+            type="radio"
+            id="check1-2"
+            name="drDisease"
+            th:field="*{drDisease}"
+            class="form-check-left"
+            value="비만"
+          />
+          <label for="check1-2" class="form-check-text"> 비만 </label>
+          <input
+            type="radio"
+            id="check1-3"
+            name="drDisease"
+            th:field="*{drDisease}"
+            class="form-check-left"
+            value="당뇨"
+          />
+          <label for="check1-3" class="form-check-text"> 당뇨 </label>
+          <input
+            type="radio"
+            id="check1-4"
+            name="drDisease"
+            th:field="*{drDisease}"
+            class="form-check-left"
+            value="간질환"
+          />
+          <label for="check1-4" class="form-check-text"> 간질환 </label>
+          <input
+            type="radio"
+            id="check1-5"
+            name="drDisease"
+            th:field="*{drDisease}"
+            class="form-check-left"
+            value="고지혈증"
+          />
+          <label for="check1-5" class="form-check-text"> 고지혈증 </label>
+          <input
+            type="radio"
+            id="check1-6"
+            name="drDisease"
+            th:field="*{drDisease}"
+            class="form-check-left"
+            value="고혈압"
+          />
+          <label for="check1-6" class="form-check-text"> 고혈압 </label>
+          <input
+            type="radio"
+            id="check1-7"
+            name="drDisease"
+            th:field="*{drDisease}"
+            class="form-check-left"
+            value="골다공증"
+          />
+          <label for="check1-7" class="form-check-text"> 골다공증 </label>
+          <input
+            type="radio"
+            id="check1-8"
+            name="drDisease"
+            th:field="*{drDisease}"
+            class="form-check-left"
+            value="이상지질혈증"
+          />
+          <label for="check1-8" class="form-check-text"> 이상지질혈증 </label>
+          <input
+            type="radio"
+            id="check1-9"
+            name="drDisease"
+            th:field="*{drDisease}"
+            class="form-check-left"
+            value="암"
+          />
+          <label for="check1-9" class="form-check-text"> 암 </label>
+          <input
+            type="radio"
+            id="check1-10"
+            name="drDisease"
+            th:field="*{drDisease}"
+            class="form-check-left"
+            value="동맥경화"
+          />
+          <label for="check1-10" class="form-check-text"> 동맥경화 </label>
+        </div>
+      </div>
+
+      <!-- 활동량 선택 -->
+      <div class="section box2  mb-3">
+        <h2 class="title">활동량은 어느 정도 이신가요?</h2>
+        <div class="grid-5 input-box">
+          <input
+            type="radio"
+            id="check2-1"
+            name="drActivity"
+            th:field="*{drActivity}"
+            class="form-check-left"
+            value="0"
+          />
+          <label for="check2-1" class="form-check-text"> 거의 없음 </label>
+          <input
+            type="radio"
+            id="check2-2"
+            name="drActivity"
+            th:field="*{drActivity}"
+            class="form-check-left"
+            value="1"
+          />
+          <label for="check2-2" class="form-check-text">
+            가벼운 운동 (주 1~2회)
+          </label>
+          <input
+            type="radio"
+            id="check2-3"
+            name="drActivity"
+            th:field="*{drActivity}"
+            class="form-check-left"
+            value="2"
+          />
+          <label for="check2-3" class="form-check-text">
+            주 3~4회 꾸준한 운동
+          </label>
+          <input
+            type="radio"
+            id="check2-4"
+            name="drActivity"
+            th:field="*{drActivity}"
+            class="form-check-left"
+            value="3"
+          />
+          <label for="check2-4" class="form-check-text">
+            규칙적인 운동 (주 5회 이상)
+          </label>
+          <input
+            type="radio"
+            id="check2-5"
+            name="drActivity"
+            th:field="*{drActivity}"
+            class="form-check-left"
+            value="4"
+          />
+          <label for="check2-5" class="form-check-text">
+            강도 높은 운동 (주 5회 이상)
+          </label>
+        </div>
+      </div>
+
+      <!-- 음주 습관 선택 -->
+      <div class="section box2 mb-3">
+        <h2 class="title">술은 얼마나 자주 드시나요?</h2>
+        <div class="info mb-3">
+          <p>
+            남자는 소주 7잔/맥주 5병 이상, 여자는 소주 5잔/맥주 3병 이상 (1회
+            기준)
+          </p>
+          <p>※ 1회 기준 이하로 섭취시 횟수 미포함</p>
+        </div>
+        <div class="grid-6 input-box">
+          <input
+            type="radio"
+            id="check3-1"
+            name="drLiquor"
+            th:field="*{drLiquor}"
+            class="form-check-left"
+            value="0"
+          />
+          <label for="check3-1" class="form-check-text">
+            최근 1년간 전혀 안 마셨음
+          </label>
+          <input
+            type="radio"
+            id="check3-2"
+            name="drLiquor"
+            th:field="*{drLiquor}"
+            class="form-check-left"
+            value="1"
+          />
+          <label for="check3-2" class="form-check-text"> 두 달에 1번 </label>
+          <input
+            type="radio"
+            id="check3-3"
+            name="drLiquor"
+            th:field="*{drLiquor}"
+            class="form-check-left"
+            value="2"
+          />
+          <label for="check3-3" class="form-check-text"> 한 달에 1번 </label>
+          <input
+            type="radio"
+            id="check3-4"
+            name="drLiquor"
+            th:field="*{drLiquor}"
+            class="form-check-left"
+            value="3"
+          />
+          <label for="check3-4" class="form-check-text"> 한 달에 2~4번 </label>
+          <input
+            type="radio"
+            id="check3-5"
+            name="drLiquor"
+            th:field="*{drLiquor}"
+            class="form-check-left"
+            value="4"
+          />
+          <label for="check3-5" class="form-check-text"> 일주일에 2~3번 </label>
+          <input
+            type="radio"
+            id="check3-6"
+            name="drLiquor"
+            th:field="*{drLiquor}"
+            class="form-check-left"
+            value="5"
+          />
+          <label for="check3-6" class="form-check-text">
+            일주일에 4번 이상
+          </label>
+        </div>
+      </div>
+
+      <button type="submit" class="button-full text-base button-nonew-FA9058 rounded-lg">
+        다음
+      </button>
+    </form>
+
+    <div class="footer"></div>
+  </body>
+  <script>
+    window.addEventListener("scroll", () => {
+      const bwLeft = window.scrollX;
+      document.querySelector(
+        ".header-in"
+      ).style.transform = `translateX(-${bwLeft}px)`;
+    });
+    </script>
+
+</html>
