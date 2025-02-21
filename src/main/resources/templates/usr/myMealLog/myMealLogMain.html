@@ -30,6 +30,11 @@
             var calendarEl = document.getElementById('calendar');
             var todayDate = new Date().toISOString().split('T')[0];
 
+            // ✅ 페이지 로드 시 기본 날짜 설정
+            document.querySelectorAll('input[name="ftWriteDate"]').forEach(function (input) {
+                input.value = todayDate;
+            });
+
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
                 initialDate: todayDate,
@@ -60,6 +65,8 @@
                     document.querySelectorAll('input[name="ftWriteDate"]').forEach(function (input) {
                         input.value = selectedDate;
                     });
+
+                    fetchData(selectedDate);
                 },
                 events: function (fetchInfo, successCallback, failureCallback) {
                     $.ajax({
@@ -81,7 +88,26 @@
             });
 
             calendar.render();
+
+            fetchData(todayDate);
         });
+
+        function fetchData(selectedDate) {
+            $.ajax({
+                url: '/usr/myMealLog/sumDailyNutrition',
+                method: 'POST',
+                contentType: 'text/plain',
+                data: selectedDate,
+                success: function (response) {
+                    console.log("받은 데이터:", response);
+
+                },
+                error: function () {
+                    alert("데이터 요청 실패");
+                }
+            });
+        }
+
     </script>
 </head>
 <!---로그인 했을 때 + 사이드바---->
@@ -245,13 +271,7 @@
 
 <div class="footer"></div>
 </body>
-<script>
-    // 버튼 클릭 시 현재 날짜를 설정
-    document.querySelector('button').addEventListener('click', function () {
-        const currentDate = new Date().toISOString().split('T')[0];  // yyyy-MM-dd 형식
-        document.querySelector('input[name="ftWriteDate"]').value = currentDate;
-    });
-</script>
+
 <script>
     window.addEventListener("scroll", () => {
         const bwLeft = window.scrollX;

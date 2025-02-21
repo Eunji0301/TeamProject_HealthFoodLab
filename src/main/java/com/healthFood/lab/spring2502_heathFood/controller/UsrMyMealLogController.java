@@ -50,12 +50,22 @@ public class UsrMyMealLogController {
 
         DiagnosisResult dr =myMealLogService.getUserdefaultInfo(uIdx);
 
-
-
-        System.out.println(" myMealLog main"+uIdx);
-        System.out.println(" dr main"+dr);
-
         model.addAttribute("dr", dr);
+        return "usr/myMealLog/myMealLogMain";
+    }
+
+    @RequestMapping("/sumDailyNutrition")
+    @ResponseBody
+    public String sumDailyNutrition(@RequestBody String selectedDate, HttpSession session) {
+
+        //  세션에서 사용자 이메일을 가져와서 uIdx 조회
+        String uEmail = (String) session.getAttribute("LoginMemberEmail");
+        int uIdx = userService.getUserByuEmailToId(uEmail);
+
+//        System.out.println(" sumDailyNutrition main"+selectedDate);
+//        System.out.println(" sumDailyNutrition main"+uIdx);
+        myMealLogService.sumDailyNutrition(uIdx, selectedDate);
+
         return "usr/myMealLog/myMealLogMain";
     }
 
