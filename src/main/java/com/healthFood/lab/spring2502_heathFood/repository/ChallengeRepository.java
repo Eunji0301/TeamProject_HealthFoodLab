@@ -37,4 +37,3 @@ public interface ChallengeRepository {
     @Update("UPDATE CHALLENGE_INFO SET ciDelyn = 'Y', ciDelDate = NOW() WHERE ciIdx = #{ciIdx}")
     void deleteChallenge(int ciIdx);
 }
-

@@ -43,4 +43,3 @@ public class ChallengeService {
         challengeRepository.deleteChallenge(ciIdx);
     }
 }
-
