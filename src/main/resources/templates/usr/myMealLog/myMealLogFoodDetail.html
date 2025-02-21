@@ -145,6 +145,7 @@
           </div>
         </div>
         <form class="text-center" id="saveForm" action="/usr/myMealLog/saveMealLog" method="POST">
+          <input type="hidden" id="foodTrackerJsonInput" name="foodTrackerJson">
           <input type="hidden" name="ftMealTime" id="formMealDate" th:value="${foodTrackerJson.ftMealTime}">
           <input type="hidden" name="ftWriteDate" id="formMealTime" th:value="${foodTrackerJson.ftWriteDate}">
           <input type="hidden" name="ftFoodName" id="formFoodName" th:value="${foodDBResultJsonOneItem.FOOD_NM_KR}">
@@ -167,6 +168,9 @@
 
     <div class="footer"></div>
   </body>
+  <script>
+    document.getElementById("foodTrackerJsonInput").value = JSON.stringify(foodTrackerJson);
+  </script>
   <script>
 
     $(document).ready(function () {

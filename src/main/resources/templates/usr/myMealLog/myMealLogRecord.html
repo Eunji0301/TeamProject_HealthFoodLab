@@ -80,77 +80,33 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td class="text-center align-middle">
-                  <div class="tableCircle"></div>
-                </td>
-                <td>잡곡밥</td>
-                <td>1</td>
-                <td>100kg</td>
-                <td>100kcal</td>
-                <td class="onPadding"><button>삭제</button></td>
-              </tr>
-
-              <tr>
-                <td class="text-center align-middle">
-                  <div class="tableCircle"></div>
-                </td>
-                <td>잡곡밥</td>
-                <td>1</td>
-                <td>100kg</td>
-                <td>100kcal</td>
-                <td class="onPadding"><button>삭제</button></td>
-              </tr>
-              <tr>
-                <td class="text-center align-middle">
-                  <div class="tableCircle"></div>
-                </td>
-                <td>잡곡밥</td>
-                <td>1</td>
-                <td>100kg</td>
-                <td>100kcal</td>
-                <td class="onPadding"><button>삭제</button></td>
-              </tr>
-              <tr>
-                <td class="text-center align-middle">
-                  <div class="tableCircle"></div>
-                </td>
-                <td>잡곡밥</td>
-                <td>1</td>
-                <td>100kg</td>
-                <td>100kcal</td>
-                <td class="onPadding"><button>삭제</button></td>
-              </tr>
-
-              <tr>
-                <td class="text-center align-middle">
-                  <div class="tableCircle"></div>
-                </td>
-                <td>잡곡밥</td>
-                <td>1</td>
-                <td>100kg</td>
-                <td>100kcal</td>
-                <td class="onPadding"><button>삭제</button></td>
-              </tr>
-              <tr>
-                <td class="text-center align-middle">
-                  <div class="tableCircle"></div>
-                </td>
-                <td>잡곡밥</td>
-                <td>1</td>
-                <td>100kg</td>
-                <td>100kcal</td>
-                <td class="onPadding"><button>삭제</button></td>
-              </tr>
+            <tr th:each="food : ${foodTrackerList}">
+              <td class="text-center align-middle">
+                <div class="tableCircle"></div>
+              </td>
+              <td th:text="${food.ftFoodName}">음식 이름</td>
+              <td th:text="${food.ftFoodQuantity}">수량</td>
+              <td th:text="${food.ftFoodPortion}">분량</td>
+              <td th:text="${food.ftCalorie + 'kcal'}">칼로리</td>
+              <td class="onPadding">
+                <button>삭제</button>
+              </td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(foodTrackerList)}">
+              <td colspan="6" class="text-center">식사 기록이 없습니다.</td>
+            </tr>
             </tbody>
           </table>
         </div>
         <div class="text-end">
-          <div class="totalKcal">총칼로리 : 600kcal</div>
-        </div>
+          <div class="totalKcal">
+            총칼로리 :
+            <span th:text="${totalCalories != null ? totalCalories + ' kcal' : '0 kcal'}"></span>
+          </div>        </div>
         <div class="text-center mt-3">
-          <button class="revbutton5-FA9058 w-full py-3 text-base font-bold">
-            저장하기
+          <button type="button" onclick="location.href='/usr/myMealLog/main'"
+                  class="revbutton5-FA9058 w-full py-3 text-base font-bold">
+            메인 화면으로 이동
           </button>
         </div>
       </div>
@@ -163,6 +119,7 @@
     let jsonData = /*[[${foodTrackerJson}]]*/ '{}';
     let parsedData = JSON.parse(jsonData);
 
+    console.log(parsedData);
     document.addEventListener("DOMContentLoaded", function() {
       document.getElementById("mealTime").textContent = parsedData.ftMealTime;
     });

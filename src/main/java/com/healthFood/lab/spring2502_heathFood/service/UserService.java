@@ -150,4 +150,9 @@ public class UserService {
     public void changeUserResetToken(User user,String token) {
         userRepository.changeUserResetToken(user.getUIdx(),token);
     }
+
+    public int getUserByuEmailToId(String uEmail) {
+        int id = userRepository.getUserByuEmailToId(uEmail);
+        return id;
+    }
 }
