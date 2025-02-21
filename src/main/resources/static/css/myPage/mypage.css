@@ -176,12 +176,13 @@ body {
 
 .profile-sidebar {
     width: 250px;
-    height: 1195px;
+    height: 1070px;
     background: white;
     padding: 15px;
     border-radius: 10px;
     border: 2px solid #FFA07A;
     text-align: center;
+    margin-top: 40px;
 }
 
 .profile-sidebar img.profile-pic {

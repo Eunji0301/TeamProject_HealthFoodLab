@@ -34,28 +34,47 @@
   <div class="challenge-container">
     <div class="challenge-header">마이챌린지 인증글 수정</div>
     <div class="challenge-form">
-      <div class="text-line"></div>
-      <div class="form-row">
-        <label for="title">챌린지명</label>
-        <input type="text" id="title" />
-      </div>
-      <div class="text-line"></div>
-      <div class="form-row">
-        <label>첨부파일</label>
-        <div>챌린지222.png</div>
-      </div>
-      <div class="text-line"></div>
-      <div class="form-row">
-        <label2 for="content">내용</label2>
-      </div>
-      <div class="form-row">
-        <textarea id="content"></textarea>
-      </div>
-      <div class="form-row">
-        <a class="submit-btn" href="/usr/myChallenge/myChallengeDetail">
-          <button>수정</button>
-        </a>
-      </div>
+      <form id="challengeForm" action="/usr/myChallenge/myChallengeModifyAction" method="post" enctype="multipart/form-data">
+
+        <!-- ✅ 숨겨진 uccIdx (수정할 데이터의 ID) -->
+        <input type="hidden" id="uccIdx" name="uccIdx" th:value="${myChallenge.uccIdx}" />
+
+        <div class="text-line"></div>
+
+        <div class="form-row">
+          <label for="uccTitle">챌린지명</label>
+          <input type="text" id="uccTitle" name="uccTitle" th:value="${myChallenge.uccTitle}" required />
+        </div>
+
+        <div class="text-line"></div>
+
+        <div class="form-row">
+          <label for="file">첨부파일</label>
+          <input type="file" id="file" name="uploadFile" onchange="previewImage(event)" />
+        </div>
+
+        <!-- ✅ 기존 이미지 미리보기 -->
+        <div class="text-line"></div>
+        <div class="form-row">
+          <p>현재 이미지:</p>
+          <img th:if="${myChallenge.uccImage != null}" th:src="@{${myChallenge.uccImage}}" id="imagePreview" width="150" />
+          <p th:if="${myChallenge.uccImage == null}">등록된 이미지가 없습니다.</p>
+        </div>
+
+        <div class="text-line"></div>
+
+        <div class="form-row">
+          <label for="uccContents">내용</label>
+        </div>
+        <div class="form-row">
+          <textarea id="uccContents" name="uccContents" required th:text="${myChallenge.uccContents}"></textarea>
+        </div>
+
+        <div class="form-row">
+          <button type="submit" class="submit-btn">수정</button>
+        </div>
+
+      </form>
     </div>
   </div>
 </div>
@@ -63,6 +82,16 @@
 <div class="footer"></div>
 </body>
 <script>
+  function previewImage(event) {
+    const reader = new FileReader();
+    reader.onload = function() {
+      const imgElement = document.getElementById("imagePreview");
+      imgElement.src = reader.result;
+      imgElement.style.display = "block"; // 이미지 미리보기 보이게 함
+    };
+    reader.readAsDataURL(event.target.files[0]);
+  }
+
   window.addEventListener("scroll", () => {
     const bwLeft = window.scrollX;
     document.querySelector(

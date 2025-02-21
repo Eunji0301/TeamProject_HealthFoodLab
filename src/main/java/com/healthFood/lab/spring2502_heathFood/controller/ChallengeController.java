@@ -20,4 +20,14 @@ public class ChallengeController {
         return "usr/challenge/challengeWrite";
     }
 
+    @RequestMapping("/usr/challenge/challengeContents")
+    public String showChallengeContents() {
+        return "usr/challenge/challengeContents";
+    }
+
+    @RequestMapping("/usr/challenge/challengeDetail")
+    public String showChallengeDetail() {
+        return "usr/challenge/challengeDetail";
+    }
+
 }
