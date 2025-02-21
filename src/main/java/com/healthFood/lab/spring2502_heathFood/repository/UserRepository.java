@@ -30,9 +30,6 @@ public interface UserRepository {
     @Select("SELECT * FROM User WHERE uName=#{uName} and uEmail=#{uEmail} ")
     public User getUseFoundByPassword(String uName, String uEmail);
 
-
-
-
     @Update("UPDATE User SET uUpdateDate = NOW(), uResetToken = #{uResetToken} WHERE uIdx = #{uIdx}")
     public void tokenUpdate(String uResetToken,int uIdx);
 
@@ -47,6 +44,9 @@ public interface UserRepository {
 
     @Update("UPDATE User SET uUpdateDate = NOW(), uResetToken = #{uResetToken} WHERE uIdx = #{uIdx}")
     public void changeUserResetToken(int uIdx,String uResetToken);
+
+    @Select("SELECT CAST(uIdx AS SIGNED)  FROM User WHERE uEmail=#{uEmail}")
+    public int getUserByuEmailToId(String uEmail);
 }
 
 
