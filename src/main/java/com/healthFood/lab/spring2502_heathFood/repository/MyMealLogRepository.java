@@ -20,6 +20,8 @@ public interface MyMealLogRepository {
             "AND ftWriteDate = #{ftWriteDate} " +
             "AND ftMealTime LIKE CONCAT('%', #{ftMealTime}, '%')")
     public List<FoodTracker> getFoodTrackerList(int uIdx, String ftWriteDate,String ftMealTime );
+
+
 }
 
 

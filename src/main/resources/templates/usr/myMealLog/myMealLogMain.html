@@ -89,6 +89,7 @@
 <div th:replace="common/header :: header"></div>
 <div th:replace="common/sideBar :: sideBar"></div>
 
+
 <!--여기부터 개발 시작--->
 <div class="main meal-log-main px-20 py-3">
     <div class="content pb-5">
@@ -101,24 +102,24 @@
             <div class="bottom flex align-center justify-around text-base">
                 <div class="text-center">
                     <div class="mb-2">키</div>
-                    <div class="info">175CM</div>
+                    <div class="info" th:text="${dr.drTHeight+ ' CM'}">175CM</div>
                 </div>
                 <div class="text-center">
                     <div class="mb-2">체중</div>
-                    <div class="info">80KG</div>
+                    <div class="info" th:text="${dr.drTWeight+ ' KG'}">80KG</div>
                 </div>
                 <div class="text-center">
-                    <div class="mb-2">체지방량</div>
-                    <div class="info">25KG</div>
+                    <div class="mb-2">진단결과</div>
+                    <div class="info" th:text="${dr.drRiskEvaluation}">25KG</div>
                 </div>
                 <div class="text-center">
                     <div class="mb-2">의심질환</div>
-                    <div class="info">고혈압</div>
+                    <div class="info"  th:text="${dr.drTDisease}">고혈압</div>
                 </div>
-                <div class="text-center">
-                    <div class="mb-2">현재 상태</div>
-                    <div class="info">잘하고 있어요</div>
-                </div>
+<!--                <div class="text-center">-->
+<!--                    <div class="mb-2">현재 상태</div>-->
+<!--                    <div class="info">잘하고 있어요</div>-->
+<!--                </div>-->
             </div>
         </div>
         <div class="middle my-4 flex">
@@ -130,7 +131,7 @@
                             <div class="inner-circle">
                                 <span class="status danger">위험</span>
                                 <span class="current">371G</span>
-                                <span class="total">371G</span>
+                                <span class="total" th:text="${dr.drTotalCarb+ 'G'}">371G</span>
                             </div>
                         </div>
                         <div class="name carb">탄수화물</div>
@@ -140,7 +141,7 @@
                             <div class="inner-circle">
                                 <span class="status success">양호</span>
                                 <span class="current">16.3G</span>
-                                <span class="total">68G</span>
+                                <span class="total" th:text="${dr.drTotalProtein+ 'G'}">68G</span>
                             </div>
                         </div>
                         <div class="name protein">단백질</div>
@@ -150,7 +151,7 @@
                             <div class="inner-circle">
                                 <span class="status warning">주의</span>
                                 <span class="current">20.8G</span>
-                                <span class="total">57G</span>
+                                <span class="total" th:text="${dr.drTotalFat+ 'G'}">57G</span>
                             </div>
                         </div>
                         <div class="name fat">지방</div>
@@ -162,7 +163,7 @@
                             <div class="inner-circle">
                                 <span class="status warning">주의</span>
                                 <span class="current">50G</span>
-                                <span class="total">20G</span>
+                                <span class="total" th:text="${dr.drTotalSugar+ 'G'}">20G</span>
                             </div>
                         </div>
                         <div class="name sugar">당류</div>
@@ -172,7 +173,7 @@
                             <div class="inner-circle">
                                 <span class="status warning">주의</span>
                                 <span class="current">1500MG</span>
-                                <span class="total">2000MG</span>
+                                <span class="total" th:text="${dr.drTotalSodium+ 'MG'}">2000MG</span>
                             </div>
                         </div>
                         <div class="name sodium">나트륨</div>
@@ -182,7 +183,7 @@
                             <div class="inner-circle">
                                 <span class="status warning">주의</span>
                                 <span class="current">600Cal</span>
-                                <span class="total">1820Cal</span>
+                                <span class="total" th:text="${dr.drTotalCalorie+ 'Cal'}">1820Cal</span>
                             </div>
                         </div>
                         <div class="name calorie">총열량</div>

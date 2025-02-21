@@ -1,9 +1,11 @@
 package com.healthFood.lab.spring2502_heathFood.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.healthFood.lab.spring2502_heathFood.repository.DiagnosisResultRepository;
 import com.healthFood.lab.spring2502_heathFood.repository.EventDatesRepository;
 import com.healthFood.lab.spring2502_heathFood.repository.MyMealLogRepository;
 import com.healthFood.lab.spring2502_heathFood.repository.UserRepository;
+import com.healthFood.lab.spring2502_heathFood.vo.DiagnosisResult;
 import com.healthFood.lab.spring2502_heathFood.vo.FoodTracker;
 import com.healthFood.lab.spring2502_heathFood.vo.ResultData;
 import com.healthFood.lab.spring2502_heathFood.vo.User;
@@ -31,10 +33,14 @@ public class MyMealLogService {
     MyMealLogRepository myMealLogRepository;
     @Autowired
     EventDatesRepository eventDatesRepository;
+    @Autowired
+    DiagnosisResultRepository diagnosisResultRepository;
 
     // 생성자
-    public MyMealLogService(MyMealLogRepository myMealLogRepository) {
+    public MyMealLogService(MyMealLogRepository myMealLogRepository, EventDatesRepository eventDatesRepository, DiagnosisResultRepository diagnosisResultRepository) {
         this.myMealLogRepository = myMealLogRepository;
+        this.eventDatesRepository = eventDatesRepository;
+        this.diagnosisResultRepository = diagnosisResultRepository;
         // 이유는 생기는 시점 때문에 뒤에있는게 만들어지기전에 쓸려고해서 오류가 생김
     }
 
@@ -254,4 +260,7 @@ public class MyMealLogService {
     }
 
 
+    public DiagnosisResult getUserdefaultInfo(int uIdx) {
+        return diagnosisResultRepository.getUserdefaultInfo(uIdx);
+    }
 }
