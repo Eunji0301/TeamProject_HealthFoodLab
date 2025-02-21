@@ -263,4 +263,16 @@ public class MyMealLogService {
     public DiagnosisResult getUserdefaultInfo(int uIdx) {
         return diagnosisResultRepository.getUserdefaultInfo(uIdx);
     }
+
+    public void sumDailyNutrition(int uIdx, String selectedDate) {
+        // 기준 정보
+        DiagnosisResult dr = diagnosisResultRepository.getUserdefaultInfo(uIdx);
+
+        // 총합 정보
+        List<FoodTracker> ftLists = myMealLogRepository.getUserFoodTrackerList(uIdx, selectedDate);
+
+        //System.out.println("MyMealLogService dr" + dr);
+        //System.out.println("MyMealLogService ftLists" + ftLists);
+
+    }
 }
