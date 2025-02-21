@@ -28,6 +28,10 @@ public class MyChallengeService {
         return myChallengeRepository.getMyChallengeById(uccIdx);
     }
 
+    public List<MyChallengeVo> getMyChallengesByUser(int uIdx) {
+        return myChallengeRepository.getMyChallengesByUser(uIdx);
+    }
+
     // 챌린지 등록
     public void insertMyChallenge(MyChallengeVo myChallenge) {
         myChallengeRepository.insertMyChallenge(myChallenge);

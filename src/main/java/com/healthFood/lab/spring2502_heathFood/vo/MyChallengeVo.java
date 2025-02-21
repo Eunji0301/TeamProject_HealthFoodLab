@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class MyChallengeVo {
     private int uccIdx;
+    private int uIdx; // ✅ 유저 ID 추가
     private String uccTitle;
     private String uccContents;
     private String uccImage;

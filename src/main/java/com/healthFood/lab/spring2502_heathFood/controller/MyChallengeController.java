@@ -2,6 +2,8 @@ package com.healthFood.lab.spring2502_heathFood.controller;
 
 import com.healthFood.lab.spring2502_heathFood.service.MyChallengeService;
 import com.healthFood.lab.spring2502_heathFood.vo.MyChallengeVo;
+import com.healthFood.lab.spring2502_heathFood.vo.User;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,10 +26,18 @@ public class MyChallengeController {
 //    }
 
     @RequestMapping("/usr/myChallenge/myChallengeList")
-    public String showMyChallengeList(Model model) {
-        List<MyChallengeVo> myChallengeList = myChallengeService.getAllMyChallenges();
-        model.addAttribute("myChallengeList", myChallengeService.getAllMyChallenges());
-        return "usr/myChallenge/myChallengeList"; // 마이 챌린지 목록 뷰
+    public String showMyChallengeList(Model model, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+
+        if (user == null) {
+            return "redirect:/usr/user/login"; // 로그인 안 한 경우 로그인 페이지로 이동
+        }
+
+        int uIdx = user.getUIdx(); // 로그인한 사용자의 uIdx 가져오기
+        List<MyChallengeVo> myChallengeList = myChallengeService.getMyChallengesByUser(uIdx);
+
+        model.addAttribute("myChallengeList", myChallengeList);
+        return "usr/myChallenge/myChallengeList";
     }
 
 //    @RequestMapping("/usr/myChallenge/myChallengeWrite")
@@ -41,10 +51,17 @@ public class MyChallengeController {
     }
 
     @PostMapping("/usr/myChallenge/myChallengeWriteAction")
-    public String insertMyChallenge(@ModelAttribute MyChallengeVo myChallengeVo) {
-        MultipartFile file = myChallengeVo.getUploadFile();
+    public String insertMyChallenge(@ModelAttribute MyChallengeVo myChallengeVo, HttpSession session) {
+        User user = (User) session.getAttribute("user");
 
-        if (!file.isEmpty()) {
+        if (user == null) {
+            return "redirect:/usr/user/login"; // 로그인 안 한 경우 로그인 페이지로 이동
+        }
+
+        myChallengeVo.setUIdx(user.getUIdx()); // ✅ 로그인한 유저의 uIdx 저장
+
+        MultipartFile file = myChallengeVo.getUploadFile();
+        if (file != null && !file.isEmpty()) {
             String uploadDir = "C:/UploadImage/";
             String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
             File saveFile = new File(uploadDir + fileName);
@@ -58,11 +75,10 @@ public class MyChallengeController {
             }
         }
 
-        // DB 저장 (파일 경로 및 파일명 포함)
         myChallengeService.insertMyChallenge(myChallengeVo);
-
         return "redirect:/usr/myChallenge/myChallengeList";
     }
+
 
 //    @RequestMapping("/usr/myChallenge/myChallengeModify")
 //    public String showMyChallengeModify() {
@@ -87,43 +103,27 @@ public class MyChallengeController {
 
 
     @PostMapping("/usr/myChallenge/myChallengeModifyAction")
-    public String updateMyChallenge(@ModelAttribute MyChallengeVo myChallengeVo) {
-        MultipartFile file = myChallengeVo.getUploadFile();
-        // 기존 챌린지 데이터 가져오기
+    public String updateMyChallenge(@ModelAttribute MyChallengeVo myChallengeVo, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+
+        if (user == null) {
+            return "redirect:/usr/user/login"; // 로그인 안 한 경우 로그인 페이지로 이동
+        }
+
+        myChallengeVo.setUIdx(user.getUIdx()); // ✅ 로그인한 유저의 uIdx 설정
+
+        // 기존 챌린지 정보 가져오기
         MyChallengeVo existingMyChallenge = myChallengeService.getMyChallengeById(myChallengeVo.getUccIdx());
 
-        // 기존 데이터가 없으면 수정 불가, 목록으로 리다이렉트
-        if (existingMyChallenge == null) {
+        // 본인이 작성한 챌린지만 수정 가능
+        if (existingMyChallenge == null || existingMyChallenge.getUIdx() != user.getUIdx()) {
             return "redirect:/usr/myChallenge/myChallengeList";
         }
 
-        // 기존 데이터 업데이트
-        existingMyChallenge.setUccTitle(myChallengeVo.getUccTitle());  // 제목 수정
-        existingMyChallenge.setUccContents(myChallengeVo.getUccContents());  // 내용 수정
-        // existingMyChallenge.setCiDuration(challengeVo.getCiDuration());  // 기간 수정
-
-        // 파일이 업로드되었을 경우만 처리
-        if (file != null && !file.isEmpty()) {
-            String uploadDir = "C:/UploadImage/";
-            String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
-            File saveFile = new File(uploadDir + fileName);
-
-            try {
-                file.transferTo(saveFile);  // 파일 저장
-                System.out.println("파일 저장 위치 : " + saveFile.getAbsolutePath());
-                existingMyChallenge.setUccImage("/UploadImage/" + fileName);  // DB에 저장할 경로 설정
-                existingMyChallenge.setUccFilename(file.getOriginalFilename()); // 원본 파일명 저장
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        // DB 업데이트
-        myChallengeService.updateMyChallenge(existingMyChallenge);
-//        System.out.println("파일 경로: " + existingMyChallenge.getUccImage());
-
-        return "redirect:/usr/myChallenge/myChallengeList";  // 수정 후 목록으로 리다이렉트
+        myChallengeService.updateMyChallenge(myChallengeVo);
+        return "redirect:/usr/myChallenge/myChallengeList";
     }
+
 
     @RequestMapping("/usr/myChallenge/myChallengeDetail")
     public String showMyChallengeDetail() {

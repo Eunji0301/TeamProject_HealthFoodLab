@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class MyPage {
+public class MyPageController {
     @RequestMapping("/usr/myPage/mypage")
     public String showMypage() {
         return "usr/myPage/mypage";

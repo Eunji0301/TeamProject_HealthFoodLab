@@ -16,13 +16,17 @@ public interface MyChallengeRepository {
     @Select("SELECT * FROM USER_CHALLENGE_CERTIFICATION WHERE uccIdx = #{uccIdx} AND uccDelyn = 'N'")
     MyChallengeVo getMyChallengeById(int uccIdx);
 
+    @Select("SELECT * FROM USER_CHALLENGE_CERTIFICATION WHERE uIdx = #{uIdx} AND uccDelyn = 'N' ORDER BY uccWriteDay DESC")
+    List<MyChallengeVo> getMyChallengesByUser(int uIdx);
+
     // 등록
     @Insert("""
-        INSERT INTO USER_CHALLENGE_CERTIFICATION (uccTitle, uccContents, uccImage, uccFilename, uccWriteDay, uccModifyDate, uccCreateAt)
-        VALUES (#{uccTitle}, #{uccContents}, #{uccImage}, #{uccFilename}, NOW(), NOW(), NOW())
+        INSERT INTO USER_CHALLENGE_CERTIFICATION (uIdx, uccTitle, uccContents, uccImage, uccFilename, uccWriteDay, uccModifyDate, uccCreateAt)
+        VALUES (#{uIdx}, #{uccTitle}, #{uccContents}, #{uccImage}, #{uccFilename}, NOW(), NOW(), NOW())
     """)
     @Options(useGeneratedKeys = true, keyProperty = "uccIdx")
     void insertMyChallenge(MyChallengeVo myChallenge);
+
 
     // 수정
     @Update("""
@@ -38,9 +42,10 @@ public interface MyChallengeRepository {
                 WHEN #{uccFilename} IS NOT NULL AND #{uccFilename} != '' THEN #{uccFilename} 
                 ELSE uccFilename 
             END
-        WHERE uccIdx = #{uccIdx}
+        WHERE uccIdx = #{uccIdx} AND uIdx = #{uIdx}  -- ✅ 본인만 수정 가능
     """)
     void updateMyChallenge(MyChallengeVo myChallenge);
+
 
 
 
