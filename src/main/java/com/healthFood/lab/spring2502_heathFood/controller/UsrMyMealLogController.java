@@ -7,6 +7,7 @@ import com.healthFood.lab.spring2502_heathFood.service.FoodDBInfoService;
 import com.healthFood.lab.spring2502_heathFood.service.MyMealLogService;
 import com.healthFood.lab.spring2502_heathFood.service.UserService;
 import com.healthFood.lab.spring2502_heathFood.util.Ut;
+import com.healthFood.lab.spring2502_heathFood.vo.DiagnosisResult;
 import com.healthFood.lab.spring2502_heathFood.vo.FoodDBInfo;
 import com.healthFood.lab.spring2502_heathFood.vo.FoodTracker;
 
@@ -41,12 +42,25 @@ public class UsrMyMealLogController {
     FoodDBInfo foodDBInfo;
 
     @RequestMapping("/main")
-    public String  main(){
-        return "/usr/myMealLog/myMealLogMain";
+    public String main(HttpSession session, Model model) {
+
+        //  세션에서 사용자 이메일을 가져와서 uIdx 조회
+        String uEmail = (String) session.getAttribute("LoginMemberEmail");
+        int uIdx = userService.getUserByuEmailToId(uEmail);
+
+        DiagnosisResult dr =myMealLogService.getUserdefaultInfo(uIdx);
+
+
+
+        System.out.println(" myMealLog main"+uIdx);
+        System.out.println(" dr main"+dr);
+
+        model.addAttribute("dr", dr);
+        return "usr/myMealLog/myMealLogMain";
     }
 
     @PostMapping("/goRecord")
-    public String goRecord (HttpSession session, String ftMealTime, String ftWriteDate, Model model)throws IOException {
+    public String goRecord(HttpSession session, String ftMealTime, String ftWriteDate, Model model) throws IOException {
 
 
         //  세션에서 사용자 이메일을 가져와서 uIdx 조회
@@ -58,7 +72,7 @@ public class UsrMyMealLogController {
         ft.setFtWriteDate(ftWriteDate);
 
 
-        List<FoodTracker> foodTrackerList = myMealLogService.getFoodTrackerById(uIdx,ftWriteDate,ftMealTime);
+        List<FoodTracker> foodTrackerList = myMealLogService.getFoodTrackerById(uIdx, ftWriteDate, ftMealTime);
         int totalCalories = foodTrackerList.stream()
                 .filter(food -> food.getFtCalorie() != null)  // null 방지
                 .mapToInt(food -> Integer.parseInt(food.getFtCalorie())) // String → int 변환
@@ -73,16 +87,22 @@ public class UsrMyMealLogController {
         return "usr/myMealLog/myMealLogRecord";
     }
 
-    @PostMapping ("/showfoodMealLogRecordList")
+    @PostMapping("/showfoodMealLogRecordList")
     @ResponseBody
     public Map<String, Object> showfoodMealLogRecordList(@RequestBody Map<String, Object> requestData) {
-        Map<String, Object>  foodDetailCalc =  myMealLogService.showfoodMealLogRecordList(requestData);
+        Map<String, Object> foodDetailCalc = myMealLogService.showfoodMealLogRecordList(requestData);
         return foodDetailCalc;
     }
 
+    @PostMapping("/myMealLogDelect")
+    public void myMealLogDelect(@RequestBody String ftIdx) {
+        int ftIdxInt = Integer.parseInt(ftIdx.trim());
+        System.out.println(ftIdxInt);
+
+    }
 
     @RequestMapping("/record")
-    public String record(){
+    public String record() {
         return "usr/myMealLog/myMealLogRecord";
     }
 
@@ -92,8 +112,8 @@ public class UsrMyMealLogController {
                                    Model model,
                                    @RequestParam(defaultValue = "1") int pageNo) throws IOException {
 
-         int numOfRows = 10;
-         String type = "json";
+        int numOfRows = 10;
+        String type = "json";
 
         FoodDBInfo foodDBInfo = new FoodDBInfo();
         foodDBInfo.setPageNo(pageNo);
@@ -137,12 +157,12 @@ public class UsrMyMealLogController {
     }
 
     @RequestMapping("/foodDictionary")
-    public String foodDictionary (){
+    public String foodDictionary() {
         return "usr/myMealLog/myMealLogFoodDictionary";
     }
 
     @RequestMapping("/goFoodDetail")
-    public String goFoodDetail (String foodDBResultJsonOneItem, String foodTrackerJson,  Model model){
+    public String goFoodDetail(String foodDBResultJsonOneItem, String foodTrackerJson, Model model) {
 
         //System.out.println("foodDBResultJsonOneItem" +foodDBResultJsonOneItem);
         ObjectMapper objectMapper = new ObjectMapper();
@@ -158,26 +178,26 @@ public class UsrMyMealLogController {
 
         }
 
-        System.out.println("goFoodDetail foodTrackerJson" +foodTrackerJson);
+        System.out.println("goFoodDetail foodTrackerJson" + foodTrackerJson);
         model.addAttribute("foodTrackerJson", foodTrackerJson2);
         model.addAttribute("foodDBResultJsonOneItem", foodDBResultJsonOneItem2);
         return "usr/myMealLog/myMealLogFoodDetail";
     }
 
     @RequestMapping("/foodDetail")
-    public String foodDetail(){
+    public String foodDetail() {
         return "usr/myMealLog/myMealLogFoodDetail";
     }
 
 
-    @PostMapping ("/foodDetailCalculate")
+    @PostMapping("/foodDetailCalculate")
     @ResponseBody
     public Map<String, Object> foodDetailCalculate(@RequestBody Map<String, Object> requestData) {
-        Map<String, Object>  foodDetailCalc =  myMealLogService.foodDetailCalculate(requestData);
+        Map<String, Object> foodDetailCalc = myMealLogService.foodDetailCalculate(requestData);
         return foodDetailCalc;
     }
 
-    @PostMapping ("/saveMealLog")
+    @PostMapping("/saveMealLog")
     public String saveMealLog(HttpSession session, String foodTrackerJson,
                               @RequestParam String ftMealTime,
                               @RequestParam String ftWriteDate,
@@ -210,13 +230,13 @@ public class UsrMyMealLogController {
         //  식사 기록 저장
         myMealLogService.savefoodTracker(ftMealTime, ftWriteDate, ftFoodName, ftFoodQuantity, ftFoodPortion,
                 ftCalorie, ftCarb, ftProtein, ftFat, ftSugar, ftSodium, uIdx);
-    // 식사 기록 동기화
+        // 식사 기록 동기화
 
         // 출력
         System.out.println(ftWriteDate);
 
         // 저장된 식사 기록 불러오기
-        List<FoodTracker> foodTrackerList = myMealLogService.getFoodTrackerById(uIdx,ftWriteDate,ftMealTime);
+        List<FoodTracker> foodTrackerList = myMealLogService.getFoodTrackerById(uIdx, ftWriteDate, ftMealTime);
 
         // `foodTrackerJson2`를 JSON 문자열로 변환
         String foodTrackerJsonString = objectMapper.writeValueAsString(foodTrackerJson2);
