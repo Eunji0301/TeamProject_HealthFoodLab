@@ -169,6 +169,7 @@
     <div class="footer"></div>
   </body>
   <script>
+<<<<<<< Updated upstream
     document.getElementById("foodTrackerJsonInput").value = JSON.stringify(foodTrackerJson);
   </script>
   <script>
@@ -177,6 +178,11 @@
       function fetchFoodDetails() {
         let selectedValue = $("#optionSelect").val(); // 현재 선택된 값 가져오기
 
+=======
+    $(document).ready(function(){
+      $("#optionSelect").on("change", function(){
+        let selectedValue = $(this).val();
+>>>>>>> Stashed changes
         $.ajax({
           url: "/usr/myMealLog/foodDetailCalculate",
 
