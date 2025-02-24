@@ -116,13 +116,8 @@ public class UsrUserController {
 //            return Ut.f("이미 사용중인 닉네임(%s) 입니다.", uNickName);
 //        }
 
-        // 회원가입 성공 후 자동 로그인
-        User user = userService.getUserById((int) doJoinRd.getData());
-        session.setAttribute("LoginMemberNickName", user.getUNickName());
-        session.setAttribute("LoginMemberEmail", user.getUEmail());
 
 
-        // 기본적으로 마이페이지로 이동              
         return Ut.jsReplace(doJoinRd.getResultCode(), doJoinRd.getMsg(), "/usr/user/login");
     }
 

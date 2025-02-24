@@ -39,31 +39,39 @@
 #default > .main.meal-log,
 #default > .main.food-dictionary,
 #default > .main.food-detail,
-#default > .main.meal-log-main { background-color: white !important; } 
+#default > .main.meal-log-main { background-color: white !important; }
 
 /***********************************/
 /*커스텀*/
 /*user*/
-.user > .top > .left { background-color: #fbb56f; width: 60%; border-radius: 0 96px 96px 0; overflow: hidden; } 
-.user > .top > .left > .text-right > img { width: 600px; height: 400px; object-fit: contain; } 
-.user > .top > .left > .text-left > img { width: 720px; height: 300px; object-fit: contain; } 
-.user > .top > .right > .content { border: none; width: 600px; height: 650px; border-radius: 96px; } 
-.user > .top { /* background-color: red; 임시*/
- height: 900px; } 
+/*main*/
+#default > .main.user{
+ background-color: #ffdcc2;
+ height: 100%;
+ margin: 66px auto 0;
+ white-space: nowrap;
+ width: 100% !important;
+ min-width: 1800px;
+ flex-grow: 1;
+}
+.user > .top > .left { background-color: #fbb56f; width: 60%; border-radius: 0 96px 96px 0; overflow: hidden; }
+.user > .top > .left > .text-right > img { width: 600px; height: 400px; object-fit: contain; }
+.user > .top > .left > .text-left > img { width: 720px; height: 300px; object-fit: contain; }
+.user > .top > .right > .content { border: none; width: 600px; border-radius: 96px; }
 .user > .top > .right > .content input[type="radio"],
 .user > .top > .right > .content input[type="checkbox"] { appearance: none; /* 기본 스타일 제거 */
  -webkit-appearance: none; /* 웹킷 브라우저용 */
  width: 50px; height: 50px; border: 5px solid #fa9058; /* 외부 테두리 */
  border-radius: 50%; /* 원형 버튼 */
  position: relative; cursor: pointer; /* 클릭 가능한 포인터 */
- outline: none; } 
+ outline: none; }
 .user > .top > .right > .content input[type="radio"]:checked,
-.user > .top > .right > .content input[type="checkbox"]:checked { border-color: #fa9058; /* 선택된 상태의 외부 테두리 */ } 
+.user > .top > .right > .content input[type="checkbox"]:checked { border-color: #fa9058; /* 선택된 상태의 외부 테두리 */ }
 .user > .top > .right > .content input[type="radio"]:checked::after,
 .user > .top > .right > .content input[type="checkbox"]:checked::after { content: ""; /* 내부 원 추가 */
  display: block; width: 30px; height: 30px; background-color: #fa9058; /* 내부 원 색상 */
- border-radius: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); /* 가운데 정렬 */ } 
-.user > .top > .right.line > .content { border: 3px solid #fa9058; width: 600px; height: 650px; border-radius: 96px; } 
+ border-radius: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); /* 가운데 정렬 */ }
+.user > .top > .right.line > .content { border: 3px solid #fa9058; width: 600px; height: 650px; border-radius: 96px; }
 /********************************/
 
 .login,
@@ -93,7 +101,7 @@
 .login > .bottom > .right > .suggest > img { width: 360px; height: 221px; } 
 .login > .bottom > .right > .suggest > .content { background-color: #ffdcc2; font-weight: bold; text-align: center; font-size: 25px; } 
 /********************************/
-.join > .top > .left { height: 1100px; } 
+
 
 /********************************/
 .search > .top > .right > .fence > .content { border: 3px solid #fa9058; width: 600px; height: 650px; border-radius: 96px; } 
