@@ -266,13 +266,6 @@ textarea {
     margin-bottom: 10px;
 }
 
-.mychallenge-section {
-    width: 90%;
-    max-width: 1200px;
-    margin: 20px auto;
-    text-align: center;
-}
-
 .mychallenge-title {
     font-size: 20px;
     font-weight: bold;
@@ -289,29 +282,89 @@ textarea {
     padding-bottom: 50px; /* 푸터와 겹치지 않도록 여백 추가 */
 }
 
-.mychallenge-box {
-    position: relative;
+.mychallenge-section {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.mychallenge-box-wrapper {
+    display: flex;
+    gap: 20px;
     width: 100%;
+    height: 300px;
+    justify-content: center;
+}
+
+/* 인증글 박스 */
+.mychallenge-box {
+    width: 100%;
+    position: relative;
     border-radius: 10px;
     overflow: hidden;
+    text-align: center;
     background-color: #fff;
 }
 
-/* 📌 이미지 설정 */
 .mychallenge-box img {
     width: 100%;
-    height: auto;
-    display: block;
+    object-fit: cover;
     border-radius: 10px;
 }
 
+/* 인증글 제목 */
 .mychallenge-label {
-    position: absolute;
     bottom: 0;
-    width: 100%;
     background-color: rgba(250, 144, 88, 0.9);
     color: white;
-    font-size: 16px;
-    padding: 10px;
+    font-size: 20px;
     text-align: center;
+    font-weight: bold;
 }
+.carousel-container {
+    position: relative;
+    margin: auto;
+    overflow: hidden;
+}
+
+.carousel-wrapper {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+}
+
+.carousel-slide {
+    flex: 0 0 50%; /* 2개씩 보이게 설정 */
+    text-align: center;
+    padding: 5px;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 50%;
+    z-index: 10; /* 버튼이 항상 보이도록 설정 */
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+.empty-slide {
+    flex: 0 0 50%;
+    padding: 10px;
+}
+
+

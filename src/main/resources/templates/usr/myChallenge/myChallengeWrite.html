@@ -34,28 +34,34 @@
   <div class="challenge-container">
     <div class="challenge-header">마이챌린지 인증글 작성</div>
     <div class="challenge-form">
-      <div class="text-line"></div>
-      <div class="form-row">
-        <label for="title">챌린지명</label>
-        <input type="text" id="title" />
-      </div>
-      <div class="text-line"></div>
-      <div class="form-row">
-        <label>첨부파일</label>
-        <div>챌린지.png</div>
-      </div>
-      <div class="text-line"></div>
-      <div class="form-row">
-        <label2 for="content">내용</label2>
-      </div>
-      <div class="form-row">
-        <textarea id="content"></textarea>
-      </div>
-      <div class="form-row">
-        <a class="submit-btn" href="/usr/myChallenge/myChallengeList">
-        <button>등록</button>
-        </a>
-      </div>
+      <form action="/usr/myChallenge/myChallengeWriteAction" method="POST" enctype="multipart/form-data">
+
+        <div class="text-line"></div>
+
+        <div class="form-row">
+          <label for="title">제목</label>
+          <input type="text" id="title" name="uccTitle"/>  <!-- ✅ 수정 -->
+        </div>
+
+        <div class="text-line"></div>
+
+        <div class="form-row">
+          <label>첨부파일</label>
+          <input type="file" id="uploadFile" name="uploadFile"/>
+        </div>
+
+        <div class="text-line"></div>
+
+        <div class="form-row">
+          <label2 for="contents">내용</label2>
+        </div>
+        <div class="form-row">
+          <textarea id="contents" name="uccContents" required></textarea>  <!-- ✅ 수정 -->
+        </div>
+        <div class="form-row">
+          <button type="submit" class="submit-btn">등록</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
@@ -68,6 +74,13 @@
     document.querySelector(
             ".header-in"
     ).style.transform = `translateX(-${bwLeft}px)`;
+  });
+
+  document.getElementById("uploadFile").addEventListener("myChange", function () {
+    const fileInput = this;
+    if (fileInput.files.length > 0) {
+      document.getElementById("mcnFilename").value = fileInput.files[0].name;
+    }
   });
 </script>
 </html>

@@ -142,7 +142,7 @@
       <!--        <div class="challenge-label">물 2L 마시기</div>-->
       <!--      </div>-->
       <div th:each="challenge : ${challengeList}" class="challenge-box">
-        <a th:href="@{/adm/challenge/challengeContents/{ciIdx}(ciIdx=${challenge.ciIdx})}">
+        <a th:href="@{/usr/challenge/challengeContents/{ciIdx}(ciIdx=${challenge.ciIdx})}">
           <img th:src="${challenge.ciImage}" alt="챌린지 이미지"/>
         </a>
         <div class="challenge-label" th:text="${challenge.ciTitle}">챌린지 제목</div>
