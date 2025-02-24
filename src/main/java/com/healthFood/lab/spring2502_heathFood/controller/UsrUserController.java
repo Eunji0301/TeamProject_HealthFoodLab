@@ -62,7 +62,9 @@ public class UsrUserController {
                              String uPhone, String uBirth, String uNickName,
                              String uGender, String uTOSAgree, String uPIPAgree){
         boolean isLogined =false;
-        if(session.getAttribute("LoginMemberId")!=null){
+
+        if(session.getAttribute("LoginMemberEmail")!=null){
+
             isLogined = true;
         }
         if(isLogined){
@@ -120,7 +122,7 @@ public class UsrUserController {
         session.setAttribute("LoginMemberEmail", user.getUEmail());
 
 
-        // 기본적으로 마이페이지로 이동
+        // 기본적으로 마이페이지로 이동              
         return Ut.jsReplace(doJoinRd.getResultCode(), doJoinRd.getMsg(), "/usr/user/login");
     }
 
@@ -136,7 +138,9 @@ public class UsrUserController {
     public String doLogin(HttpSession session, String uEmail, String uPwd){
         // 로그인 정보 세션이 저장
         boolean isLogined =false;
-        if(session.getAttribute("LoginMemberId")!=null){
+
+        if(session.getAttribute("LoginMemberEmail")!=null){
+
             isLogined = true;
         }
         if(isLogined){
@@ -176,17 +180,18 @@ public class UsrUserController {
 
     @RequestMapping ("/user/doLogout")
     @ResponseBody
-    public ResultData<User> doLogout(HttpSession session){
+    public String doLogout(HttpSession session){
         // 로그인 정보 세션이 저장
         boolean isLogined =false;
-        if(session.getAttribute("user")!=null){
+        if(session.getAttribute("LoginMemberEmail")!=null){
             isLogined = true;
         }
         if(!isLogined){
-            return ResultData.from("F-A","이미 로그아웃 함");
+            return Ut.historyBack("F-A","이미 로그아웃 함");
         }
-        session.removeAttribute("loginUserEmail");
-        return ResultData.from("S-1",Ut.f("로그아웃 성공"));
+        session.removeAttribute("LoginMemberEmail");
+        session.removeAttribute("LoginMemberNickName");
+        return Ut.jsReplace("S-1",Ut.f("로그아웃 성공"),"/usr/user/login");
     }
 
     @RequestMapping("/user/foundEmail")

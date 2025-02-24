@@ -160,3 +160,30 @@ VALUES
     ('메타버스, 새로운 기회의 장', 'metaverse.jpeg', '정소영', '010-4567-8901', '/images/metaverse.jpeg', NOW(), 'N', NULL, NOW(), NOW()),
     ('로봇이 인간을 대체할까?', 'robot_human.jpeg', '최수민', '010-5678-9012', '/images/robot_human.jpeg', NOW(), 'N', NULL, NOW(), NOW()),
     ('친환경 에너지가 대세!', 'eco_energy.jpeg', '한지우', '010-6789-0123', '/images/eco_energy.jpeg', NOW(), 'N', NULL, NOW(), NOW());
+
+CREATE TABLE CHALLENGE_INFO (
+                                ciIdx         INT AUTO_INCREMENT PRIMARY KEY,
+                                ciTitle       TEXT NOT NULL,
+                                ciContents    TEXT NOT NULL,
+                                ciImage       VARCHAR(255) NOT NULL,
+                                ciFilename    VARCHAR(255) NOT NULL,
+                                ciDuration    ENUM('7일', '14일', '30일') NOT NULL,
+                                ciWriteDay    DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+                                ciDelyn       CHAR(1) DEFAULT 'N' NOT NULL,
+                                ciDelDate     DATETIME NULL,
+                                ciModifyDate  DATETIME NOT NULL,
+                                ciCreateAt    DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
+INSERT INTO CHALLENGE_INFO (ciTitle, ciContents, ciImage, ciFilename, ciDuration, ciWriteDay, ciModifyDate, ciCreateAt)
+VALUES
+    ('7일 다이어트 챌린지', '건강한 식습관을 위한 7일 다이어트 챌린지. 매일 아침과 저녁에 균형 잡힌 식단을 실천합니다.', '/images/diet_challenge_1.jpg', 'diet_challenge_1.jpg', '7일', NOW(), NOW(), NOW()),
+    ('14일 저탄수화물 챌린지', '14일간 저탄수화물 식단을 실천하여 체중 감량과 에너지 증진을 목표로 합니다.', '/images/diet_challenge_2.jpg', 'diet_challenge_2.jpg', '14일', NOW(), NOW(), NOW()),
+    ('30일 채식 챌린지', '30일 동안 육류를 제외한 식사를 통해 채식주의자로의 도전을 시작합니다.', '/images/diet_challenge_3.jpg', 'diet_challenge_3.jpg', '30일', NOW(), NOW(), NOW()),
+    ('7일 아침식사 챌린지', '7일 동안 매일 아침을 꼭 챙겨 먹고 건강한 아침을 만들어봅니다.', '/images/diet_challenge_4.jpg', 'diet_challenge_4.jpg', '7일', NOW(), NOW(), NOW()),
+    ('14일 물 마시기 챌린지', '14일 동안 하루에 2L 이상의 물을 마시며 체내 수분 섭취를 관리합니다.', '/images/diet_challenge_5.jpg', 'diet_challenge_5.jpg', '14일', NOW(), NOW(), NOW()),
+    ('30일 저칼로리 식단 챌린지', '30일 동안 저칼로리 식단을 실천하여 건강한 체중을 유지합니다.', '/images/diet_challenge_6.jpg', 'diet_challenge_6.jpg', '30일', NOW(), NOW(), NOW()),
+    ('7일 과일 & 채소 챌린지', '7일 동안 매 끼니마다 다양한 과일과 채소를 포함한 식사를 합니다.', '/images/diet_challenge_7.jpg', 'diet_challenge_7.jpg', '7일', NOW(), NOW(), NOW()),
+    ('14일 간헐적 단식 챌린지', '14일 동안 간헐적 단식(16:8) 방식으로 체중 감량에 도전합니다.', '/images/diet_challenge_8.jpg', 'diet_challenge_8.jpg', '14일', NOW(), NOW(), NOW()),
+    ('30일 슈퍼푸드 챌린지', '30일 동안 슈퍼푸드를 활용한 건강한 식단을 실천하며 면역력을 강화합니다.', '/images/diet_challenge_9.jpg', 'diet_challenge_9.jpg', '30일', NOW(), NOW(), NOW()),
+    ('7일 심플 다이어트 챌린지', '7일 동안 간단하고 건강한 식사로 체중을 조절하고 기분을 업그레이드합니다.', '/images/diet_challenge_10.jpg', 'diet_challenge_10.jpg', '7일', NOW(), NOW(), NOW());

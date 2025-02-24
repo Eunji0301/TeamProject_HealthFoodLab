@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="/css/myChallenge/myChallengeList.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 </head>
 <!---로그인 했을 때 + 사이드바---->
 <body id="default" oncontextmenu="return false">
@@ -37,34 +38,38 @@
             <div class="text-line"></div>
             <div class="form-row">
                 <label for="title">챌린지명</label>
-                <a type="text" id="title" >배달음식 없는 하루 챌린지</a>
+                <a type="text" id="title">배달음식 없는 하루 챌린지</a>
             </div>
             <div class="text-line"></div>
 
             <div class="mychallenge-section">
-            <div class="mychallenge-box">
-                <a href="/usr/myChallenge/myChallengeContents">
-                <img src="https://cdn.newswin.co.kr/news/photo/202207/311064_313267_4613.jpg" alt="챌린지">
-                </a>
+                <div class="mychallenge-box">
+                    <a href="/usr/myChallenge/myChallengeContents">
+                        <img src="https://cdn.newswin.co.kr/news/photo/202207/311064_313267_4613.jpg" alt="챌린지">
+                    </a>
+                </div>
             </div>
-            </div>
+
             <div class="text-line"></div>
             <div class="form-row">
                 <label2 for="content">내용</label2>
             </div>
-            <div class="mychallenge-section">
-                <div class="mychallenge-container">
-                    <div class="mychallenge-box">
-                        <img src="https://burnfit.io/wp-content/uploads/2024/01/lose-weight-diet-plan-1024x683.jpeg" alt="식단일기적기">
-                        <div class="mychallenge-label">1일차 식단 챙기기~</div>
+
+            <!-- 인증글 목록을 슬라이드로 표시 -->
+            <div class="challenge-container">
+                <div class="carousel-container">
+                    <button class="carousel-button prev" onclick="moveSlide(-1)">&lt;</button>
+                    <div class="carousel-wrapper" id="carousel">
+                        <th:block th:each="myChallenge : ${myChallengeList}">
+                            <div class="carousel-slide">
+                                <img th:src="@{${myChallenge.uccImage}}" alt="인증 이미지">
+                                <div class="mychallenge-label" th:text="${myChallenge.uccTitle}"></div>
+                            </div>
+                        </th:block>
                     </div>
-                    <div class="mychallenge-box">
-                        <img src="https://health.chosun.com/site/data/img_dir/2021/03/04/2021030402822_0.jpg" alt="물 2L 마시기">
-                        <div class="mychallenge-label">2일차 물 2L 마시기~</div>
-                    </div>
+                    <button class="carousel-button next" onclick="moveSlide(1)">&gt;</button>
                 </div>
             </div>
-            <div class="text-line"></div>
         </div>
     </div>
 </div>
@@ -72,6 +77,31 @@
 <div class="footer"></div>
 </body>
 <script>
+    let index = 0;
+    const slides = document.querySelectorAll(".carousel-slide");
+    const wrapper = document.getElementById("carousel");
+
+    function moveSlide(step) {
+        const totalSlides = slides.length;
+        const maxIndex = Math.ceil(totalSlides / 2) - 1;
+
+        index += step;
+        if (index < 0) index = 0;
+        if (index > maxIndex) index = maxIndex;
+
+        wrapper.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    // 빈칸 추가 (만약 이미지가 2개씩 안 맞을 경우)
+    document.addEventListener("DOMContentLoaded", function () {
+        const slideCount = slides.length;
+        if (slideCount % 2 !== 0) {
+            const emptySlide = document.createElement("div");
+            emptySlide.classList.add("carousel-slide", "empty-slide");
+            wrapper.appendChild(emptySlide);
+        }
+    });
+
     window.addEventListener("scroll", () => {
         const bwLeft = window.scrollX;
         document.querySelector(

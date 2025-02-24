@@ -259,3 +259,20 @@ body {
     }
 }
 
+.form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.submit-btn {
+    width: 5%;
+    padding: 10px;
+    border: none;
+    background-color: #fa9058;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-left: auto;
+}
