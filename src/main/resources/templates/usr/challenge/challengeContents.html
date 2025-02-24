@@ -157,18 +157,18 @@
     </div>
     <div class="footer"></div>
     <div class="text-line"></div>
-    <div class="form-row">
+    <div class="form-row" style="display: flex; justify-content: flex-end; gap: 10px;">
         <button class="submit-btn" onclick="location.href='/adm/challenge/challengeList'">목록</button>
         <button class="submit-btn"
-                th:onclick="|location.href='@{/adm/challenge/challengeModify/{ciIdx}(ciIdx=${challenge.ciIdx})}'|">
-            수정
+                th:onclick="|location.href='@{/usr/myChallenge/myChallengeWrite/{ciIdx}(ciIdx=${challenge.ciIdx})}'|">
+            작성
         </button>
-        <form action="#" th:action="@{/adm/challenge/challengeDelete/{ciIdx}(ciIdx=${challenge.ciIdx})}" method="post"
-              onsubmit="return confirm('정말로 삭제하시겠습니까?');">
-            <button type="submit" class="submit-btn">
-                삭제
-            </button>
-        </form>
+        <!--        <form action="#" th:action="@{/adm/challenge/challengeDelete/{ciIdx}(ciIdx=${challenge.ciIdx})}" method="post"-->
+        <!--              onsubmit="return confirm('정말로 삭제하시겠습니까?');">-->
+        <!--            <button type="submit" class="submit-btn">-->
+        <!--                삭제-->
+        <!--            </button>-->
+        <!--        </form>-->
     </div>
 </div>
 </body>

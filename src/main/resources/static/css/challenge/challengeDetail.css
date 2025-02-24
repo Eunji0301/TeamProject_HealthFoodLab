@@ -16,6 +16,7 @@ body {
     border-bottom: 2px solid #fa9058;
     z-index: 999;
 }
+
 #default > .header > .header-in {
     width: 100%;
     max-width: 1420px;
@@ -84,6 +85,7 @@ body {
     transition: left 0.3s;
     z-index: 999;
 }
+
 #default > .side-bar:hover {
     left: 0;
 }
@@ -138,7 +140,7 @@ body {
     padding-top: 80px; /* 헤더 높이 확보 */
     padding-bottom: 80px; /* 푸터 높이 확보 */
     white-space: nowrap;
-    width: 1600px;
+    width: 1200px;
     flex-grow: 1;
     z-index: 1; /* 헤더보다 아래 */
     position: relative;
@@ -212,8 +214,14 @@ body {
     border-radius: 5px;
 }
 
-.form-row a,
+.form-row input,
 .form-row textarea {
+    flex-grow: 1;
+    padding: 8px;
+    border: 3px solid #fa9058;
+}
+
+.form-row h2 {
     flex-grow: 1;
     padding: 8px;
     border: 3px solid #fa9058;
@@ -222,7 +230,7 @@ body {
 
 textarea {
     resize: none;
-    height: 100px;
+    height: 500px;
 }
 
 .period-options {
@@ -235,13 +243,8 @@ textarea {
     font-weight: bold;
     padding: 10px 20px;
     background-color: #FFDCC2;
-    cursor: pointer;
+    cursor: inherit;
     width: 100px;
-}
-
-.period-options button:hover {
-    background-color: #fa9058;
-    color: white;
 }
 
 .period-options button.active {
@@ -249,122 +252,26 @@ textarea {
     color: white;
 }
 
-.submit-btn {
-    width: 5%;
-    padding: 10px;
+.write-btn, .submit-btn {
+    width: 100px;
+    padding: 10px 20px;
+    font-size: 16px;
     border: none;
-    background-color: #fa9058;
-    color: white;
     border-radius: 5px;
     cursor: pointer;
-    font-weight: bold;
-    margin-left: auto;
+}
+
+.write-btn {
+    background-color: #fa9058;
+    color: white;
+}
+
+.submit-btn {
+    background-color: #fa9058;
+    color: white;
 }
 
 .text-line {
     border-bottom: solid 3px #fa9058;
     margin-bottom: 10px;
 }
-
-.mychallenge-title {
-    font-size: 20px;
-    font-weight: bold;
-    background-color: #ffdcc2;
-    padding: 10px;
-    margin-bottom: 15px;
-}
-
-.mychallenge-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    justify-content: center;
-    padding-bottom: 50px; /* 푸터와 겹치지 않도록 여백 추가 */
-}
-
-.mychallenge-section {
-    width: 90%;
-    max-width: 1200px;
-    margin: 20px auto;
-    text-align: center;
-}
-
-.mychallenge-box-wrapper {
-    display: flex;
-    gap: 20px;
-    width: 100%;
-    height: 300px;
-    justify-content: center;
-}
-
-/* 인증글 박스 */
-.mychallenge-box {
-    width: 100%;
-    position: relative;
-    border-radius: 10px;
-    overflow: hidden;
-    text-align: center;
-    background-color: #fff;
-}
-
-.mychallenge-box img {
-    width: 100%;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-/* 인증글 제목 */
-.mychallenge-label {
-    bottom: 0;
-    background-color: rgba(250, 144, 88, 0.9);
-    color: white;
-    font-size: 20px;
-    text-align: center;
-    font-weight: bold;
-}
-.carousel-container {
-    position: relative;
-    margin: auto;
-    overflow: hidden;
-}
-
-.carousel-wrapper {
-    display: flex;
-    transition: transform 0.3s ease-in-out;
-}
-
-.carousel-slide {
-    flex: 0 0 50%; /* 2개씩 보이게 설정 */
-    text-align: center;
-    padding: 5px;
-}
-
-.carousel-slide img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.carousel-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    font-size: 18px;
-    border-radius: 50%;
-    z-index: 10; /* 버튼이 항상 보이도록 설정 */
-}
-
-.prev { left: 10px; }
-.next { right: 10px; }
-
-.empty-slide {
-    flex: 0 0 50%;
-    padding: 10px;
-}
-
-
