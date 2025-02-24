@@ -165,26 +165,17 @@
 <div class="footer"></div>
 </body>
 
-<script type="module">
-
-    import foodNutrition from "/js/foodNutrition.js"
-
+<script>
     window.addEventListener("scroll", () => {
         const bwLeft = window.scrollX;
-        document.querySelector(
-            ".header-in"
-        ).style.transform = `translateX(-${bwLeft}px)`;
+        document.querySelector(".header-in").style.transform = `translateX(-${bwLeft}px)`;
     });
-
-
-
-
 
     $(document).ready(function () {
         $("#nextBtn").click(function () {
-            alert("📌 2_1 페이지에서 음식 섭취 횟수 저장 시작!");
+            /*alert("📌 2_1 페이지에서 음식 섭취 횟수 저장 시작!");*/
 
-            let mealData = {};  // servings만 저장
+            let mealData = {}; // servings만 저장
 
             $(".food-item").each(function () {
                 let foodName = $(this).find("p").text().trim();
@@ -196,12 +187,12 @@
                 }
             });
 
-            alert("✅ 2_1에서 저장된 servings 데이터: \n" + JSON.stringify(mealData));
+            /*alert("✅ 2_1에서 저장된 servings 데이터: \n" + JSON.stringify(mealData));*/
 
             // sessionStorage에 저장
             sessionStorage.setItem("mealData", JSON.stringify(mealData));
 
-            alert("🚀 2_1에서 sessionStorage 저장 완료!");
+            /*alert("🚀 2_1에서 sessionStorage 저장 완료!");*/
             window.location.href = "/usr/diagnosis/DiagnosisSelect2_2";
         });
     });

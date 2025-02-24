@@ -34,10 +34,10 @@ public class MealRecordApiController {
         System.out.println("🔎 입력된 mCarb: " + mealRecordVo.getMCarb());
         System.out.println("🔎 입력된 mSodium: " + mealRecordVo.getMSodium());
 
-        if (mealRecordVo == null || mealRecordVo.getMCalorie() == 0) {
+       /* if (mealRecordVo == null || mealRecordVo.getMCalorie() == 0) {
             System.err.println("❌ 서버에서 받은 데이터가 null이거나 0입니다!");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("데이터가 올바르지 않습니다.");
-        }
+        }*/
 
         // 🟢 세션에서 기존 데이터 가져오기
         List<MealRecordVo> mealRecords = (List<MealRecordVo>) session.getAttribute("mealRecords");

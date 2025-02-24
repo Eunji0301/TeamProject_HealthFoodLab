@@ -1,9 +1,8 @@
 package com.example.healingfoodlab.vo;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
+import java.util.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,7 +17,6 @@ public class GradeStandardVO {
     private String gsDescription;
     private String gsColorCode;
     private int nsIdx;
-    private int gsCreateAt;
-
+    private Date gsCreateAt;
 
 }

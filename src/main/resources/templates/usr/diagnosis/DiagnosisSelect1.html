@@ -71,6 +71,8 @@
     <!--여기부터 개발 시작--->
 
     <form id="diagnosisForm" th:action="@{/usr/diagnosis/submit}" method="post" th:object="${diagnosisVO}" class="main diagnosisSelect1 p-3">
+      <!-- uIdx 숨겨진 필드 추가 -->
+      <input type="hidden" name="uIdx" value="1" />
       <!-- 신체 정보 입력 -->
       <div class="section box1 mb-3">
         <h2>신체 정보를 입력해주세요</h2>
