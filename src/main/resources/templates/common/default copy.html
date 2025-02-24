@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>introduce</title>
+    <title>로그인 전</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       rel="stylesheet"
@@ -19,24 +19,28 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Roboto:wght@400;700;900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/css/default.css" />
-    <link rel="stylesheet" href="/css/default2.css" />
-    <link rel="stylesheet" href="/css/healthfood3.css" />
+    <link rel="stylesheet" href="/resource/default2.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <style>
-      #default > .main {
-        background-color: #ffdcc2;
-        height: 100%;
-        margin: 66px auto 0;
-        white-space: nowrap;
-        flex-grow: 1;
-      }
-    </style>
   </head>
   <!---로그인 전 영양검사 등 ---->
   <body id="default">
-  <div th:replace="common/header :: header"></div>
+    <div class="header">
+      <div class="menumain flex header-in">
+        <a class="logo"><img src="./img/logo.png" /></a>
+        <div class="space"></div>
+        <nav class="menu">
+          <ul>
+            <li><a href="#">영양진단</a></li>
+            <li><a href="#">챌린지</a></li>
+            <li><a href="#">레시피</a></li>
+            <li><a href="#">카드뉴스</a></li>
+            <li><a href="#">센터소개</a></li>
+            <li><a href="#">마이페이지</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
 
     <!-- <div class="side-bar">
       <div class="status-icon">
@@ -65,45 +69,7 @@
     </div> -->
 
     <!--여기부터 개발 시작--->
-    <div class="main introduce">
-      <div class="top m-5">
-        <img src="/img/introduce1.png" class="inline-block" />
-        <div class="inline-block align-top mx-5 ">
-          <h1 class="text-3xl font-bold">
-            "당신의 식습관이 미래의 건강을 만듭니다."
-          </h1>
-          <div class="text-base px-4 py-5">
-            <div>“헬스 푸드랩”은 hhh입니다.</div>
-            <div>
-              우리는 데이터 기반의 영양 분석과 개인화된 솔루션으로 질병 예방과
-              건강 증진을 목표로 합니다.
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="bottom m-20 flex justify-around text-xl">
-        <div>
-          <img src="/img/introduce2-1.png" />
-          <div class="text-center mt-4">영양진단</div>
-        </div>
-        <div>
-          <img src="/img/introduce2-2.png" />
-          <div class="text-center mt-4">건강 챌린지</div>
-        </div>
-        <div>
-          <a href="/usr/recipe/recipeList">
-          <img src="/img/introduce2-3.png" />
-          <div class="text-center mt-4">레시피 추천</div>
-          </a>
-        </div>
-        <div>
-          <a href="/usr/MYFridge/MYFridge">
-          <img src="/img/introduce2-4.png" />
-          <div class="text-center mt-4">냉장고</div>
-          </a>
-        </div>
-      </div>
-    </div>
+    <div class="main"></div>
 
     <div class="footer"></div>
   </body>

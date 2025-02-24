@@ -61,7 +61,3 @@ out/
 
 ### VS Code ###
 .vscode/
-
-# application.yml 파일 깃허브 업로드 방지
-/src/main/resources/application.yml
->>>>>>> baec4c5 (화면연결 및 유저, 관리자(카드뉴스) 기능 추가)
