@@ -1,4 +1,5 @@
-package com.healthFood.lab.spring2502_heathFood.controller;
+package com.example.healingfoodlab.controller;
+
 
 import com.example.healingfoodlab.repository.DiagnosisRepository;
 import com.example.healingfoodlab.service.MealRecordService;
@@ -142,19 +143,19 @@ public class DiagnosisController {
 
 
 
-    @PostMapping("/DiagnosisResult")
+    /*@PostMapping("/DiagnosisResult")
     public String showDiagnosisResult(@RequestParam(defaultValue = "1") int uIdx, Model model) {
         DiagnosisResultVO result = diagnosisService.analyzeNutrition(uIdx);
         model.addAttribute("result", result);
         return "usr/diagnosis/DiagnosisResult";
-    }
-
-   /* @GetMapping("/DiagnosisResult")
-    public String showDiagnosisResult() {
-        DiagnosisResultVO result = diagnosisService.analyzeNutrition(uIdx);
-        model.addAttribute("result", result);
-        return "usr/diagnosis/DiagnosisResult";
     }*/
+
+    @GetMapping("/DiagnosisResult")
+    public String showDiagnosisResult() {
+        /*DiagnosisResultVO result = diagnosisService.analyzeNutrition(uIdx);
+        model.addAttribute("result", result);*/
+        return "usr/diagnosis/DiagnosisResult";
+    }
 
 
 

@@ -1,57 +1,96 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title>로그인 전</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link
-      rel="stylesheet"
-      as="style"
-      crossorigin
-      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-gov.min.css"
+            rel="stylesheet"
+            as="style"
+            crossorigin
+            href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-gov.min.css"
     />
     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Roboto:wght@400;700;900&display=swap"
-      rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Roboto:wght@400;700;900&display=swap"
+            rel="stylesheet"
     />
-    <link rel="stylesheet" href="/css/default2.css"/>
-    <link rel="stylesheet" href="/css/Diagnosis.css" />
+    <link rel="stylesheet" href="/css/Diagnosis.css"/>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  </head>
-  <!---로그인 전 영양검사 등 ---->
-  <body id="default">
-  <div th:replace="common/header :: header"></div>
+</head>
+<!---로그인 전 영양검사 등 ---->
+<body id="default">
+<div class="header">
+    <div class="menumain flex header-in">
+        <a class="logo"><img src="/img/logo.png"/></a>
+        <div class="space"></div>
+        <nav class="menu">
+            <ul>
+                <li><a href="#">영양진단</a></li>
+                <li><a href="#">챌린지</a></li>
+                <li><a href="#">레시피</a></li>
+                <li><a href="#">카드뉴스</a></li>
+                <li><a href="#">센터소개</a></li>
+                <li><a href="#">마이페이지</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
 
+<!-- <div class="side-bar">
+  <div class="status-icon">
+    <div>▶</div>
+    <div>▼</div>
+  </div>
+  <nav class="menu-box-1">
+    <ul>
+      <li>
+        <a><img src="/img/sideButton1.png" /></a>
+      </li>
+      <li>
+        <a><img src="/img/sideButton2.png" /></a>
+      </li>
+      <li>
+        <a><img src="/img/sideButton3.png" /></a>
+      </li>
+      <li>
+        <a><img src="/img/sideButton4.png" /></a>
+      </li>
+      <li>
+        <a><img src="/img/sideButton5.png" /></a>
+      </li>
+    </ul>
+  </nav>
+</div> -->
 
-  <!--여기부터 개발 시작--->
-    <div class="main diagnosisSelect2">
-      <div class="top section">
+<!--여기부터 개발 시작--->
+<div class="main diagnosisSelect2">
+    <div class="top section">
         <h2>식사 문진표</h2>
         <p class="pl-3">
-          아래 표시된 음식들을 일주일에 얼마나 섭취하는지 체크해 주세요.
+            아래 표시된 음식들을 일주일에 얼마나 섭취하는지 체크해 주세요.
         </p>
         <p class="pl-3">※ 섭취 기준은 일주일(7일) 기준입니다.</p>
-      </div>
+    </div>
 
-      <div class="section food-grid">
+    <div class="section food-grid">
         <div class="food-item">
-          <img src="/img/dessert.png" alt="디저트" />
-          <div>
-            <p>디저트</p>
-            <select>
-              <option value="0">0회</option>
-              <option value="1">1회</option>
-              <option value="2">2회</option>
-              <option value="3">3회</option>
-              <option value="4">4회 이상</option>
-            </select>
-          </div>
+            <img src="/img/dessert.png" alt="디저트"/>
+            <div>
+                <p>디저트</p>
+                <select>
+                    <option value="0">0회</option>
+                    <option value="1">1회</option>
+                    <option value="2">2회</option>
+                    <option value="3">3회</option>
+                    <option value="4">4회 이상</option>
+                </select>
+            </div>
         </div>
         <div class="food-item">
           <img src="/img/nuts.png" alt="견과류" />
@@ -136,59 +175,121 @@
     });
   </script>
 
-  <script type="module">
-    import foodNutrition from "/js/foodNutrition.js";
 
-    $(document).ready(function() {
-      $("#submitBtn").click(function() {
-        let storedMealData = sessionStorage.getItem("mealData");
-        let totalMealData = storedMealData ? JSON.parse(storedMealData) : {
-          mCalorie: 0, mCarb: 0, mProtein: 0, mFat: 0, mSugar: 0,
-          mFiber: 0, mCholesterol: 0, mSodium: 0
-        };
+<script>
+    const foodNutrition = {
+        "빵": { calorie: 265, carb: 49, protein: 9, fat: 3, sugar: 5, fiber: 2, cholesterol: 35, sodium: 500 },
+        "밥": { calorie: 130, carb: 28, protein: 2, fat: 0.3, sugar: 0, fiber: 0.4, cholesterol: 0, sodium: 1 },
+        "탕": { calorie: 80, carb: 10, protein: 7, fat: 2, sugar: 3, fiber: 1, cholesterol: 25, sodium: 600 },
+        "국": { calorie: 50, carb: 7, protein: 5, fat: 1, sugar: 2, fiber: 1, cholesterol: 10, sodium: 450 },
+        "찌개": { calorie: 120, carb: 8, protein: 10, fat: 5, sugar: 4, fiber: 1, cholesterol: 30, sodium: 700 },
+        "면": { calorie: 220, carb: 40, protein: 8, fat: 4, sugar: 1, fiber: 2, cholesterol: 10, sodium: 300 },
+        "해산물": { calorie: 85, carb: 0, protein: 18, fat: 1, sugar: 0, fiber: 0, cholesterol: 50, sodium: 300 },
+        "두부": { calorie: 76, carb: 1.9, protein: 8, fat: 4.8, sugar: 0.3, fiber: 0.5, cholesterol: 0, sodium: 8 },
+        "고기": { calorie: 250, carb: 0, protein: 26, fat: 15, sugar: 0, fiber: 0, cholesterol: 70, sodium: 75 },
+        "유제품": { calorie: 110, carb: 12, protein: 8, fat: 4, sugar: 12, fiber: 0, cholesterol: 20, sodium: 125 },
+        "달걀": { calorie: 155, carb: 1.1, protein: 13, fat: 11, sugar: 1.1, fiber: 0, cholesterol: 373, sodium: 140 },
+        "채소": { calorie: 25, carb: 5.5, protein: 2, fat: 0.2, sugar: 2.5, fiber: 3, cholesterol: 0, sodium: 30 },
+        "디저트": { calorie: 400, carb: 60, protein: 5, fat: 15, sugar: 40, fiber: 2, cholesterol: 30, sodium: 200 },
+        "견과류": { calorie: 600, carb: 20, protein: 18, fat: 50, sugar: 5, fiber: 8, cholesterol: 0, sodium: 2 },
+        "과일": { calorie: 50, carb: 13, protein: 1, fat: 0.2, sugar: 10, fiber: 2, cholesterol: 0, sodium: 1 },
+        "전/튀김": { calorie: 350, carb: 40, protein: 10, fat: 20, sugar: 2, fiber: 1, cholesterol: 40, sodium: 500 },
+        "볶음/덮밥": { calorie: 280, carb: 35, protein: 12, fat: 10, sugar: 5, fiber: 3, cholesterol: 30, sodium: 400 },
+        "해조류": { calorie: 30, carb: 6, protein: 3, fat: 0.5, sugar: 2, fiber: 3, cholesterol: 0, sodium: 150 }
+    };
 
-        $(".food-item").each(function() {
-          let foodName = $(this).find("p").text().trim();
-          let servings = parseInt($(this).find("select").val());
+    $(document).ready(function () {
+        $("#submitBtn").click(function () {
+            /*alert("📌 2_3 페이지에서 최종 데이터 서버로 전송 시작!");*/
 
-          if (servings > 0 && foodNutrition[foodName]) {
-            let nutrition = foodNutrition[foodName];
+            // 🟢 기존 sessionStorage에서 저장된 servings 데이터 불러오기
+            let storedMealData = sessionStorage.getItem("mealData");
+            let mealData = storedMealData ? JSON.parse(storedMealData) : {};
 
-            totalMealData.mCalorie += parseFloat(nutrition.calorie * servings);
-            totalMealData.mCarb += parseFloat(nutrition.carb * servings);
-            totalMealData.mProtein += parseFloat(nutrition.protein * servings);
-            totalMealData.mFat += parseFloat(nutrition.fat * servings);
-            totalMealData.mSugar += parseFloat(nutrition.sugar * servings);
-            totalMealData.mFiber += parseFloat(nutrition.fiber * servings);
-            totalMealData.mCholesterol += parseFloat(nutrition.cholesterol * servings);
-            totalMealData.mSodium += parseFloat(nutrition.sodium * servings);
-          }
+            console.log("🔍 기존 sessionStorage 데이터 (servings 값만 저장됨):", mealData);
+
+            // 🟢 마지막 페이지에서 음식 카테고리와 선택 횟수 추가
+            $(".food-item").each(function () {
+                let foodName = $(this).find("p").text().trim();
+                let servings = parseInt($(this).find("select").val()) || 0;
+
+                // servings가 0 이상일 때만 저장
+                if (servings > 0) {
+                    mealData[foodName] = (mealData[foodName] || 0) + servings; // 기존 값과 누적
+                }
+            });
+
+            // 🟢 최종적으로 영양소 계산
+            let totalMealData = {
+                mCalorie: 0, mCarb: 0, mProtein: 0, mFat: 0, mSugar: 0,
+                mFiber: 0, mCholesterol: 0, mSodium: 0
+            };
+
+            Object.keys(mealData).forEach(foodName => {
+                let servings = mealData[foodName];
+
+                if (foodNutrition[foodName]) {
+                    let nutrition = foodNutrition[foodName];
+
+                    totalMealData.mCalorie += nutrition.calorie * servings;
+                    totalMealData.mCarb += nutrition.carb * servings;
+                    totalMealData.mProtein += nutrition.protein * servings;
+                    totalMealData.mFat += nutrition.fat * servings;
+                    totalMealData.mSugar += nutrition.sugar * servings;
+                    totalMealData.mFiber += nutrition.fiber * servings;
+                    totalMealData.mCholesterol += nutrition.cholesterol * servings;
+                    totalMealData.mSodium += nutrition.sodium * servings;
+                }
+            });
+
+            // 🟢 소수점 두 자리까지 처리
+            totalMealData.mCalorie = totalMealData.mCalorie.toFixed(2);
+            totalMealData.mCarb = totalMealData.mCarb.toFixed(2);
+            totalMealData.mProtein = totalMealData.mProtein.toFixed(2);
+            totalMealData.mFat = totalMealData.mFat.toFixed(2);
+            totalMealData.mSugar = totalMealData.mSugar.toFixed(2);
+            totalMealData.mFiber = totalMealData.mFiber.toFixed(2);
+            totalMealData.mCholesterol = totalMealData.mCholesterol.toFixed(2);
+            totalMealData.mSodium = totalMealData.mSodium.toFixed(2);
+
+            /*alert("✅ 2_3에서 추가 입력 포함한 최종 데이터: \n" + JSON.stringify(totalMealData));*/
+
+            // 🟢 최종적으로 서버로 전송
+            $.ajax({
+                type: "POST",
+                url: "/usr/diagnosis/analyzeNutrition",  // 변경된 URL로 서버에 요청
+                contentType: "application/json",
+                data: JSON.stringify({
+                    uIdx: 1,
+                    mCalorie: totalMealData.mCalorie,
+                    mCarb: totalMealData.mCarb,
+                    mProtein: totalMealData.mProtein,
+                    mFat: totalMealData.mFat,
+                    mSugar: totalMealData.mSugar,
+                    mFiber: totalMealData.mFiber,
+                    mCholesterol: totalMealData.mCholesterol,
+                    mSodium: totalMealData.mSodium
+                }),
+                beforeSend: function () {
+                    console.log("🚀 서버로 전송할 최종 JSON 데이터:", JSON.stringify(totalMealData, null, 2));
+                },
+                success: function (response) {
+                    console.log("✅ 서버 응답 (JSON):", response);
+                    /*alert("✅ 서버 응답 성공: " + JSON.stringify(response));*/
+                    sessionStorage.removeItem("mealData");
+                    window.location.href = "/usr/diagnosis/DiagnosisResult";
+                },
+                error: function (xhr, status, error) {
+                    console.error("❌ 식사 기록 저장 실패:", error);
+                    console.error("❌ 상태 코드:", xhr.status);
+                    console.error("❌ 응답 본문:", xhr.responseText);
+                    /*alert("❌ 서버 응답 실패! \n에러: " + xhr.responseText + "\n 상태 코드: " + xhr.status);*/
+                }
+            });
         });
-
-        console.log("✅ 최종 mealData:", totalMealData);
-        window.location.href = "/usr/diagnosis/DiagnosisResult";
-
-        /*$.ajax({
-          type: "POST",
-          url: "/api/meal/submit",
-          contentType: "application/json",
-          data: JSON.stringify(totalMealData),
-          success: function(response) {
-            console.log("✅ 식사 기록 저장 성공:", response);
-            alert("✅ 식사 기록이 정상적으로 저장되었습니다.");
-
-            sessionStorage.removeItem("mealData");
-
-            window.location.href = "/usr/diagnosis/DiagnosisResult";
-          },
-          error: function(error) {
-            console.error("❌ 식사 기록 저장 실패:", error);
-            alert("❌ 식사 기록 저장에 실패하였습니다.");
-          }
-        });*/
-      });
     });
-  </script>
+</script>
+
 
 
 

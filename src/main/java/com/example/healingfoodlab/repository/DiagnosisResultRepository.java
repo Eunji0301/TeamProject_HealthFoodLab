@@ -1,19 +1,15 @@
-package com.healthFood.lab.spring2502_heathFood.repository;
+package com.example.healingfoodlab.repository;
 
-
-import com.healthFood.lab.spring2502_heathFood.vo.DiagnosisResult;
-import com.healthFood.lab.spring2502_heathFood.vo.FoodTracker;
-import com.healthFood.lab.spring2502_heathFood.vo.User;
+import com.example.healingfoodlab.vo.DiagnosisResultVO;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
-
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 @Mapper
 public interface DiagnosisResultRepository {
-
 
     /**
      * 진단 결과 저장
